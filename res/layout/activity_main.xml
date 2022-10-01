@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:gravity="center"
+  android:background="#ff000000"
+  android:id="@+id/main"
+  android:orientation="horizontal">
+
+  <LinearLayout android:id="@+id/tama"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView android:id="@+id/TV"
+      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      android:gravity="center"/>
+
+    <LinearLayout android:id="@+id/buttons"
+      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      android:orientation="horizontal">
+<!--
+      <Button
+        android:id="@+id/buttonA"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="A"
+        android:onClick="onClickA"/>
+
+      <Button
+        android:id="@+id/buttonB"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="B"
+        android:onClick="onClickB"/>
+
+      <Button
+        android:id="@+id/buttonC"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="C"
+        android:onClick="onClickC"/>
+-->
+    </LinearLayout>
+  </LinearLayout>
+</LinearLayout>
