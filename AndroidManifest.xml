@@ -20,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TamaSelectionActivity"
+                  android:screenOrientation="portrait">
+        </activity>
         <!--Cette application a un receiver qui reçoit des broadcasts destinés à AlarmReceiver-->
         <!--L'intention UPDATE TAMAGOTCHI est envoyée par le système à AlarmReceiver-->
         <receiver android:name=".AlarmReceiver">
@@ -27,7 +30,5 @@
             <action android:name="UPDATETAMAGOTCHI" />
           </intent-filter>
         </receiver>
-
     </application>
-
 </manifest>

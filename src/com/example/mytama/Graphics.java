@@ -195,18 +195,15 @@ public class Graphics
     
     MainActivity.W=MainActivity.graphics.idle[0].getWidth()/30;
     MainActivity.H=MainActivity.graphics.idle[0].getHeight()/30;
-    if (MainActivity.character.equals("Babytchi"))
-    {
+    if (MainActivity.character.equals("Babytchi")) {
       MainActivity.W=8;
       MainActivity.H=8;
     }
-    else if (MainActivity.character.equals("Tonmarutchi"))
-    {
+    else if (MainActivity.character.equals("Tonmarutchi")) {
       MainActivity.W=12;
       MainActivity.H=12;
     }
-    else
-    {
+    else {
       MainActivity.W=16;
       MainActivity.H=16;
     }

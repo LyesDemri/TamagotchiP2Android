@@ -120,17 +120,21 @@ public class GamePainter
     int y=MainActivity.y;
     int W=MainActivity.W;
     int H=MainActivity.H;
-    int k=(MainActivity.myRunnable.k*8-200);
+    int k=(MainActivity.myRunnable.k*8-270); //magical value that gives good results
     if (k<0) k=0;
     k=(int)Math.floor(k/10)*10;
-
-    MainActivity.canvas.drawBitmap(MainActivity.graphics.fullHeart,null, new Rect(Math.max(0+offsetX-k,offsetX-80),0+offsetY,80+offsetX-k,80+offsetY),MainActivity.paint);
-    MainActivity.canvas.drawBitmap(MainActivity.graphics.fullHeart,null, new Rect(Math.max(160+offsetX-k,offsetX-80),0+offsetY,240+offsetX-k,80+offsetY),MainActivity.paint);
-    MainActivity.canvas.drawBitmap(MainActivity.graphics.emptyHeart,null, new Rect(Math.max(80+offsetX-k,offsetX-80),80+offsetY,160+offsetX-k,160+offsetY),MainActivity.paint);
+    MainActivity.canvas.drawBitmap(MainActivity.graphics.fullHeart,null,  new Rect(Math.max(  0+offsetX-k,offsetX-80), 0+offsetY, 80+offsetX-k, 80+offsetY),MainActivity.paint);
+    MainActivity.canvas.drawBitmap(MainActivity.graphics.fullHeart,null,  new Rect(Math.max(160+offsetX-k,offsetX-80), 0+offsetY,240+offsetX-k, 80+offsetY),MainActivity.paint);
+    MainActivity.canvas.drawBitmap(MainActivity.graphics.emptyHeart,null, new Rect(Math.max( 80+offsetX-k,offsetX-80),80+offsetY,160+offsetX-k,160+offsetY),MainActivity.paint);
     MainActivity.canvas.drawBitmap(MainActivity.graphics.emptyHeart,null, new Rect(Math.max(240+offsetX-k,offsetX-80),80+offsetY,320+offsetX-k,160+offsetY),MainActivity.paint);
-    MainActivity.canvas.drawBitmap(MainActivity.graphics.idle[0],null, new Rect(Math.min(x*10+offsetX+320-k,offsetX+320),y*10+offsetY,Math.min((x+W)*10+offsetX+320-k,offsetX+320+W*10),(y+H)*10+offsetY),MainActivity.paint);
+    MainActivity.canvas.drawBitmap(MainActivity.graphics.play[0],null,    new Rect(Math.min(x*10+offsetX+320-k,
+                                                                                            offsetX+320),
+                                                                                   y*10+offsetY,
+                                                                                   Math.min((x+W)*10+offsetX+320-k,
+                                                                                            offsetX+320+W*10),
+                                                                                   (y+H)*10+offsetY),MainActivity.paint);
     if (MainActivity.animation_counter==6)
-      MainActivity.gameBegin.start();
+      MainActivity.gameBegin.start(); //play sound effect
     if (MainActivity.myRunnable.j == 0 || MainActivity.myRunnable.j==13)
       MainActivity.animation_counter=Math.max(MainActivity.animation_counter-1,0);
     if (MainActivity.animation_counter==0)

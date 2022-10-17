@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:gravity="center"
+  android:background="#ffffffff"
+  android:id="@+id/tama_selection"
+  android:orientation="vertical">
+
+  <TextView android:id="@+id/tama_select_tv"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:text="nouvelle activite"
+    android:gravity="center"/>
+  <ListView android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+</LinearLayout>

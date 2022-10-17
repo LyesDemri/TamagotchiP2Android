@@ -1,5 +1,6 @@
 package com.example.mytama;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Paint;
@@ -9,7 +10,7 @@ import java.lang.Math;
 public class Painter 
 {
   static int i;
-  static Rect rect2;
+  static int[] foodAnimPositions;
   static int[] ageChars;
   static int[] weightChars;
 
@@ -44,16 +45,16 @@ public class Painter
         IdlePainter.draw();
       else if (MainActivity.state.equals("food choice"))
       {
-        MainActivity.canvas.drawBitmap(MainActivity.graphics.arrows[3],null, new Rect(0+offsetX,MainActivity.food_index*80+offsetY,80+offsetX,80+MainActivity.food_index*80+offsetY),MainActivity.paint);
-        MainActivity.canvas.drawBitmap(MainActivity.graphics.hamburger_bmp[0],null,new Rect(80+offsetX,0+offsetY,160+offsetX,80+offsetY),MainActivity.paint);
-        MainActivity.canvas.drawBitmap(MainActivity.graphics.cake_bmp[0],null,new Rect(80+offsetX,80+offsetY,160+offsetX,160+offsetY),MainActivity.paint);
+        drawSpriteAt(MainActivity.graphics.arrows[3], 0, MainActivity.food_index*8);
+        drawSpriteAt(MainActivity.graphics.hamburger_bmp[0],8,0);
+        drawSpriteAt(MainActivity.graphics.cake_bmp[0],8,8);
       }
       else if (MainActivity.state.equals("eating"))
       {
         i=7-MainActivity.animation_counter;
-        rect2=MainActivity.foodAnimPositions[i];
-        MainActivity.canvas.drawBitmap(MainActivity.graphics.eat[MainActivity.eatAnim[i]],null, new Rect((16-W/2)*10+offsetX,y*10+offsetY,(16+W/2)*10+offsetX,(y+H)*10+offsetY),MainActivity.paint);
-        MainActivity.canvas.drawBitmap(MainActivity.graphics.foods[MainActivity.food_index][MainActivity.foodAnim[i]],null, rect2,MainActivity.paint);
+        foodAnimPositions=MainActivity.foodAnimPositions[i];
+        drawSpriteAt(MainActivity.graphics.eat[MainActivity.eatAnim[i]],16-W/2,y);
+        drawSpriteAt(MainActivity.graphics.foods[MainActivity.food_index][MainActivity.foodAnim[i]],foodAnimPositions[0],foodAnimPositions[1]);
         if (MainActivity.myRunnable.j==0 || MainActivity.myRunnable.j==13)
             MainActivity.animation_counter=Math.max(MainActivity.animation_counter-1,0);
         if (MainActivity.animation_counter==0)
@@ -62,9 +63,9 @@ public class Painter
       else if (MainActivity.state.equals("saying no food"))
       {
         i=7-MainActivity.animation_counter;
-        rect2=MainActivity.noFoodAnimPositions[i];
-        MainActivity.canvas.drawBitmap(MainActivity.graphics.no[MainActivity.eatAnim[i]],null, new Rect((16-W/2)*10+offsetX,y*10+offsetY,(16+W/2)*10+offsetX,(y+H)*10+offsetY),MainActivity.paint);
-        MainActivity.canvas.drawBitmap(MainActivity.graphics.foods[MainActivity.food_index][0],null, rect2,MainActivity.paint);
+        foodAnimPositions=MainActivity.noFoodAnimPositions[i];
+        drawSpriteAt(MainActivity.graphics.no[MainActivity.eatAnim[i]],16-W/2,y);
+        drawSpriteAt(MainActivity.graphics.foods[MainActivity.food_index][0], foodAnimPositions[0],foodAnimPositions[1]);
         if (MainActivity.myRunnable.j==0 || MainActivity.myRunnable.j==13)
             MainActivity.animation_counter=Math.max(MainActivity.animation_counter-1,0);
         if (MainActivity.animation_counter==0)
@@ -123,30 +124,25 @@ public class Painter
           MainActivity.canvas.drawRect(new Rect(290+offsetX,120+offsetY,300+offsetX,140+offsetY),MainActivity.paint);
         }
       }
-      else if (MainActivity.state.equals("StatScreen3"))
-      {
+      else if (MainActivity.state.equals("StatScreen3")) {
         MainActivity.canvas.drawBitmap(MainActivity.graphics.hungryWord,null, new Rect(0+offsetX,0+offsetY,240+offsetX,80+offsetY),MainActivity.paint);
-        for (int j=0;j<4;j++)
-        {
+        for (int j=0;j<4;j++) {
           if (j<MainActivity.stomach)
             MainActivity.canvas.drawBitmap(MainActivity.graphics.fullHeart,null, new Rect(j*80+offsetX,80+offsetY,j*80+80+offsetX,160+offsetY),MainActivity.paint);
           else
             MainActivity.canvas.drawBitmap(MainActivity.graphics.emptyHeart,null, new Rect(j*80+offsetX,80+offsetY,j*80+80+offsetX,160+offsetY),MainActivity.paint);
         }
       }
-      else if (MainActivity.state.equals("StatScreen4"))
-      {
+      else if (MainActivity.state.equals("StatScreen4")) {
         MainActivity.canvas.drawBitmap(MainActivity.graphics.happyWord,null, new Rect(0+offsetX,0+offsetY,240+offsetX,80+offsetY),MainActivity.paint);
-        for (int j=0;j<4;j++)
-        {
+        for (int j=0;j<4;j++) {
           if (j<MainActivity.happy)
             MainActivity.canvas.drawBitmap(MainActivity.graphics.fullHeart,null, new Rect(j*80+offsetX,80+offsetY,j*80+80+offsetX,160+offsetY),MainActivity.paint);
           else
             MainActivity.canvas.drawBitmap(MainActivity.graphics.emptyHeart,null, new Rect(j*80+offsetX,80+offsetY,j*80+80+offsetX,160+offsetY),MainActivity.paint);
         }
       }
-      else if (MainActivity.state.equals("happy"))
-      {
+      else if (MainActivity.state.equals("happy")) {
         if (MainActivity.even==1)
         {
           MainActivity.canvas.drawBitmap(MainActivity.graphics.happy,null, new Rect((16-W/2)*10+offsetX,y*10+offsetY,(16+W/2)*10+offsetX,(y+H)*10+offsetY),MainActivity.paint);
@@ -158,48 +154,42 @@ public class Painter
             MainActivity.goodSound.start();
         if (MainActivity.myRunnable.j==0 || MainActivity.myRunnable.j==13)
           MainActivity.animation_counter=Math.max(MainActivity.animation_counter-1,0);
-        if (MainActivity.animation_counter==0)
-        {
+        if (MainActivity.animation_counter==0) {
           MainActivity.state = MainActivity.oldState;
           MainActivity.animation_counter=MainActivity.oldAnimationCounter;
           MainActivity.x=8;
           MainActivity.myRunnable.k=-1;
         }
       }
-      else if (MainActivity.state.equals("unhappy"))
-      {
+      else if (MainActivity.state.equals("unhappy")) {
         MainActivity.canvas.drawBitmap(MainActivity.graphics.unhappy[MainActivity.even],null, new Rect((16-W/2)*10+offsetX,y*10+offsetY,(16+W/2)*10+offsetX,(y+H)*10+offsetY),MainActivity.paint);
         MainActivity.canvas.drawBitmap(MainActivity.graphics.cloud[MainActivity.even],null, new Rect((16+W/2)*10+offsetX,y*10+offsetY,(16+W/2+8)*10+offsetX,(y+8)*10+offsetY),MainActivity.paint);
         if (MainActivity.animation_counter==8)
           MainActivity.badSound.start();
         if (MainActivity.myRunnable.j==0 || MainActivity.myRunnable.j==13)
             MainActivity.animation_counter=Math.max(MainActivity.animation_counter-1,0);
-        if (MainActivity.animation_counter==0)
-        {
+        if (MainActivity.animation_counter==0) {
           MainActivity.state = MainActivity.oldState;
           MainActivity.animation_counter=MainActivity.oldAnimationCounter;
           MainActivity.x=8;
           MainActivity.myRunnable.k=-1;
         }
       }
-      else if (MainActivity.state.equals("scolded"))
-      {
+      else if (MainActivity.state.equals("scolded")) {
         MainActivity.canvas.drawBitmap(MainActivity.graphics.unhappy[MainActivity.even],null, new Rect((16-W/2)*10+offsetX,y*10+offsetY,(16+W/2)*10+offsetX,(y+H)*10+offsetY),MainActivity.paint);
         MainActivity.canvas.drawBitmap(MainActivity.graphics.cloud[MainActivity.even],null, new Rect((16+W/2)*10+offsetX,y*10+offsetY,(16+W/2+8)*10+offsetX,(y+8)*10+offsetY),MainActivity.paint);
         if (MainActivity.animation_counter==8)
           MainActivity.disciplineSound.start();
         if (MainActivity.myRunnable.j==0 || MainActivity.myRunnable.j==13)
             MainActivity.animation_counter=Math.max(MainActivity.animation_counter-1,0);
-        if (MainActivity.animation_counter==0)
-        {
+        if (MainActivity.animation_counter==0) {
           MainActivity.state = MainActivity.oldState;
           MainActivity.animation_counter=MainActivity.oldAnimationCounter;
           MainActivity.x=8;
           MainActivity.goodSound.start();
         }
       }
-      else if (MainActivity.state.equals("saying no"))
-      {
+      else if (MainActivity.state.equals("saying no")) {
         MainActivity.canvas.drawBitmap(MainActivity.graphics.no[MainActivity.even],null, new Rect((16-W/2)*10+offsetX,y*10+offsetY,(16+W/2)*10+offsetX,(y+H)*10+offsetY),MainActivity.paint);
         if (MainActivity.myRunnable.j==0 || MainActivity.myRunnable.j==13)
           MainActivity.animation_counter=Math.max(MainActivity.animation_counter-1,0);
@@ -312,6 +302,7 @@ public class Painter
         for (int col=0; col<16;col++)
           MainActivity.canvas.drawRect(new Rect(offsetX+line*10,offsetY+col*10,offsetX+line*10+9,offsetY+col*10+9),greyPaint);
 
+      //this could easily be improved
       if (MainActivity.icon_number==1)
         MainActivity.canvas.drawBitmap(MainActivity.graphics.foodIcon,null, new Rect(0+20+offsetX,-80+20+offsetY,80+offsetX-20,0+offsetY-20),MainActivity.paint);
       else if (MainActivity.icon_number==2)
@@ -340,7 +331,19 @@ public class Painter
         MainActivity.canvas.drawBitmap(MainActivity.graphics.attentionIcon,null, new Rect(240+20+offsetX,160+20+offsetY,320+offsetX-20,240+offsetY-20),MainActivity.paint);
       }
       MainActivity.canvas.drawBitmap(MainActivity.graphics.bg,null,new Rect(bgx,bgy,bgx+bgW,bgy+bgH),MainActivity.paint);
+      
       MainActivity.screen.getHolder().unlockCanvasAndPost(MainActivity.canvas);
     }
   }
+
+  public static void drawSpriteAt(Bitmap sprite, int x, int y){
+    int offsetX=(int)(MainActivity.surfW/2-320/2);
+    int offsetY=(int)(MainActivity.surfH/2-160/2);
+    x = x*10+offsetX;
+    y = y*10+offsetY;
+    int h = sprite.getHeight()/3;
+    int w = sprite.getWidth()/3;
+    MainActivity.canvas.drawBitmap(sprite,null, new Rect(x,y,x+w,y+h),MainActivity.paint);
+  }
 }
+

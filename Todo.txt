@@ -1,0 +1,10 @@
+*Animation pooping (x)
+*Sauvegarde (x)
+*Graphismes plus grands (x)
+*Notifications pour les appels (x)
+*Evolution (x)
+*Sons
+*Discipline calls (x)
+*Care misses (x)
+*impossible d'acceder au stats quand tmgc dort (x)
+*tamagotchi doesn't age (x)

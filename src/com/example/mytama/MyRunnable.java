@@ -19,16 +19,13 @@ public class MyRunnable extends Thread
     i=0;
     j=0;
     k=0;
-    runnable = new Runnable()
-    {
-      @Override public void run() 
-      {
+    runnable = new Runnable() {
+      @Override public void run() {
         long elapsedTime = new Date().getTime();
         i=(i+1)%25;
         j=(j+1)%25;
         k=(k+1)%1000000000;
-        if (i==0 || i==13)   //On update 2x par seconde
-        {
+        if (i==0 || i==13) {  //On update 2x par seconde
           MainActivity.even=1-MainActivity.even;    //On flippe even
           if (MainActivity.isAlive) // On update si le tamagotchi est vivant
             Updater.update();

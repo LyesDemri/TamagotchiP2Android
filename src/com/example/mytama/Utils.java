@@ -15,8 +15,7 @@ import android.widget.Toast;
 
 public class Utils 
 {
-  public static int[] numDecomposition(int n)
-  {
+  public static int[] numDecomposition(int n){
     int tens;
     int units;
     tens=(int)Math.floor(Double.valueOf(n)/10);
@@ -27,20 +26,16 @@ public class Utils
     return results;
   }
   
-  public static void generateGameNumbers()
-  {
+  public static void generateGameNumbers(){
     MainActivity.secretNumber=(int)(Math.random()*10);
     MainActivity.givenNumber=(int)(Math.random()*10);
-    while (MainActivity.givenNumber==MainActivity.secretNumber)
-    {
+    while (MainActivity.givenNumber==MainActivity.secretNumber) {
       MainActivity.givenNumber=(int)(Math.random()*10);
     }
   }
 
-  public static void saveData(Context context)
-  {
-    try
-    {
+  public static void saveData(Context context) {
+    try {
       MainActivity.fos=new FileOutputStream(context.getFilesDir()+"/save.txt");
       MainActivity.dos=new DataOutputStream(MainActivity.fos);
       MainActivity.dos.writeDouble(MainActivity.t);
@@ -91,16 +86,13 @@ public class Utils
       MainActivity.dos.close();
       MainActivity.fos.close();
     }
-    catch (Exception e)
-    {
+    catch (Exception e) {
       MainActivity.tv.setText(e.getMessage());
     }
   }
 
-  public static void loadData(Context context)
-  {
-    try
-    {
+  public static void loadData(Context context){
+    try {
       MainActivity.fis=new FileInputStream(context.getFilesDir()+"/save.txt");
       MainActivity.dis=new DataInputStream(MainActivity.fis);
       MainActivity.t=MainActivity.dis.readDouble();
@@ -157,23 +149,19 @@ public class Utils
       
       MainActivity.graphics.loadCharacterGraphics(MainActivity.mainActivityContext,MainActivity.character);
     }
-    catch (Exception e)
-    {
+    catch (Exception e){
       Utils.reset();
       //MainActivity.tv.setText(e.getMessage());
       //Toast.makeText(context, "Load failed: "+e.getMessage(), Toast.LENGTH_LONG).show();
     }
   }
   
-  public static int minValueIndex(Double[] array)
-  {
+  public static int minValueIndex(Double[] array) {
     double minValue=array[0];
     int length=array.length;
     int index=0;
-    for (int i = 0;i<length;i++)
-    {
-      if (minValue>array[i])
-      {
+    for (int i = 0;i<length;i++) {
+      if (minValue>array[i]) {
         minValue=array[i];
         index=i;
       }
@@ -181,9 +169,8 @@ public class Utils
     return index;
   }
 
-  public static void reset()
-  {
-    MainActivity.tv.setText("You've just reset the Tamagotchi");
+  public static void reset() {
+    //MainActivity.tv.setText("You've just reset the Tamagotchi");
     MainActivity.t=0;
     MainActivity.character="Egg";
     MainActivity.state="Egg";
@@ -226,10 +213,8 @@ public class Utils
     MainActivity.resetSound.start();
   }
   
-  public static void notifyUser()
-  {
-    if (!MainActivity.isOpen)
-    {
+  public static void notifyUser() {
+    if (!MainActivity.isOpen) {
       Notification.Builder notiBuilder = new Notification.Builder(MainActivity.mainActivityContext);
       notiBuilder.setContentTitle("Tamagotchi");
       notiBuilder.setContentText("Tamagotchi is calling!");
@@ -245,8 +230,7 @@ public class Utils
     }
   }
 
-  public static void computeSleepWakeTimes(int sleepingHour, int wakingHour)
-  {
+  public static void computeSleepWakeTimes(int sleepingHour, int wakingHour) {
     long t1970birth=MainActivity.t1970birth;
     //on calcule l'instant actuel dans le referentiel 1970
     long t1970now=new Date().getTime();

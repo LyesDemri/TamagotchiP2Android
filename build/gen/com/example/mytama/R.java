@@ -290,11 +290,18 @@ public final class R {
     public static final class id {
         public static final int TV=0x7f090002;
         public static final int buttons=0x7f090003;
+        public static final int listView=0x7f090008;
+        public static final int list_item=0x7f090005;
+        public static final int list_item_linear_layout=0x7f090004;
         public static final int main=0x7f090000;
         public static final int tama=0x7f090001;
+        public static final int tama_select_tv=0x7f090007;
+        public static final int tama_selection=0x7f090006;
     }
     public static final class layout {
         public static final int activity_main=0x7f040000;
+        public static final int list_item_layout=0x7f040001;
+        public static final int tama_selection_activity=0x7f040002;
     }
     public static final class mipmap {
         public static final int appIcon=0x7f030000;

@@ -43,9 +43,10 @@ public class ButtonA
       MainActivity.state="StatScreen1";
     else if (MainActivity.state.equals("happy") ||
              MainActivity.state.equals("unhappy")||
-             MainActivity.state.equals("saying no"))
-    {
+             MainActivity.state.equals("saying no")) {
       MainActivity.animation_counter=0;
+      MainActivity.myRunnable.k=-1;
+      MainActivity.myRunnable.j=0;
       MainActivity.state=MainActivity.oldState;
       MainActivity.animation_counter=MainActivity.oldAnimationCounter;
     }

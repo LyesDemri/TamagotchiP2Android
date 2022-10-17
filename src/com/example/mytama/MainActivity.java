@@ -94,6 +94,7 @@ public class MainActivity extends Activity {
   static public String state;
   static public String oldState;
   static public String character;
+  static public String name;
   static public String answer;
   static public boolean lightsOn;
   static public boolean isAlive;
@@ -133,8 +134,8 @@ public class MainActivity extends Activity {
   static public MediaPlayer smallBeep;
 
   //Animation related stuff
-  static public Rect[] foodAnimPositions;
-  static public Rect[] noFoodAnimPositions;
+  static public int[][] foodAnimPositions;
+  static public int[][] noFoodAnimPositions;
   static public int animation_counter=0;
   static public int oldAnimationCounter=0;
 
@@ -191,23 +192,23 @@ public class MainActivity extends Activity {
     myHandler=new Handler();
     
     //Animation related stuff:
-    foodAnimPositions=new Rect[7];
-    foodAnimPositions[0]=new Rect(0+offsetX,0+offsetY,80+offsetX,80+offsetY);
-    foodAnimPositions[1]=new Rect(0+offsetX,80+offsetY,80+offsetX,160+offsetY);
-    foodAnimPositions[2]=new Rect(0+offsetX,80+offsetY,80+offsetX,160+offsetY);
-    foodAnimPositions[3]=new Rect(0+offsetX,80+offsetY,80+offsetX,160+offsetY);
-    foodAnimPositions[4]=new Rect(0+offsetX,80+offsetY,80+offsetX,160+offsetY);
-    foodAnimPositions[5]=new Rect(0+offsetX,80+offsetY,80+offsetX,160+offsetY);
-    foodAnimPositions[6]=new Rect(500+offsetX,500+offsetY,500+offsetX,500+offsetY);
+    foodAnimPositions=new int[7][2];
+    foodAnimPositions[0]=new int[]{  0, 0};
+    foodAnimPositions[1]=new int[]{  0, 8};
+    foodAnimPositions[2]=new int[]{  0, 8};
+    foodAnimPositions[3]=new int[]{  0, 8};
+    foodAnimPositions[4]=new int[]{  0, 8};
+    foodAnimPositions[5]=new int[]{  0, 8};
+    foodAnimPositions[6]=new int[]{500,500};
     
-    noFoodAnimPositions=new Rect[7];
-    noFoodAnimPositions[0]=new Rect(0+offsetX,0+offsetY,80+offsetX,80+offsetY);
-    noFoodAnimPositions[1]=new Rect(0+offsetX,80+offsetY,80+offsetX,160+offsetY);
-    noFoodAnimPositions[2]=new Rect(0+offsetX,80+offsetY,80+offsetX,160+offsetY);
-    noFoodAnimPositions[3]=new Rect(0+offsetX,80+offsetY,80+offsetX,160+offsetY);
-    noFoodAnimPositions[4]=new Rect(0+offsetX,80+offsetY,80+offsetX,160+offsetY);
-    noFoodAnimPositions[5]=new Rect(0+offsetX,80+offsetY,80+offsetX,160+offsetY);
-    noFoodAnimPositions[6]=new Rect(0+offsetX,80+offsetY,80+offsetX,160+offsetY);
+    noFoodAnimPositions=new int[7][2];
+    noFoodAnimPositions[0]=new int[]{0, 0};
+    noFoodAnimPositions[1]=new int[]{0,8};
+    noFoodAnimPositions[2]=new int[]{0,8};
+    noFoodAnimPositions[3]=new int[]{0,8};
+    noFoodAnimPositions[4]=new int[]{0,8};
+    noFoodAnimPositions[5]=new int[]{0,8};
+    noFoodAnimPositions[6]=new int[]{0,8};
     
     eatAnim=new int[]{0,0,1,0,1,0,1};
     foodAnim=new int[]{0,0,1,1,2,2,2};
