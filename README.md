@@ -1,5 +1,9 @@
 # TamagotchiP2Android
 
+April 2026 Update: <br/>
+
+I've now extensively reviewed the code to make it a lot less terrible. I cut up sections of the program into classes of less than 100 lines of code. I've also put in place subfolders to start working on the Santaclautchi
+
 This is a reproduction of a P2 model of Bandai's 1997 tamagotchis <br/>
 This isn't the prettiest code I've written as I wrote it almost entirely on my phone (didn't use Android Studio). <br/>
 Also, I wasn't very good at Java when I started this project (back in 2020). I'm still getting the hang of it <br/>
