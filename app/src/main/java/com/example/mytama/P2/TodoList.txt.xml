@@ -1,0 +1,24 @@
+*Raccourcir le code
+
+
+MainActivity: 118
+DataSaverLoader: 106
+Painter: 100
+
+------
+
+Darwin: 88
+Graphics: 85
+GamePainter: 85
+ButtonB: 76
+ButtonC: 71
+IdlePainter: 71
+ButtonA: 62
+ClockPainter: 52
+Sounds: 47
+Updater: 39
+Animations: 35
+AlarmReceiver: 27
+
+*Mettre les fichiers dans des sous dossiers (voir la classe Schmilblick)
+*Le tamagotchi s'endort et se réveille aux mauvais moments
