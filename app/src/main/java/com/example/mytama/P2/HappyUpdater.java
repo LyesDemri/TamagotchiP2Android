@@ -5,7 +5,7 @@ public class HappyUpdater {
     if ( Tama.happy == 0) {
        Tama.timeSinceBored++;
       if ( Tama.timeSinceBored == 900) {
-         Tama.careMisses =  Tama.careMisses++;
+         P2Tama.careMisses =  P2Tama.careMisses++;
       }
       if ( Tama.timeSinceBored == 24*3600) {
         MainActivity.state = "dead1";
@@ -15,7 +15,7 @@ public class HappyUpdater {
     }
      Tama.timeSinceHappyChanged++;
     if ( Tama.timeSinceHappyChanged ==  Tama.hphlp) {
-       Tama.happy=Math.max( Tama.happy--,0);
+       Tama.happy=Math.max(Tama.happy-1,0);
        Tama.timeSinceHappyChanged = 0;
       if ( Tama.happy == 0) {
          Tama.isCalling = true;

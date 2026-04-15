@@ -14,11 +14,11 @@ public class P2Game {
       Animations.animation_counter = 8;
       if (Tama.happy == 4 
          && Tama.stomach == 4
-         && (!Tama.dirty)
-         && Tama.idealWeight == Tama.weight) {
+         && (!P2Tama.dirty)
+         && P2Tama.idealWeight == Tama.weight) {
         Tama.hghlp++;
         Tama.hphlp++;
-        Tama.pp++;
+        P2Tama.pp++;
       }
       Tama.happy = Math.min(Tama.happy + 1, 4);
       Tama.timeSinceHappyChanged = 0;
@@ -27,7 +27,7 @@ public class P2Game {
       MainActivity.state = "unhappy";
       Animations.animation_counter = 8;
     }
-    Tama.weight = Math.max(Tama.weight-1, Tama.idealWeight);
+    Tama.weight = Math.max(Tama.weight-1, P2Tama.idealWeight);
   }
   
   public static void endRound() {

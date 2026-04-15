@@ -8,9 +8,9 @@ public class BlackScreenPainter extends Painter{
     for (int l = 0; l < 2; l++) {
       for (int c = 0; c < 4; c++) {
         if (l == 0 && c == 2 && Tama.sleeping)
-          canvas.drawBitmap(Graphics.hashMap.get("z"+(MainActivity.even+1)+"dark"), null, new Rect(80*c+Screen.offsetX,80*l+Screen.offsetY,80*(c+1)+Screen.offsetX,80*(l+1)+Screen.offsetY), paint);
+          canvas.drawBitmap(P2Graphics.hashMap.get("z"+(MainActivity.even+1)+"dark"), null, new Rect(80*c+Screen.offsetX,80*l+Screen.offsetY,80*(c+1)+Screen.offsetX,80*(l+1)+Screen.offsetY), paint);
         else
-          canvas.drawBitmap(Graphics.hashMap.get("black_tile"), null, new Rect(80*c+Screen.offsetX,80*l+Screen.offsetY,80*(c+1)+Screen.offsetX,80*(l+1)+Screen.offsetY), paint);
+          canvas.drawBitmap(P2Graphics.hashMap.get("black_tile"), null, new Rect(80*c+Screen.offsetX,80*l+Screen.offsetY,80*(c+1)+Screen.offsetX,80*(l+1)+Screen.offsetY), paint);
       }
     }
   }

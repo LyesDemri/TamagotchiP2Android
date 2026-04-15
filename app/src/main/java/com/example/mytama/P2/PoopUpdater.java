@@ -8,18 +8,18 @@ public class PoopUpdater {
     }
     else {
       if (!Tama.sleeping && !MainActivity.state.equals("Egg")) {
-        Tama.tslp += 1;
-        if (Tama.tslp == Tama.pp)
+        P2Tama.tslp += 1;
+        if (P2Tama.tslp == P2Tama.pp)
           poop();
       }
     }
-    if (Tama.dirty) {
+    if (P2Tama.dirty) {
       if (!Tama.character.equals("Egg"))
-        Tama.tsd++;
-      if (Tama.tsd == 15*60)
-        Tama.careMisses++;
-      if (Tama.tsd == 12*60*60)
-        Tama.sick = true;
+        P2Tama.tsd++;
+      if (P2Tama.tsd == 15*60)
+        P2Tama.careMisses++;
+      if (P2Tama.tsd == 12*60*60)
+        P2Tama.sick = true;
     }
   }
   
@@ -29,7 +29,7 @@ public class PoopUpdater {
       Animations.animation_counter = 16;
     }
     Utils.notifyUser();
-    Tama.dirty = true;
-    Tama.tslp = 0;
+    P2Tama.dirty = true;
+    P2Tama.tslp = 0;
   }
 }

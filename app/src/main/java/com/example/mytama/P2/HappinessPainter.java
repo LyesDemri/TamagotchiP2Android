@@ -4,10 +4,10 @@ public class HappinessPainter extends Painter {
   public static void draw(){
     if (MainActivity.state.equals("happy")) {
       if (MainActivity.even == 1) {
-        drawSpriteAt(Graphics.hashMap.get(Tama.character+"_happy"), 16 - W/2, y);
-        drawSpriteAt(Graphics.hashMap.get("happy_sun"), 16 + W/2, y);
+        drawSpriteAt(P2Graphics.hashMap.get(Tama.character+"_happy"), 16 - W/2, y);
+        drawSpriteAt(P2Graphics.hashMap.get("happy_sun"), 16 + W/2, y);
       } else
-        drawSpriteAt(Graphics.hashMap.get(Tama.character+"_idle_2"), (16-W/2), y);
+        drawSpriteAt(P2Graphics.hashMap.get(Tama.character+"_idle_2"), (16-W/2), y);
       if (Animations.animation_counter == 8 && MainActivity.myRunnable.j == 0)
         Sounds.playSound("good_sound");
       if (MainActivity.myRunnable.j == 0 || MainActivity.myRunnable.j == 13)
@@ -20,8 +20,8 @@ public class HappinessPainter extends Painter {
       }
     } else if (MainActivity.state.equals("unhappy") ||
                MainActivity.state.equals("scolded")) {
-      drawSpriteAt(Graphics.hashMap.get(Tama.character+"_unhappy_"+(MainActivity.even+1)), (16-W/2), y);
-      drawSpriteAt(Graphics.hashMap.get("unhappy_cloud_"+(MainActivity.even+1)), (16+W/2), y);
+      drawSpriteAt(P2Graphics.hashMap.get(Tama.character+"_unhappy_"+(MainActivity.even+1)), (16-W/2), y);
+      drawSpriteAt(P2Graphics.hashMap.get("unhappy_cloud_"+(MainActivity.even+1)), (16+W/2), y);
       if (Animations.animation_counter == 8)
         if (MainActivity.state.equals("unhappy"))
           Sounds.playSound("bad_sound");

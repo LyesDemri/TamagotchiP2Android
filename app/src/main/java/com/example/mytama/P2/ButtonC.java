@@ -6,11 +6,8 @@ public class ButtonC
     Sounds.playSound("small_beep");
     MainActivity.vibrator.vibrate(50);
     if (MainActivity.state.equals("idle")) {
-      if (MainActivity.icon_number!=0) {
-        MainActivity.icon_number=0;
-      }
-      else {
-        //MainActivity.t=0;
+      if (MainActivity.icon_number != 0) {
+        MainActivity.icon_number = 0;
       }
       MainActivity.tv.setText(MainActivity.icon_list[MainActivity.icon_number]);
     }
@@ -46,11 +43,11 @@ public class ButtonC
       if (MainActivity.oldState.equals("game intro screen"))
         MainActivity.state = "idle";
       else
-        MainActivity.state=MainActivity.oldState;
+        MainActivity.state = MainActivity.oldState;
       Animations.animation_counter = Animations.oldAnimationCounter;
     }
     else if (MainActivity.state.equals("Menu")){
-      MainActivity.state="idle";
+      MainActivity.state = "idle";
       MainActivity.menu_index=0;
       MainActivity.tv.setText("Menu");
       MainActivity.displayVariables=false;
@@ -64,6 +61,13 @@ public class ButtonC
     else if (MainActivity.state.equals("scolded")){
       MainActivity.state="idle";
       Animations.animation_counter=0;
+    } else if (MainActivity.state.equals("clock")) {
+      MainActivity.debugCounter++;
+      if (MainActivity.debugCounter == 10) {
+        MainActivity.debugCounter = 0;
+        MainActivity.debugMode = 1 - MainActivity.debugMode;
+        Printer.log("Debug mode = " + MainActivity.debugMode);
+      }
     }
   }
 }

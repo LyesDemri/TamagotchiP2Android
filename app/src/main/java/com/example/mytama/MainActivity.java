@@ -13,11 +13,11 @@ import android.content.Context;
 import android.app.NotificationManager;
 import android.os.Vibrator;
 import android.view.WindowManager;
+import android.view.View;
 
 public class MainActivity extends Activity {
   static public TextView tv;
   static public int even = 0;
-  static public Graphics graphics;
   static public MyRunnable myRunnable;
   static public AlarmManager alarmMgr;
   static public NotificationManager notificationManager;
@@ -25,12 +25,12 @@ public class MainActivity extends Activity {
   public static PendingIntent notificationIntent;
   static public Context context;
   static public boolean displayVariables = false;
+  static public int debugMode = 0;
   static public Handler myHandler;
   static public String[] icon_list;
   static public String[] menu_list;
-  static public int icon_number;
-  static public int menu_index;
-  static public int food_index = 0;
+  static public int icon_number = 0, menu_index = 0, food_index = 0, debugCounter = 0;
+  static public String version = "Santa";
   static public boolean isOpen = true;
   static public boolean catchingUp = false;
   static public String state;
@@ -60,13 +60,12 @@ public class MainActivity extends Activity {
     
     //Elements du menu
     icon_list = new String[]{"", "Food","Lights","Game","Medicine","Toilet","Status","Discipline","Menu"};
-    menu_list = new String[]{"", "Reset", "Create new tama","Switch tama","Display Variables","Skip 5 minutes"};
-    
-    //Variable representant l'element actuel du menu
-    icon_number = 0;
-    menu_index = 0;
+    menu_list = new String[]{"", "Reset", "Create new tama","Switch tama","Display Variables","Skip 1 minute", "Skip 5 minutes","Skip 1 hour"};
 
-    graphics = new Graphics(this);
+    //Variable representant l'element actuel du menu
+    //icon_number = 0;
+    //menu_index = 0;
+
     myRunnable = new MyRunnable(this);
 
     Screen.initScreen(this);
@@ -94,6 +93,10 @@ public class MainActivity extends Activity {
       Printer.append(e);
     }
   }
+  
+  public void onClickA(View v) {ButtonA.handle();}
+  public void onClickB(View v) {ButtonB.handle();}
+  public void onClickC(View v) {ButtonC.handle();}
 
   @Override public void onPause() {
     super.onPause();
@@ -115,7 +118,6 @@ public class MainActivity extends Activity {
       state = "tama_select_screen";
     else
       state = "reset_screen";
-    
     isOpen = true;
     myHandler.postDelayed(myRunnable.runnable,40);
     alarmMgr.cancel(alarmIntent);

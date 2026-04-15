@@ -27,7 +27,7 @@ public class ShowerPainter extends Painter {
                                         Math.max(offsetX+380-k,offsetX+60),
                                         160+offsetY),
                       paint);
-    if (Tama.dirty)
+    if (P2Tama.dirty)
       canvas.drawBitmap(Graphics.hashMap.get("poop_1"),
                         null, 
                         new Rect(Math.max(offsetX+240-k,offsetX-80),
@@ -38,13 +38,13 @@ public class ShowerPainter extends Painter {
     if (MainActivity.myRunnable.j == 0 || MainActivity.myRunnable.j==13)
       Animations.animation_counter=Math.max(Animations.animation_counter-1,0);
     if (Animations.animation_counter==0) {
-      if (Tama.dirty) {
+      if (P2Tama.dirty) {
         MainActivity.state = "happy";
         Animations.animation_counter = 8;
         MainActivity.even = 0;
         MainActivity.oldState = "idle";
-        Tama.tsd = 0;
-        Tama.dirty = false;
+        P2Tama.tsd = 0;
+        P2Tama.dirty = false;
         MainActivity.myRunnable.j = -1;
       }
       else

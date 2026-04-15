@@ -2,9 +2,9 @@ package com.example.mytama;
 
 public class IdleButtonB {
   public static void handle() {
-    if (MainActivity.icon_list[MainActivity.icon_number]=="Food" && Tama.isAlive && Tama.lightsOn) {
+    if (MainActivity.icon_list[MainActivity.icon_number]=="Food" && Tama.isAlive && P2Tama.lightsOn) {
       if (!Tama.sleeping) {
-        if (!Tama.sick && !Tama.needsDiscipline) {
+        if (!P2Tama.sick && !P2Tama.needsDiscipline) {
           MainActivity.state = "food choice";
           MainActivity.food_index = 0;
           MainActivity.myRunnable.j = 0;
@@ -16,13 +16,13 @@ public class IdleButtonB {
         }
       }
     } else if (MainActivity.icon_list[MainActivity.icon_number]=="Lights" && Tama.isAlive) {
-      Tama.lightsOn = !Tama.lightsOn;
+      P2Tama.lightsOn = !P2Tama.lightsOn;
       if (Tama.sleeping) {
-        Tama.timeSinceNeedsLightsOff = 0;
+        P2Tama.timeSinceNeedsLightsOff = 0;
       }
-    } else if (MainActivity.icon_list[MainActivity.icon_number]=="Game" && Tama.isAlive && Tama.lightsOn) {
+    } else if (MainActivity.icon_list[MainActivity.icon_number]=="Game" && Tama.isAlive && P2Tama.lightsOn) {
       if (!Tama.sleeping) {
-        if (!Tama.sick && !Tama.needsDiscipline) {
+        if (!P2Tama.sick && !P2Tama.needsDiscipline) {
           MainActivity.state = "game intro screen";
           Animations.animation_counter = 6;
           Utils.generateGameNumbers();
@@ -36,12 +36,12 @@ public class IdleButtonB {
           MainActivity.oldState = "idle";
         }
       }
-    } else if (MainActivity.icon_list[MainActivity.icon_number]=="Medicine" && Tama.isAlive && Tama.lightsOn) {
+    } else if (MainActivity.icon_list[MainActivity.icon_number]=="Medicine" && Tama.isAlive && P2Tama.lightsOn) {
       if (!Tama.sleeping) {
-        if (Tama.sick) {
+        if (P2Tama.sick) {
           Sounds.playSound("good_sound");
-          Tama.sick = false;
-          Tama.timeSinceSick = 0;
+          P2Tama.sick = false;
+          P2Tama.timeSinceSick = 0;
           MainActivity.state = "happy";
         } else {
           MainActivity.state = "saying no";      
@@ -50,7 +50,7 @@ public class IdleButtonB {
         Animations.animation_counter = 8;
         MainActivity.even = 0;
       }
-    } else if (MainActivity.icon_list[MainActivity.icon_number]=="Toilet" && Tama.isAlive && Tama.lightsOn) {
+    } else if (MainActivity.icon_list[MainActivity.icon_number]=="Toilet" && Tama.isAlive && P2Tama.lightsOn) {
       if (!Tama.sleeping) {
         MainActivity.state="washing";
         Animations.animation_counter=4;
@@ -58,11 +58,11 @@ public class IdleButtonB {
       }
     } else if (MainActivity.icon_list[MainActivity.icon_number]=="Status") {
       MainActivity.state="StatScreen1";
-    } else if (MainActivity.icon_list[MainActivity.icon_number]=="Discipline" && Tama.isAlive && Tama.lightsOn) {
-      if (Tama.needsDiscipline) {
-        Tama.discipline=Math.min(Tama.discipline+1,4);
-        Tama.needsDiscipline=false;
-        Tama.timeSinceNeedsDiscipline=0;
+    } else if (MainActivity.icon_list[MainActivity.icon_number]=="Discipline" && Tama.isAlive && P2Tama.lightsOn) {
+      if (P2Tama.needsDiscipline) {
+        P2Tama.discipline = Math.min(P2Tama.discipline+1,4);
+        P2Tama.needsDiscipline=false;
+        P2Tama.timeSinceNeedsDiscipline=0;
         Sounds.playSound("discipline_sound");
         MainActivity.state="scolded";
       } else {

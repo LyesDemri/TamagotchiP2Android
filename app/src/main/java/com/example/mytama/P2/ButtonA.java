@@ -45,10 +45,10 @@ public class ButtonA {
     }
     else if (MainActivity.state.equals("Menu")) {
       if (MainActivity.displayVariables)
-        MainActivity.displayVariables=false;
+        MainActivity.displayVariables = false;
       else {
-        MainActivity.menu_index = (MainActivity.menu_index+1)%MainActivity.menu_list.length;
-        MainActivity.tv.setText(MainActivity.menu_list[MainActivity.menu_index]);
+        MainActivity.menu_index = (MainActivity.menu_index+1)%(MainActivity.debugMode*(MainActivity.menu_list.length-4)+4);
+        Printer.print(MainActivity.menu_list[MainActivity.menu_index]);
       }
     }
     else if (MainActivity.state.equals("scolded")) {
@@ -56,7 +56,7 @@ public class ButtonA {
       Animations.animation_counter = 0;
     }
     else {
-      MainActivity.tv.setText("Unknown state: "+MainActivity.state);
+      Printer.log("Unknown state: "+MainActivity.state);
     }
   }
 }

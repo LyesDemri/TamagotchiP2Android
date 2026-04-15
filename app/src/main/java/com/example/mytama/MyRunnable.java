@@ -7,10 +7,11 @@ import java.util.Date;
 
 public class MyRunnable extends Thread {
   Runnable runnable;
-  public int i; //i va de 0 à 29
-  public int j; //pour les animations. j peut etre remis a 0 contrairement a i
-  public int k; // k augmente sans etre reinitialise
-  //k est utile pour des animations qui defilent dans le temps comme game intro screen
+  public int i; //i counts from 0 ton29
+  public int j; //for animations. j can be reset contrary to i
+  public int k; // k increses without being reset
+  //k is useful for sliding animations such as the game intro screen
+  
   Context c;
   public MyRunnable(Context c) {
     this.c=c;
@@ -24,20 +25,22 @@ public class MyRunnable extends Thread {
           i = (i+1)%25;
           j = (j+1)%25;
           k = (k+1)%1000000000;
-          if (i==0 || i == 13) {  //On inverse even 2x ppar seconde
+          if (i==0 || i == 13) {  //even is flipped twice per second
             MainActivity.even = 1 - MainActivity.even;
-            if (Tama.isAlive && i == 0) { // On update 1x par seconde si le tamagotchi est vivant
-              try {
-                Updater.update();
-              } catch (Exception e) {
+            if (Tama.isAlive && i == 0) { // update once per second if tama is alive and we're playing'
+              if (!MainActivity.state.equals("reset_screen") && !MainActivity.state.equals("tama_select_screen") && !MainActivity.state.equals("version_select_screen")){
+                try {
+                  Updater.update();
+                } catch (Exception e) {
                   Printer.append("Error updating game: " + e.getMessage());
+                }
               }
             }
           }
           try {
             Painter.draw(); // On dessine 25x par seconde
           } catch (Exception e1) {
-            Printer.append("Error while drawing screen" + e1.getMessage());
+            Printer.append("Error while drawing screen: " + e1.getMessage());
           }
           elapsedTime = (new Date().getTime()) - elapsedTime;
           MainActivity.myHandler.postDelayed(this, 40 - elapsedTime);

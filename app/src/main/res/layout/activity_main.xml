@@ -13,16 +13,10 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <TextView android:id="@+id/TV"
-      android:layout_height="wrap_content"
-      android:layout_width="wrap_content"
-      android:gravity="center"/>
-
     <LinearLayout android:id="@+id/buttons"
       android:layout_height="wrap_content"
       android:layout_width="wrap_content"
       android:orientation="horizontal">
-<!--
       <Button
         android:id="@+id/buttonA"
         android:layout_height="wrap_content"
@@ -43,7 +37,10 @@
         android:layout_width="wrap_content"
         android:text="C"
         android:onClick="onClickC"/>
--->
     </LinearLayout>
+    <TextView android:id="@+id/TV"
+      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      android:gravity="center"/>
   </LinearLayout>
 </LinearLayout>

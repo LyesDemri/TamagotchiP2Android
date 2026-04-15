@@ -33,7 +33,7 @@ public class ButtonB {
             Tama.weight=Math.min(Tama.weight+2,99);
         Tama.timeSinceBored=0;
         Tama.timeSinceHappyChanged=0;
-        Tama.cakesEaten+=1;
+        P2Tama.cakesEaten+=1;
       }
       MainActivity.even=0;
     } else if (MainActivity.state.equals("eating")) {
@@ -67,9 +67,10 @@ public class ButtonB {
       MenuButtonB.handle();
     } else if (MainActivity.state.equals("dead2"))
       Tama.reset();
-    else if (MainActivity.state.equals("clock"))
+    else if (MainActivity.state.equals("clock")) {
       MainActivity.state="idle";
-    else if (MainActivity.state.equals("scolded")) {
+      MainActivity.debugCounter = 0;
+    } else if (MainActivity.state.equals("scolded")) {
       MainActivity.state="idle";
       MainActivity.myRunnable.j=0;
       Animations.animation_counter=0;

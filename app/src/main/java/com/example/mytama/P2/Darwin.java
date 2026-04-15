@@ -25,43 +25,43 @@ public class Darwin {
     if (Tama.character.equals("babytchi"))
       evolveInto("tonmarutchi");
     else if (Tama.character.equals("tonmarutchi")) {
-      if (Tama.careMisses<3*DIFFICULTY)
+      if (P2Tama.careMisses<3*DIFFICULTY)
         evolveInto("tongaritchi");
       else
         evolveInto("hashitamatchi");
     }
     else if (Tama.character.equals("tongaritchi")) {
-      if (Tama.careMisses<DIFFICULTY)
+      if (P2Tama.careMisses<DIFFICULTY)
         evolveInto("mimitchi");
-      else if (Tama.careMisses<2*DIFFICULTY)
+      else if (P2Tama.careMisses<2*DIFFICULTY)
         evolveInto("pochitchi");
-      else if (Tama.careMisses<3*DIFFICULTY)
+      else if (P2Tama.careMisses<3*DIFFICULTY)
         evolveInto("zuccitchi");
-      else if (Tama.careMisses<4*DIFFICULTY)
+      else if (P2Tama.careMisses<4*DIFFICULTY)
         evolveInto("hashizotchi");
-      else if (Tama.careMisses<5*DIFFICULTY)
+      else if (P2Tama.careMisses<5*DIFFICULTY)
         evolveInto("takotchi");
       else
         evolveInto("kusatchi");
     }
     else if (Tama.character.equals("hashitamatchi")) {
-      if (Tama.careMisses<4*DIFFICULTY)
+      if (P2Tama.careMisses<4*DIFFICULTY)
         evolveInto("hashizotchi");
-      else if (Tama.careMisses<5*DIFFICULTY)
+      else if (P2Tama.careMisses<5*DIFFICULTY)
         evolveInto("takotchi");
       else
         evolveInto("kusatchi");
     } else if (Tama.character.equals("zuccitchi")) {
-      if (Tama.careMisses==3*DIFFICULTY)
+      if (P2Tama.careMisses==3*DIFFICULTY)
         evolveInto("zatchi");
     }
 
     TimeWizard.computeSleepWakeTimes(Tama.sleepingHour, Tama.wakingHour);
     Tama.timeSinceHungryChanged = 0;
     Tama.timeSinceHappyChanged = 0;
-    Tama.tslp = 0;
-    Tama.tfdc = Tama.t + Tama.dcp;
-    Tama.weight = Math.max(Tama.weight, Tama.idealWeight);
+    P2Tama.tslp = 0;
+    P2Tama.tfdc = Tama.t + P2Tama.dcp;
+    P2Tama.weight = Math.max(Tama.weight, P2Tama.idealWeight);
     Graphics.clearCharacterGraphics();
     Graphics.loadCharacterGraphics(MainActivity.context, Tama.character);
     Tama.x = 16 - Tama.W/2;
@@ -78,13 +78,13 @@ public class Darwin {
     Tama.character = character;
     Tama.hghlp = data.get(character)[0];
     Tama.hphlp = data.get(character)[1];
-    Tama.pp = data.get(character)[2];
-    Tama.tslp = data.get(character)[3];
-    Tama.dcp = data.get(Tama.character)[4];
+    P2Tama.pp = data.get(character)[2];
+    P2Tama.tslp = data.get(character)[3];
+    P2Tama.dcp = data.get(Tama.character)[4];
     Tama.sleepingHour = data.get(character)[5];
     Tama.wakingHour = data.get(character)[6];
     Tama.y = data.get(character)[7];
-    Tama.idealWeight = data.get(character)[8];
-    Tama.walks = (data.get(character)[9]==1);
+    P2Tama.idealWeight = data.get(character)[8];
+    P2Tama.walks = (data.get(character)[9]==1);
   }
 }

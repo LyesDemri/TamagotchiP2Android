@@ -5,7 +5,7 @@ public class HungryUpdater {
     if (Tama.stomach == 0) {
       Tama.timeSinceHungry++;
       if (Tama.timeSinceHungry == 900) {
-        Tama.careMisses++;
+        P2Tama.careMisses++;
       }
       if (Tama.timeSinceHungry == 24*3600) {
         MainActivity.state = "dead1";
@@ -15,7 +15,7 @@ public class HungryUpdater {
     }
     Tama.timeSinceHungryChanged++;
     if (Tama.timeSinceHungryChanged == Tama.hghlp) {
-      Tama.stomach = Math.max(Tama.stomach--, 0);
+      Tama.stomach = Math.max(Tama.stomach-1, 0);
       Tama.timeSinceHungryChanged = 0;
       if (Tama.stomach == 0) {
         Tama.isCalling = true;

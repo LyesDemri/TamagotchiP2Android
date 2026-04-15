@@ -29,7 +29,7 @@ public class StatsPainter extends Painter {
       int c = 30;
       for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
-          if (Tama.discipline > i) {
+          if (P2Tama.discipline > i) {
             canvas.drawRect(new Rect(c+Screen.offsetX,120+Screen.offsetY,(c+10)+Screen.offsetX,140+Screen.offsetY),paint);
             c = c+20;
             if (j == 3 && (i%2) == 1)
