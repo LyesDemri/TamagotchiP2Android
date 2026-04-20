@@ -4,7 +4,6 @@ import android.graphics.Rect;
 import android.graphics.Matrix;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import com.example.test.Schmilblick;
 
 public class P2IdlePainter extends P2Painter {
   public static void draw() {

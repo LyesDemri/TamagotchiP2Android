@@ -1,13 +1,14 @@
 ---General---
-*S'assurer que le premier ecran qu'un utilisateur voit est version select screen
 *Quand le tama fait caca, le menu devient inutilisable
-
+*Implementer un systeme de notifications
 
 ---P2---
+*Trouver pourquoi l'horloge du tmgc se deregle
 *Si tu ouvres l'application pendant le hatching le babytchi est remplace par l'oeuf
 *Faire en sorte que les boutons puissent apparaitre et disparaitre
-*Mettre les fichiers dans des sous dossiers (voir la classe Schmilblick)
-
+*Implementer le nouveau (vrai) systeme d'evolution
+*Implementer l'animation de quand le tamagotchi meurt et pond un oeuf
+*Si tu negliges completement un tonmarutchi, il devient tongaritchi parce que'il n'a pas eu assez de CMs (implementer les CMs plus fidelement?)
 
 ---Santa---
-*Afficher la coquille generee par gemini
+*Implementer le menu stats

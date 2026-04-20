@@ -208,12 +208,12 @@ public final class R {
         public static final int santatchi_chimney_2=0x7f0200bb;
         public static final int santatchi_eat_1=0x7f0200bc;
         public static final int santatchi_eat_2=0x7f0200bd;
-        public static final int santatchi_hatching=0x7f0200be;
-        public static final int santatchi_idle_1=0x7f0200bf;
-        public static final int santatchi_idle_2=0x7f0200c0;
-        public static final int santatchi_no_1=0x7f0200c1;
-        public static final int santatchi_no_2=0x7f0200c2;
-        public static final int santaychi_happy=0x7f0200c3;
+        public static final int santatchi_happy=0x7f0200be;
+        public static final int santatchi_hatching=0x7f0200bf;
+        public static final int santatchi_idle_1=0x7f0200c0;
+        public static final int santatchi_idle_2=0x7f0200c1;
+        public static final int santatchi_no_1=0x7f0200c2;
+        public static final int santatchi_no_2=0x7f0200c3;
         public static final int scale_icon=0x7f0200c4;
         public static final int shower=0x7f0200c5;
         public static final int skull=0x7f0200c6;
@@ -348,16 +348,21 @@ public final class R {
     }
     public static final class raw {
         public static final int bad_sound=0x7f050000;
-        public static final int call=0x7f050001;
-        public static final int discipline_sound=0x7f050002;
-        public static final int display_results_sound=0x7f050003;
-        public static final int evolve_sound=0x7f050004;
-        public static final int flip_sound=0x7f050005;
-        public static final int game_begin=0x7f050006;
-        public static final int good_sound=0x7f050007;
-        public static final int hatching_sound=0x7f050008;
-        public static final int reset_sound=0x7f050009;
-        public static final int small_beep=0x7f05000a;
+        public static final int cabin_exit=0x7f050001;
+        public static final int call=0x7f050002;
+        public static final int discipline_sound=0x7f050003;
+        public static final int display_results_sound=0x7f050004;
+        public static final int evolve_sound=0x7f050005;
+        public static final int flip_sound=0x7f050006;
+        public static final int game_begin=0x7f050007;
+        public static final int good_sound=0x7f050008;
+        public static final int hatching_sound=0x7f050009;
+        public static final int new_character=0x7f05000a;
+        public static final int reset_sound=0x7f05000b;
+        public static final int santa_call_sound=0x7f05000c;
+        public static final int santa_small_beep=0x7f05000d;
+        public static final int santa_validate_sound=0x7f05000e;
+        public static final int small_beep=0x7f05000f;
     }
     public static final class string {
         public static final int app_name=0x7f070000;

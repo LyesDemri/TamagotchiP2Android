@@ -16,8 +16,10 @@ public class TamaSelectScreen {
           Printer.append("Screen: Error loading tama data: " + e.getMessage());
         }
         MainActivity.menu_index = 0;
+        MainActivity.fillIconList();
+        Sounds.loadSounds(MainActivity.context);
         Printer.print(Tama.name);
-      } else {
+        } else {
         MainActivity.state = "reset_screen";
       }
     } else {

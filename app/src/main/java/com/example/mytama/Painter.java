@@ -42,11 +42,7 @@ public class Painter {
         VersionSelectPainter.draw();
       } else {
         if (MainActivity.version.equals("P2")){
-          try { 
-            P2Painter.draw();
-          } catch (Exception e) {
-            Printer.append("Error in P2Painter: " + e.getMessage());
-          }
+          P2Painter.draw();
         } else if (MainActivity.version.equals("Santa")) {
           SantaPainter.draw();
         } else {

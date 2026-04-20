@@ -9,6 +9,7 @@ public class VersionSelectScreen {
       MainActivity.version = versionList[selectedLine];
       MainActivity.state = "reset_screen";
       Printer.log("Selected version = " + MainActivity.version);
+      MainActivity.fillIconList();
     }
   }
 }

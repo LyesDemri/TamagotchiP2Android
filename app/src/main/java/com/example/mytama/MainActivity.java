@@ -59,7 +59,6 @@ public class MainActivity extends Activity {
     tv.setBackgroundResource(R.color.white);
     
     //Elements du menu
-    icon_list = new String[]{"", "Food","Lights","Game","Medicine","Toilet","Status","Discipline","Menu"};
     menu_list = new String[]{"", "Reset", "Create new tama","Switch tama","Display Variables","Skip 1 minute", "Skip 5 minutes","Skip 1 hour"};
 
     //Variable representant l'element actuel du menu
@@ -121,5 +120,13 @@ public class MainActivity extends Activity {
     isOpen = true;
     myHandler.postDelayed(myRunnable.runnable,40);
     alarmMgr.cancel(alarmIntent);
+  }
+  
+  public static void fillIconList() {
+    if (MainActivity.version.equals("P2")){
+      MainActivity.icon_list = new String[]{"", "Food","Lights","Game","Medicine","Toilet","Status","Discipline","Menu"};
+    } else {
+      MainActivity.icon_list = new String[]{"", "Status","Food","Game","Present","Super Kuchipatchi","Advent Calendar","Tama TV","Menu"};
+    }
   }
 }

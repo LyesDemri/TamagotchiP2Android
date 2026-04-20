@@ -8,10 +8,11 @@ import android.graphics.Rect;
 import java.lang.Math;
 
 public class SantaPainter extends Painter {
+  static double cabinCtr = 0;
   public static void draw() {
     //Check if drawing surface is valid and draw
     if (Screen.screen.getHolder().getSurface().isValid() && canvas != null) {
-        if (!MainActivity.state.equals("reset_screen") && !MainActivity.state.equals("tama_select_screen") && !MainActivity.state.equals("version_select_screen")) {
+      if (!MainActivity.state.equals("reset_screen") && !MainActivity.state.equals("tama_select_screen") && !MainActivity.state.equals("version_select_screen")) {
         //draw tama screen background
         canvas.drawBitmap(SantaGraphics.hashMap.get("santabg"), null, new Rect(Screen.offsetX,Screen.offsetY-80+10,Screen.offsetX+320,Screen.offsetY+320-80+10),paint);
         
@@ -35,12 +36,16 @@ public class SantaPainter extends Painter {
         else if (MainActivity.state.equals("final game results"))
           P2GamePainter.drawFinalGameResults();
         else if (MainActivity.state.equals("Cabin")) {
-          canvas.drawBitmap(SantaGraphics.hashMap.get("cabin_idle_"+(MainActivity.even+1)),null, new Rect(80+Screen.offsetX,0+Screen.offsetY,240+Screen.offsetX,160+Screen.offsetY),paint);
+          int ind = (int)(cabinCtr/25) + 1;
+          canvas.drawBitmap(SantaGraphics.hashMap.get("cabin_idle_"+(ind)),null, new Rect(80+Screen.offsetX,0+Screen.offsetY,240+Screen.offsetX,160+Screen.offsetY),paint);
+          cabinCtr = (cabinCtr + 1)%50;
         } else if (MainActivity.state.equals("hatching")) {
           if (Tama.t <= 8)
             canvas.drawBitmap(SantaGraphics.hashMap.get("cabin_open_door"),null, new Rect(80+Screen.offsetX, 0+Screen.offsetY, 240+Screen.offsetX, 160+Screen.offsetY), paint);
-          else
+          else {
+            if (Tama.t ==9) Sounds.playSound("new_character");
             canvas.drawBitmap(SantaGraphics.hashMap.get("santatchi_hatching"),null, new Rect(80+Screen.offsetX, 0+Screen.offsetY, 240+Screen.offsetX, 160+Screen.offsetY), paint);
+          }
         } else if (MainActivity.state.startsWith("dead"))
           DeadPainter.draw();
         else if (MainActivity.state.equals("clock"))
