@@ -27,7 +27,7 @@ public class P2Game {
       MainActivity.state = "unhappy";
       Animations.animation_counter = 8;
     }
-    Tama.weight = Math.max(Tama.weight-1, P2Tama.idealWeight);
+    Tama.weight = Math.max(Tama.weight - 1, P2Tama.idealWeight);
   }
   
   public static void endRound() {

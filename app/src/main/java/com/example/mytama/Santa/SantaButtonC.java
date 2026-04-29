@@ -16,26 +16,36 @@ public class SantaButtonC
       Tama.x = 16 - Tama.W/2;
     }
     else if (MainActivity.state.equals("saying no food")) {
-      Animations.animation_counter=0;
-      MainActivity.state="food choice";
+      Animations.animation_counter = 0;
+      MainActivity.state = "food choice";
       Tama.x = 16 - Tama.W/2;
     }
     else if (MainActivity.state.equals("eating")) {
       Animations.animation_counter=0;
       MainActivity.state="food choice";
-    }
-    else if (MainActivity.state.equals("playing")) {
-      MainActivity.state="idle";
+    } else if (MainActivity.state.equals("storing")) {
+      MainActivity.state = "food choice";
+    } else if (MainActivity.state.equals("playing")) {
+      MainActivity.state = "idle";
       Tama.x = 16 - Tama.W/2;
+    } else if (MainActivity.state.equals("StatScreen0")) {
+      MainActivity.state = "idle";
     }
     else if (MainActivity.state.equals("StatScreen1"))
-      MainActivity.state="idle";
+      MainActivity.state = "StatScreen0";
     else if (MainActivity.state.equals("StatScreen2"))
-      MainActivity.state="idle";
+      MainActivity.state = "StatScreen0";
     else if (MainActivity.state.equals("StatScreen3"))
-      MainActivity.state="idle";
+      MainActivity.state = "StatScreen0";
     else if (MainActivity.state.equals("StatScreen4"))
-      MainActivity.state="idle";
+      MainActivity.state = "StatScreen0";
+    else if (MainActivity.state.equals("StatScreen5"))
+      MainActivity.state = "StatScreen0";
+    else if (MainActivity.state.equals("Pantry1")) {
+      MainActivity.state = "StatScreen0";
+    } else if (MainActivity.state.equals("Pantry2")) {
+      MainActivity.state = "StatScreen0";
+    }
     else if (MainActivity.state.equals("happy") ||
              MainActivity.state.equals("unhappy")||
              MainActivity.state.equals("saying no")) {

@@ -20,7 +20,7 @@ public class Updater  {
       Updater.update();
     }
     MainActivity.catchingUp = false;
-    Printer.print("t =" + Tama.t);
-    Printer.append("Tama time: " + TimeWizard.getTamagotchiTime());
+    Printer.print("t =" + Tama.t, false);
+    Printer.append("Tama time: " + TimeWizard.getTamagotchiTime(), false);
   }
 }

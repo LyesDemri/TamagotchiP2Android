@@ -2,7 +2,7 @@ package com.example.mytama;
 
 import android.graphics.Rect;
 
-public class P2StatsPainter extends Painter {
+public class P2StatsPainter extends StatsPainter {
   public static void draw() {
     if (MainActivity.state.equals("StatScreen1")) {
       try  {
@@ -39,22 +39,11 @@ public class P2StatsPainter extends Painter {
       }
     }
     else if (MainActivity.state.equals("StatScreen3")) {
-      canvas.drawBitmap(Graphics.hashMap.get("hungry_word"),null, new Rect(0+Screen.offsetX,0+Screen.offsetY,240+Screen.offsetX,80+Screen.offsetY),paint);
-      for (int j=0;j<4;j++) {
-        if (j < Tama.stomach)
-          canvas.drawBitmap(Graphics.hashMap.get("full_heart"), null, new Rect(j*80+Screen.offsetX,80+Screen.offsetY,j*80+80+Screen.offsetX,160+Screen.offsetY),paint);
-        else
-          canvas.drawBitmap(Graphics.hashMap.get("empty_heart"), null, new Rect(j*80+Screen.offsetX,80+Screen.offsetY,j*80+80+Screen.offsetX,160+Screen.offsetY),paint);
-      }
-    }
-    else if (MainActivity.state.equals("StatScreen4")) {
-      canvas.drawBitmap(Graphics.hashMap.get("happy_word"), null, new Rect(0+Screen.offsetX,0+Screen.offsetY,240+Screen.offsetX,80+Screen.offsetY),paint);
-      for (int j=0;j<4;j++) {
-        if (j < Tama.happy)
-          canvas.drawBitmap(Graphics.hashMap.get("full_heart"), null, new Rect(j*80+Screen.offsetX,80+Screen.offsetY,j*80+80+Screen.offsetX,160+Screen.offsetY),paint);
-        else
-          canvas.drawBitmap(Graphics.hashMap.get("empty_heart"), null, new Rect(j*80+Screen.offsetX,80+Screen.offsetY,j*80+80+Screen.offsetX,160+Screen.offsetY),paint);
-      }
+      drawSpriteAt("hungry_word", 0, 0);
+      drawHearts(Tama.stomach);
+    } else if (MainActivity.state.equals("StatScreen4")) {
+      drawSpriteAt("happy_word", 0, 0);
+      drawHearts(Tama.happy);
     }
   }
 }

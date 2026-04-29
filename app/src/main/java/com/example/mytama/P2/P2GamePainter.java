@@ -6,6 +6,7 @@ public class P2GamePainter extends Painter
 {
   static int offsetX = (int)(Screen.surfW/2-320/2);
   static int offsetY = (int)(Screen.surfH/2-160/2);
+    
   public static void drawFinalGameResults() {
     drawSpriteAt(P2Graphics.hashMap.get("face_icon"), 0, 0);
     drawSpriteAt(P2Graphics.hashMap.get("empty_heart"), 16, 0);
@@ -61,9 +62,11 @@ public class P2GamePainter extends Painter
   public static void showGameIntroScreen() {
     int x = 16 - Tama.W/2; int y = Tama.y;
     int W = Tama.W; int H = Tama.H;
-    int k = (MainActivity.myRunnable.k*8-270); //magical value that gives good results
-    if (k<0) k=0;
-    k=(int)Math.floor(k/10)*10;
+    int speed = 8; int delay = 270;
+    int k = (MainActivity.myRunnable.k*speed-delay); //magical value that gives good results
+    if (k<0) k = 0;
+    int pixelSize = 10;
+    k = (int)Math.floor(k/pixelSize)*pixelSize;
     canvas.drawBitmap(P2Graphics.hashMap.get("full_heart"), null, new Rect(Math.max(  0+offsetX-k,offsetX-80), 0+offsetY, 80+offsetX-k, 80+offsetY),paint);
     canvas.drawBitmap(P2Graphics.hashMap.get("full_heart"), null, new Rect(Math.max(160+offsetX-k,offsetX-80), 0+offsetY,240+offsetX-k, 80+offsetY),paint);
     canvas.drawBitmap(P2Graphics.hashMap.get("empty_heart"), null, new Rect(Math.max( 80+offsetX-k,offsetX-80),80+offsetY,160+offsetX-k,160+offsetY),paint);

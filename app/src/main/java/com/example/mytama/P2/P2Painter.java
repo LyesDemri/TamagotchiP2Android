@@ -37,10 +37,6 @@ public class P2Painter extends Painter {
         P2GamePainter.drawFinalGameResults();
       else if (MainActivity.state.equals("Egg")){
         if (MainActivity.even == 1) {
-          Printer.print("Coordinates: x = " + (80 + Screen.offsetX));
-          Printer.append("\n y = " + (0 + Screen.offsetY));
-          Printer.append("\n x_end = " + (240 + Screen.offsetX));
-          Printer.append("\n y_end = " + (160 + Screen.offsetX));
           canvas.drawBitmap(Graphics.hashMap.get("egg_idle_"+(MainActivity.even+1)),null, new Rect(80+Screen.offsetX,0+Screen.offsetY,240+Screen.offsetX,160+Screen.offsetY),paint);
         } else {
           drawSpriteAt(Graphics.hashMap.get("egg_idle_"+(MainActivity.even+1)), 8, 0);

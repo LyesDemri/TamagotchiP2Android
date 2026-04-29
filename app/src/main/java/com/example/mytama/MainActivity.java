@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
   static public String[] icon_list;
   static public String[] menu_list;
   static public int icon_number = 0, menu_index = 0, food_index = 0, debugCounter = 0;
-  static public String version = "Santa";
+  static public String version = "P2";
   static public boolean isOpen = true;
   static public boolean catchingUp = false;
   static public String state;
@@ -88,8 +88,8 @@ public class MainActivity extends Activity {
     Sounds.loadSounds(this);
     Animations.loadAnimations();
     } catch (Exception e) {
-      Printer.print("Error in MainActivity.onCreate()");
-      Printer.append(e);
+      Printer.print("Error in MainActivity.onCreate()", true);
+      Printer.append(e, true);
     }
   }
   

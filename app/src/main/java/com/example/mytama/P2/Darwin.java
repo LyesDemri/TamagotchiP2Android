@@ -69,8 +69,8 @@ public class Darwin {
     Utils.notifyUser();
     } catch (Exception e) {
       Sounds.playSound("bad_sound");
-      Printer.append("Error evolving character");
-      Printer.append(e);
+      Printer.log("Error evolving character");
+      Printer.log(e);
     }
   }
   

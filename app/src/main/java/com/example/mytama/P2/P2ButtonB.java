@@ -27,7 +27,7 @@ public class P2ButtonB {
         MainActivity.myRunnable.j = 0;
         MainActivity.state  = "eating";
         Tama.happy = Math.min(Tama.happy+1,4);
-        if (!Tama.character.equals("Babytchi"))
+        if (!Tama.character.equals("babytchi"))
             Tama.weight = Math.min(Tama.weight+2,99);
         Tama.timeSinceBored = 0;
         Tama.timeSinceHappyChanged = 0;

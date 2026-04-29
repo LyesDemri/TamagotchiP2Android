@@ -1,19 +1,14 @@
 package com.example.mytama;
 
-public class SantaIdleButtonB {
+public class SantaIdleButtonB extends IdleButtonB {
   public static void handle() {
     if (MainActivity.icon_list[MainActivity.icon_number]=="Status") {
-      MainActivity.state = "StatScreen1";
+      MainActivity.state = "StatScreen0";
     } else if (MainActivity.icon_list[MainActivity.icon_number]=="Food" && Tama.isAlive) {
       if (!Tama.sleeping) {
-        if (!P2Tama.sick && !P2Tama.needsDiscipline) {
+        if (!SantaTama.sulking && !SantaTama.left) {
           MainActivity.state = "food choice";
           MainActivity.food_index = 0;
-          MainActivity.myRunnable.j = 0;
-        } else {
-          MainActivity.state="saying no";
-          MainActivity.oldState="idle";
-          Animations.animation_counter = 8;
           MainActivity.myRunnable.j = 0;
         }
       }
@@ -22,20 +17,12 @@ public class SantaIdleButtonB {
       if (Tama.sleeping) {
         P2Tama.timeSinceNeedsLightsOff = 0;
       }
-    } else if (MainActivity.icon_list[MainActivity.icon_number]=="Game" && Tama.isAlive && P2Tama.lightsOn) {
+    } else if (MainActivity.icon_list[MainActivity.icon_number]=="Game" && Tama.isAlive) {
       if (!Tama.sleeping) {
-        if (!P2Tama.sick && !P2Tama.needsDiscipline) {
+        if (!SantaTama.sulking && !SantaTama.left) {
           MainActivity.state = "game intro screen";
-          Animations.animation_counter = 6;
-          Utils.generateGameNumbers();
-          P2Game.score = 0;
-          P2Game.round = 0;
-          MainActivity.myRunnable.k = -1;
-          MainActivity.myRunnable.j = 0;
-        } else {
-          MainActivity.state = "saying no";
-          Animations.animation_counter = 8;
-          MainActivity.oldState = "idle";
+          Sounds.playSound("game_begin");
+          MainActivity.myRunnable.k = 0;
         }
       }
     } else if (MainActivity.icon_list[MainActivity.icon_number]=="Medicine" && Tama.isAlive && P2Tama.lightsOn) {

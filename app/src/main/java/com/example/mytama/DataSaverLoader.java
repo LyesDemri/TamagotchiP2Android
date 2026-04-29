@@ -38,10 +38,9 @@ public class DataSaverLoader {
           fields = SantaTama.class.getDeclaredFields();
         }
       }
-      
       dos.close(); fos.close();
     } catch (Exception e) {
-      Printer.append("Error saving data: " + e.getMessage());
+      Printer.log("Error saving data: " + e.getMessage());
     }
   }
 
@@ -85,15 +84,11 @@ public class DataSaverLoader {
       dis.close();fis.close();
                   
       long currentTime = new Date().getTime();
-      P2Tama.timeSinceLeft = Math.round((double)((currentTime-timeUponClosing)/1000));
+      Tama.timeSinceLeft = Math.round((double)((currentTime-timeUponClosing)/1000));
       Graphics.loadCharacterGraphics(MainActivity.context, Tama.character);
-      if (Tama.isAlive) {
-        catchUp();
-        MainActivity.state = "idle";
-      } else
-        MainActivity.state = "dead1";
+      catchUp();
     } catch (Exception e) {
-      Printer.append("Error loading save file: " + e.getMessage());
+      Printer.log("Error loading save file: " + e.getMessage());
       MainActivity.version = "P2";
       Tama.reset();
     }
@@ -110,7 +105,6 @@ public class DataSaverLoader {
     }
     return fileNames;
   }
-  
 
   public static void catchUp() {
     MainActivity.isOpen = false;
@@ -120,8 +114,12 @@ public class DataSaverLoader {
         for (int i = 0; i < Tama.timeSinceLeft; i++) {
           Updater.update();
         }
+        if (Tama.isAlive) {
+          MainActivity.state = "idle";
+        } else {
+          MainActivity.state = "dead1";
+        }
       }
-      MainActivity.state = "idle";
     } else {
       Tama.isAlive = false;
       MainActivity.state = "dead1";

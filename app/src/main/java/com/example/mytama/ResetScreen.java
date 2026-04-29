@@ -17,7 +17,7 @@ public class ResetScreen {
             MainActivity.state = "idle";
             MainActivity.menu_index = 0;
           } else {
-            Printer.print("Please name your first tama!");
+            Printer.print("Please name your first tama!", false);
           }
         } //else, remove last letter 
         else {
@@ -32,7 +32,7 @@ public class ResetScreen {
           Tama.name = Tama.inputName;
           Tama.reset();
         } else {
-          Printer.print("You haven't entered a name!");
+          Printer.print("You haven't entered a name!", false);
         }
       }
     }

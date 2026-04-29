@@ -46,7 +46,7 @@ public class Painter {
         } else if (MainActivity.version.equals("Santa")) {
           SantaPainter.draw();
         } else {
-          Printer.append("Unknown version: " + MainActivity.version);
+          Printer.log("Unknown version: " + MainActivity.version);
         }
       }
     }
@@ -69,5 +69,21 @@ public class Painter {
     int h = (int)(sprite.getHeight()/scaling_factor);
     int w = (int)(sprite.getWidth()/scaling_factor);
     canvas.drawBitmap(sprite,null, new Rect(x, y, x+w, y+h),paint);
+  }
+  
+  public static void drawSpriteAt(String resource, int x, int y){
+    drawSpriteAt(Graphics.hashMap.get(resource), x, y);
+  }
+  
+  public static void drawDotAt(int x, int y){
+    canvas.drawRect(new Rect(x*10+Screen.offsetX, y*10+Screen.offsetY ,x*10+9+Screen.offsetX,y*10+9+Screen.offsetY),paint);
+  }
+  
+  public static void drawSquareAt(int x, int y, int side) {
+    for (int l = 0; l < side; l++) {
+      for (int c = 0; c < side; c++) {
+        drawDotAt(x+l,y+c);
+      }
+    }
   }
 }

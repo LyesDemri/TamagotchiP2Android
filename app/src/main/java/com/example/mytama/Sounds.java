@@ -20,8 +20,8 @@ public class Sounds {
         hashMap.put(soundList[i], mp);
       }
     } catch (Exception e) {
-      Printer.append("Error loading sounds");
-      Printer.append("Error message: " + e.getMessage());
+      Printer.log("Error loading sounds");
+      Printer.log("Error message: " + e.getMessage());
     }
   }
   
@@ -33,8 +33,8 @@ public class Sounds {
         mp.start();
       }
     } catch (Exception e) {
-      Printer.print("Error playing sound");
-      Printer.append("Sound " + soundName + " does not exist");
+      Printer.log("Error playing sound");
+      Printer.log("Sound " + soundName + " does not exist");
     }
   }
   
@@ -46,10 +46,10 @@ public class Sounds {
       "good_sound", "hatching_sound", "reset_sound","small_beep"};
     } else if (MainActivity.version.equals("Santa")){
       soundList = new String[]{"cabin_exit",
-      "new_character", "reset_sound",
+      "new_character", "reset_sound", "game_begin",
       "santa_call_sound", "santa_small_beep", "santa_validate_sound"};
     } else{
-      Printer.append("Unknown version:" + MainActivity.version);
+      Printer.log("Unknown version:" + MainActivity.version);
     }
   }
   

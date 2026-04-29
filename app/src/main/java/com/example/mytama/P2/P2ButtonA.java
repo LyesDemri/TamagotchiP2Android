@@ -7,7 +7,7 @@ public class P2ButtonA {
     if (MainActivity.state.equals("idle") || MainActivity.state.startsWith("dead")) {
       MainActivity.icon_number = (MainActivity.icon_number + 1)%(MainActivity.icon_list.length);
       if (MainActivity.icon_number == 8) {
-        Printer.print("Menu");
+        Printer.print("Menu", false);
       }
     } else if (MainActivity.state.equals("food choice")) {
       MainActivity.food_index = 1 - MainActivity.food_index;
@@ -47,7 +47,7 @@ public class P2ButtonA {
         MainActivity.displayVariables = false;
       else {
         MainActivity.menu_index = (MainActivity.menu_index+1)%(MainActivity.debugMode*(MainActivity.menu_list.length-4)+4);
-        Printer.print(MainActivity.menu_list[MainActivity.menu_index]);
+        Printer.print(MainActivity.menu_list[MainActivity.menu_index], false);
       }
     }
     else if (MainActivity.state.equals("scolded")) {

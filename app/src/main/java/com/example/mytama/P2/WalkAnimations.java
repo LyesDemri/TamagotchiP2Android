@@ -9,7 +9,7 @@ public class WalkAnimations {
       int[] sprite ={ 0,1,2,0,1,2,0};
       int[] dir =   { 0,0,0,0,1,1,1};
       int[] values = {x[i],y[i],sprite[i]};
-      i = (i+1)%7;
+      i = (i + 1) % 7;
       return values;
     }
     else if (character.equals("Babytchi")){
@@ -18,7 +18,7 @@ public class WalkAnimations {
       int[] sprite ={ 0,1,2,0,1,2,0};
       int[] dir =   { 0,0,0,0,1,1,1};
       int[] values = {x[i],y[i],sprite[i]};
-      i = (i+1)%7;
+      i = (i + 1) % 7;
       return values;
     }
     else

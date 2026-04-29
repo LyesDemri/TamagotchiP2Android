@@ -49,8 +49,8 @@ public class P2IdlePainter extends P2Painter {
     if (P2Tama.dirty)
       drawSpriteAt(Graphics.hashMap.get("poop_"+(MainActivity.even+1)), 24, 8);
     } catch (Exception e) {
-      Printer.print("Error in IdlePainter");
-      Printer.print(e.getMessage());
+      Printer.log("Error in IdlePainter");
+      Printer.log(e.getMessage());
     }
     Tama.x = x; Tama.y = y;
     Tama.W = W; Tama.H = H;

@@ -19,20 +19,22 @@ public class SantaPainter extends Painter {
         //check current state and draw accordingly
         if (MainActivity.state.equals("idle") || MainActivity.state.equals("Menu"))
           SantaIdlePainter.draw();
-        else if (MainActivity.state.equals("food choice") || MainActivity.state.equals("eating") || MainActivity.state.equals("saying no food"))
-          FoodPainter.draw();
-        else if (MainActivity.state.startsWith("StatScreen"))
+        else if (MainActivity.state.equals("food choice") || MainActivity.state.equals("eating") || MainActivity.state.equals("saying no food")  || MainActivity.state.equals("storing"))
+          SantaFoodPainter.draw();
+        else if (MainActivity.state.startsWith("StatScreen") || MainActivity.state.startsWith("Pantry"))
           StatsPainter.draw();
         else if (MainActivity.state.equals("happy") || MainActivity.state.equals("unhappy") || MainActivity.state.equals("scolded"))
           HappinessPainter.draw();
         else if (MainActivity.state.equals("saying no") || MainActivity.state.equals("pooping"))
           NoPoopPainter.draw();
         else if (MainActivity.state.equals("game intro screen"))
-          P2GamePainter.showGameIntroScreen();
+          SantaGamePainter.showGameIntroScreen();
         else if (MainActivity.state.equals("playing"))
-          P2GamePainter.showPlaying();
+          SantaGamePainter.showPlaying();
+        else if (MainActivity.state.equals("getting in chimney"))
+          SantaGamePainter.showGettingInChimney();
         else if (MainActivity.state.equals("show game result"))
-          P2GamePainter.showGameResult();
+          SantaGamePainter.showGameResult();
         else if (MainActivity.state.equals("final game results"))
           P2GamePainter.drawFinalGameResults();
         else if (MainActivity.state.equals("Cabin")) {

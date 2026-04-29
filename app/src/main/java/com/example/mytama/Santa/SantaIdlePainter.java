@@ -13,6 +13,7 @@ public class SantaIdlePainter extends SantaPainter {
     int W = Tama.W, H = Tama.H;
     int offsetX = (int)(Screen.surfW/2 - 320/2);
     int offsetY = (int)(Screen.surfH/2 - 160/2);
+    int xIncrement = 1;
     try {
       if (Tama.sleeping) {
         drawSpriteAt(P2Graphics.hashMap.get(Tama.character+"_sleep_"+(MainActivity.even+1)), 16 - W/2,y);
@@ -55,8 +56,8 @@ public class SantaIdlePainter extends SantaPainter {
         }
       }
     } catch (Exception e) {
-      Printer.print("Error in IdlePainter");
-      Printer.print(e.getMessage());
+      Printer.log("Error in SantaIdlePainter");
+      Printer.log(e.getMessage());
     }
     Tama.x = x; Tama.y = y;
     Tama.W = W; Tama.H = H;

@@ -25,13 +25,13 @@ public class P2Graphics extends Graphics {
     "unhappy_cloud_1","unhappy_cloud_2","up_arrow","vs","yr","z1","z2","z1dark","z2dark"};
     
     try{
+      Resources r = c.getResources();
+      String pkg = c.getPackageName();
       for (int i = 0; i < scalar_graphics_titles.length; i++){
-        Resources r = c.getResources();
-        String pkg = c.getPackageName();
-        hashMap.put(scalar_graphics_titles[i], BitmapFactory.decodeResource(c.getResources(),r.getIdentifier(scalar_graphics_titles[i],"drawable",pkg)));
+        hashMap.put(scalar_graphics_titles[i], BitmapFactory.decodeResource(r,r.getIdentifier(scalar_graphics_titles[i],"drawable",pkg)));
       }
     } catch (Exception e) {
-      Printer.print("Error loading graphics");
+      Printer.log("Error loading graphics");
     }
     Screen.bgimgW = hashMap.get("p2bg").getWidth()/30;
     Screen.bgimgH = hashMap.get("p2bg").getHeight()/30;
@@ -47,20 +47,18 @@ public class P2Graphics extends Graphics {
           hashMap.put(character+"_"+characterGraphics[j]+"_"+(i+1), BitmapFactory.decodeResource(c.getResources(), r.getIdentifier(character+"_"+characterGraphics[j]+"_"+(i+1), "drawable", pkg)));
         }
       }
-      hashMap.put(character + "_happy", BitmapFactory.decodeResource(c.getResources(),r.getIdentifier(character+"_happy","drawable",pkg)));
-      hashMap.put(character + "_right", BitmapFactory.decodeResource(c.getResources(),r.getIdentifier(character+"_right","drawable",pkg)));
-      hashMap.put(character + "_left", BitmapFactory.decodeResource(c.getResources(),r.getIdentifier(character+"_left","drawable",pkg)));
+      hashMap.put(character + "_happy", BitmapFactory.decodeResource(r,r.getIdentifier(character+"_happy","drawable",pkg)));
+      hashMap.put(character + "_right", BitmapFactory.decodeResource(r,r.getIdentifier(character+"_right","drawable",pkg)));
+      hashMap.put(character + "_left", BitmapFactory.decodeResource(r,r.getIdentifier(character+"_left","drawable",pkg)));
     } catch (Exception e) {
-      Printer.append("Error loading P2 character graphics: " + e.getMessage());
+      Printer.log("Error loading P2 character graphics: " + e.getMessage());
     }
     
     if (Tama.character.equals("babytchi")) {
       Tama.W = 8; Tama.H = 8;
-    }
-    else if (Tama.character.equals("tonmarutchi")) {
+    } else if (Tama.character.equals("tonmarutchi")) {
       Tama.W = 12; Tama.H = 12;
-    }
-    else {
+    } else {
       Tama.W = 16; Tama.H = 16;
     }
   }

@@ -15,10 +15,10 @@ public class P2Tama extends Tama{
   
     
   static public boolean lightsOn, needsDiscipline;
-  static public boolean dirty = false, sick = false;
+  static public boolean dirty = false, sick = false, superTeen;
   static public double timeToAge;
   
-  static public int careMisses, cakesEaten;
+  static public int careMisses, cakesEaten, disciplineMistakes;
   static public boolean walks;
   
   static public void reset() {
@@ -41,12 +41,14 @@ public class P2Tama extends Tama{
     TimeWizard.computeSleepWakeTimes(20,9);
     pp = 0;
     careMisses = 0;
+    disciplineMistakes = 0;
     sleeping = false;
     isAlive = true;
     lightsOn = true;
     dirty = false;
     sick = false;
     needsDiscipline = false;
+    superTeen = false;
     walks = true;
     discipline = 0;
     timeSinceNeedsLightsOff = 0;
@@ -87,7 +89,9 @@ public class P2Tama extends Tama{
           "\nbirth date: " + TimeWizard.getBirthDate()+
           "\nsleeping time: " + TimeWizard.getSleepingTime()+
           "\nwaking time: " + TimeWizard.getWakingTime()+
-          "\nCMs=" + careMisses);
+          "\nCMs=" + careMisses +
+          "\nDMs=" +disciplineMistakes,
+          false);
     }
   }
 }

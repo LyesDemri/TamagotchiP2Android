@@ -15,7 +15,7 @@ public class DisciplineUpdater {
     if (P2Tama.needsDiscipline) {
       P2Tama.timeSinceNeedsDiscipline += 1;
       if (P2Tama.timeSinceNeedsDiscipline == 15*60) {
-        P2Tama.careMisses += 1;
+        P2Tama.disciplineMistakes += 1;
         P2Tama.timeSinceNeedsDiscipline = 0;
         P2Tama.needsDiscipline = false;
       }

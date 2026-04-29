@@ -13,12 +13,12 @@ public class TamaSelectScreen {
         try {
           DataSaverLoader.loadData();
         } catch (Exception e) {
-          Printer.append("Screen: Error loading tama data: " + e.getMessage());
+          Printer.log("Screen: Error loading tama data: " + e.getMessage());
         }
         MainActivity.menu_index = 0;
         MainActivity.fillIconList();
         Sounds.loadSounds(MainActivity.context);
-        Printer.print(Tama.name);
+        //Printer.print(Tama.name);
         } else {
         MainActivity.state = "reset_screen";
       }
@@ -28,13 +28,13 @@ public class TamaSelectScreen {
         try {
           file.delete();
         } catch (Exception e) {
-          Printer.append("Screen: Error erasing file: " + e.getMessage());
+          Printer.log("Screen: Error erasing file: " + e.getMessage());
         }
-        Printer.print("Deleted " + String.valueOf(file));
+        Printer.print("Deleted " + String.valueOf(file), false);
       } else {
-       Printer.print("Can't delete this one"); 
-       Printer.append("You're currently playing with it");
-       Printer.append("Switch to another Tama first");
+       Printer.print("Can't delete this one", false); 
+       Printer.append("You're currently playing with it", false);
+       Printer.append("Switch to another Tama first", false);
       }
     }   
   }
