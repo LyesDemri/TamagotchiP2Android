@@ -11,7 +11,7 @@ public class P2SleepUpdater extends SleepUpdater {
       if (Tama.t == 2400) {
         Tama.sleeping = true;
         MainActivity.state = "idle";
-        Utils.notifyUser();
+        Utils.notifyUser(Tama.name + " fell asleep", "call");
       }
       if (Tama.t == 2700) {
         Tama.sleeping = false;
@@ -22,7 +22,7 @@ public class P2SleepUpdater extends SleepUpdater {
     } else {
       if (Tama.t == Tama.timeToSleep) {
         Tama.sleeping = true;
-        Utils.notifyUser();
+        Utils.notifyUser(Tama.name + " fell asleep", "call");
         Tama.timeToSleep += 24*3600;
       } else if (Tama.t == Tama.timeToWake) {
         Tama.sleeping = false;

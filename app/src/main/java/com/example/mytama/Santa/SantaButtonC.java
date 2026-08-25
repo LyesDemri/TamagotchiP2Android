@@ -8,6 +8,10 @@ public class SantaButtonC
     if (MainActivity.state.equals("idle")) {
       if (MainActivity.icon_number != 0) {
         MainActivity.icon_number = 0;
+      } else {
+        //MainActivity.state = "tama_select_screen";
+        SuperKuchipatchiPainter.initializeAnimation("leaving");
+        MainActivity.state = "leaving";
       }
       MainActivity.tv.setText(MainActivity.icon_list[MainActivity.icon_number]);
     }
@@ -24,7 +28,7 @@ public class SantaButtonC
       Animations.animation_counter=0;
       MainActivity.state="food choice";
     } else if (MainActivity.state.equals("storing")) {
-      MainActivity.state = "food choice";
+      MainActivity.state = MainActivity.oldState;
     } else if (MainActivity.state.equals("playing")) {
       MainActivity.state = "idle";
       Tama.x = 16 - Tama.W/2;
@@ -58,7 +62,7 @@ public class SantaButtonC
     }
     else if (MainActivity.state.equals("Menu")){
       MainActivity.state = "idle";
-      MainActivity.menu_index=0;
+      MainActivity.menu_index = 0;
       MainActivity.tv.setText("Menu");
       MainActivity.displayVariables=false;
     }
@@ -68,9 +72,14 @@ public class SantaButtonC
     else if (MainActivity.state.equals("dead2")){
       MainActivity.state="dead1";
     }
-    else if (MainActivity.state.equals("scolded")){
-      MainActivity.state="idle";
-      Animations.animation_counter=0;
+    else if (MainActivity.state.equals("bag")){
+      if (!SantaTama.sulking) {
+        MainActivity.state = "idle";
+      }
+    } else if (MainActivity.state.equals("advent calendar")) {
+      MainActivity.state = "idle";
+    } else if (MainActivity.state.equals("tama tv")) {
+      MainActivity.state = "idle";
     } else if (MainActivity.state.equals("clock")) {
       MainActivity.debugCounter++;
       if (MainActivity.debugCounter == 10) {

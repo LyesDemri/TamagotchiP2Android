@@ -9,12 +9,12 @@ public class P2Egg {
     else if (MainActivity.state.equals("hatching")) {
       if (Tama.t == 10) {
         Tama.character = "babytchi";
-        Graphics.loadCharacterGraphics(MainActivity.context, Tama.character);
+        Graphics.loadCharacterGraphics(Tama.character);
         MainActivity.state = "idle";
         Tama.x = 12;
         Tama.y = 8;
         Sounds.playSound("call");
-        Utils.notifyUser();
+        Utils.notifyUser("The egg has hatched!", "call");
       }
     }
   }

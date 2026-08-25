@@ -7,6 +7,8 @@ public class P2ButtonC {
     if (MainActivity.state.equals("idle")) {
       if (MainActivity.icon_number != 0) {
         MainActivity.icon_number = 0;
+      } else {
+        MainActivity.state = "tama_select_screen";
       }
       MainActivity.tv.setText(MainActivity.icon_list[MainActivity.icon_number]);
     }

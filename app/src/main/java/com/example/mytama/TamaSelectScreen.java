@@ -20,7 +20,7 @@ public class TamaSelectScreen {
         Sounds.loadSounds(MainActivity.context);
         //Printer.print(Tama.name);
         } else {
-        MainActivity.state = "reset_screen";
+        MainActivity.state = "version_select_screen";
       }
     } else {
       File file = new File(MainActivity.context.getFilesDir() + "/" + tamaList[selectedLine] + ".txt");

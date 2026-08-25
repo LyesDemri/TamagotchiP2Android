@@ -15,6 +15,7 @@ public class Tama {
   static public int x = 8, y;
   static public int W, H;
   static public String character, name, inputName;
+  public static int updatesWhileAbsent, notificationsSent;
 
   static public void reset() {
     if (MainActivity.version.equals("P2")){

@@ -11,7 +11,7 @@ public class P2Painter extends Painter {
   public static void draw() {
     //draw tama screen background 
     canvas.drawBitmap(Graphics.hashMap.get("p2bg"), null, new Rect(Screen.offsetX,Screen.offsetY-80+10,Screen.offsetX+320,Screen.offsetY+320-80+10),paint);
-        
+    
     //Draw black screen if light is off
     if (!P2Tama.lightsOn && !MainActivity.state.startsWith("StatScreen") && !MainActivity.state.equals("clock") && !MainActivity.state.startsWith("dead")) {
       BlackScreenPainter.draw();

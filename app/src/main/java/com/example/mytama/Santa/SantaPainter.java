@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import java.lang.Math;
+import java.lang.reflect.Field;
 
 public class SantaPainter extends Painter {
   static double cabinCtr = 0;
@@ -17,10 +18,12 @@ public class SantaPainter extends Painter {
         canvas.drawBitmap(SantaGraphics.hashMap.get("santabg"), null, new Rect(Screen.offsetX,Screen.offsetY-80+10,Screen.offsetX+320,Screen.offsetY+320-80+10),paint);
         
         //check current state and draw accordingly
-        if (MainActivity.state.equals("idle") || MainActivity.state.equals("Menu"))
-          SantaIdlePainter.draw();
-        else if (MainActivity.state.equals("food choice") || MainActivity.state.equals("eating") || MainActivity.state.equals("saying no food")  || MainActivity.state.equals("storing"))
+        if (MainActivity.state.equals("idle") || MainActivity.state.equals("Menu")) {
+          if (!SantaTama.left) SantaIdlePainter.draw();
+        } else if (MainActivity.state.equals("food choice") || MainActivity.state.equals("eating") || MainActivity.state.equals("saying no food"))
           SantaFoodPainter.draw();
+        else if (MainActivity.state.equals("storing"))
+          StoringPainter.draw();
         else if (MainActivity.state.startsWith("StatScreen") || MainActivity.state.startsWith("Pantry"))
           StatsPainter.draw();
         else if (MainActivity.state.equals("happy") || MainActivity.state.equals("unhappy") || MainActivity.state.equals("scolded"))
@@ -35,8 +38,6 @@ public class SantaPainter extends Painter {
           SantaGamePainter.showGettingInChimney();
         else if (MainActivity.state.equals("show game result"))
           SantaGamePainter.showGameResult();
-        else if (MainActivity.state.equals("final game results"))
-          P2GamePainter.drawFinalGameResults();
         else if (MainActivity.state.equals("Cabin")) {
           int ind = (int)(cabinCtr/25) + 1;
           canvas.drawBitmap(SantaGraphics.hashMap.get("cabin_idle_"+(ind)),null, new Rect(80+Screen.offsetX,0+Screen.offsetY,240+Screen.offsetX,160+Screen.offsetY),paint);
@@ -52,8 +53,24 @@ public class SantaPainter extends Painter {
           DeadPainter.draw();
         else if (MainActivity.state.equals("clock"))
           ClockPainter.showClock();
-        else if (MainActivity.state.equals("washing"))
-          ShowerPainter.paintShower();
+        else if (MainActivity.state.equals("bag"))
+          BagPainter.drawSelectionScreen();
+        else if (MainActivity.state.equals("letter")) {
+          LetterPainter.draw();
+        } else if (MainActivity.state.equals("transforming")) {
+          BagPainter.drawTransformation();
+        } else if (MainActivity.state.equals("super kuchipatchi")) {
+          SuperKuchipatchiPainter.draw();
+        } else if (MainActivity.state.equals("leaving")) {
+          SuperKuchipatchiPainter.drawLeaving();          
+        } else if (MainActivity.state.equals("advent calendar")) {
+          int phase = SantaTama.adventVisits[Tama.age-100] == 0 ? 1 : 4;
+          AdventCalendarPainter.drawIdleScreen(phase);
+        } else if (MainActivity.state.equals("tama tv")) {
+          TamaTVPainter.draw();
+        } else if (MainActivity.state.equals("opening advent calendar")) {
+          AdventCalendarPainter.drawAnimation();
+        }
         
         BlackScreenPainter.drawPixelGrid();      
         IconsPainter.draw();

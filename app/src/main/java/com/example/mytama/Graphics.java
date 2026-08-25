@@ -11,19 +11,19 @@ public class Graphics {
   
   public static HashMap<String, Bitmap> hashMap;
   
-  public static void loadGeneralGraphics(Context c) {
+  public static void loadGeneralGraphics() {
     if (MainActivity.version.equals("P2")){
-      P2Graphics.loadGeneralGraphics(c);
+      P2Graphics.loadGeneralGraphics();
     } else if (MainActivity.version.equals("Santa")) {
-      SantaGraphics.loadGeneralGraphics(c);
+      SantaGraphics.loadGeneralGraphics();
     }   
   }
   
-  public static void loadCharacterGraphics(Context c, String character) {
+  public static void loadCharacterGraphics(String character) {
     if (MainActivity.version.equals("P2")){
-      P2Graphics.loadCharacterGraphics(c, character);
+      P2Graphics.loadCharacterGraphics(character);
     } else if (MainActivity.version.equals("Santa")) {
-      SantaGraphics.loadCharacterGraphics(c, character);
+      SantaGraphics.loadCharacterGraphics(character);
     }
   }
   

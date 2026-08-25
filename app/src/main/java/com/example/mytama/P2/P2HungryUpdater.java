@@ -10,7 +10,7 @@ public class P2HungryUpdater extends HungryUpdater {
       if (Tama.timeSinceHungry == 24*3600) {
         MainActivity.state = "dead1";
         Tama.isAlive = false;
-        Utils.notifyUser();
+        Utils.notifyUser(Tama.name + " died of hunger", "call");
       }
     }
     Tama.timeSinceHungryChanged++;
@@ -19,7 +19,7 @@ public class P2HungryUpdater extends HungryUpdater {
       Tama.timeSinceHungryChanged = 0;
       if (Tama.stomach == 0) {
         Tama.isCalling = true;
-        Utils.notifyUser();
+        Utils.notifyUser(Tama.name + " is hungry", "call");
       }
     }
   }

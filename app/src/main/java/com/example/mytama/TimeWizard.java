@@ -56,6 +56,15 @@ public class TimeWizard {
     return new Date().getTime();
   }
   
+  public static Date getDateTime(){
+    return new Date();
+  }
+  
+  public static long getTamagotchiLongTime(){
+    long currentTime = Tama.t1970birth + (long)Tama.t*1000;
+    return currentTime;
+  }
+  
   public static Date getTamagotchiTime(){
     long currentTime = Tama.t1970birth/1000 + (long)Tama.t;
     return new Date(currentTime*1000);

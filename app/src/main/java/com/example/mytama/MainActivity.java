@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
     LinearLayout layout = findViewById(R.id.tama);
     
     //On récupère une instance du TextView du layout
-    tv=(TextView) findViewById(R.id.TV);
+    tv = (TextView)findViewById(R.id.TV);
     tv.setBackgroundResource(R.color.white);
     
     //Elements du menu
@@ -74,8 +74,8 @@ public class MainActivity extends Activity {
 
     //code pour l'alarme
     alarmMgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-    Intent intent = new Intent("UPDATETAMAGOTCHI");
-    alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+    Intent intent = new Intent(this, AlarmReceiver.class);
+    alarmIntent = PendingIntent.getBroadcast(this, 0, intent, (PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE));
     
     //code pour les notifications
     notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
@@ -84,6 +84,12 @@ public class MainActivity extends Activity {
     
     vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     MainActivity.isOpen = true;
+    
+    // Check if permission is granted
+    if (checkSelfPermission("android.permission.POST_NOTIFICATIONS") != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+      // Request the permission
+      requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"}, 101);
+    }
     
     Sounds.loadSounds(this);
     Animations.loadAnimations();
@@ -99,12 +105,14 @@ public class MainActivity extends Activity {
 
   @Override public void onPause() {
     super.onPause();
+    Tama.notificationsSent = 0;
+    Tama.updatesWhileAbsent = 0;
     myHandler.removeCallbacks(myRunnable.runnable);
     if (Tama.isAlive) {
       DataSaverLoader.saveData();
-      alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                                   SystemClock.elapsedRealtime() + 60*1000,
-                                   60*1000,
+      alarmMgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                                   SystemClock.elapsedRealtime() + 600*1000,
+                                   600*1000,
                                    alarmIntent);
     }
     isOpen = false;
@@ -122,6 +130,11 @@ public class MainActivity extends Activity {
     alarmMgr.cancel(alarmIntent);
   }
   
+  @Override public void onDestroy() {
+    super.onDestroy();
+    Utils.notifyUser("MyTama process was killed. Click here to relaunch it", "small_beep");
+  }
+  
   public static void fillIconList() {
     if (MainActivity.version.equals("P2")){
       MainActivity.icon_list = new String[]{"", "Food","Lights","Game","Medicine","Toilet","Status","Discipline","Menu"};
@@ -130,3 +143,25 @@ public class MainActivity extends Activity {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

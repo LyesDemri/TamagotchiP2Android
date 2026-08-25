@@ -8,18 +8,18 @@ public class SantaButtonB {
       IdleButtonB.handle();
     } else if (MainActivity.state.equals("food choice")) {
       MainActivity.myRunnable.j = 0;
+      MainActivity.oldState = "food choice";
       if (MainActivity.food_index == 0) {
         if (SantaTama.food < 4) {
           if (Tama.stomach == 0) {
             Animations.animation_counter = 7;
             MainActivity.state = "eating";
             Tama.stomach = Math.min(Tama.stomach + 1, 4);
-            Tama.weight = Math.min(Tama.weight + 1, 199);
+            SantaTama.weight = Math.min(SantaTama.weight + 1, 199);
             Tama.timeSinceHungryChanged = 0;
             Tama.timeSinceHungry = 0;
           } else {
-            Animations.animation_counter = 9;
-            MainActivity.state = "storing";
+            StoringPainter.startStoringAnimation();
             SantaTama.food = Math.min(SantaTama.food + 1, 4);
           }
         } else {
@@ -32,12 +32,11 @@ public class SantaButtonB {
             Animations.animation_counter = 7;
             MainActivity.state  = "eating";
             Tama.happy = Math.min(Tama.happy + 1, 4);
-            Tama.weight = Math.min(Tama.weight + 2, 199);
+            SantaTama.weight = Math.min(SantaTama.weight + 2, 199);
             Tama.timeSinceBored = 0;
             Tama.timeSinceHappyChanged = 0;
           } else {
-            Animations.animation_counter = 9;
-            MainActivity.state = "storing";
+            StoringPainter.startStoringAnimation();
             SantaTama.snacks = Math.min(SantaTama.snacks + 1, 4);
           }
         } else {
@@ -46,7 +45,7 @@ public class SantaButtonB {
         }
       }
     } else if (MainActivity.state.equals("storing")) {
-      MainActivity.state = "food choice";
+      MainActivity.state = MainActivity.oldState;
     } else if (MainActivity.state.equals("eating")) {
       Animations.animation_counter = 0;
       MainActivity.state = "food choice";
@@ -63,6 +62,7 @@ public class SantaButtonB {
       Animations.animation_counter = Animations.oldAnimationCounter;
     } else if (MainActivity.state.equals("playing")) {
       Animations.animation_counter = 5;
+      SantaTama.weight = Math.max(SantaTama.weight - 0.5, 100);
       MainActivity.state = "getting in chimney";
       SantaGame.generateResult();
       MainActivity.myRunnable.j = 0;
@@ -94,10 +94,25 @@ public class SantaButtonB {
     else if (MainActivity.state.equals("clock")) {
       MainActivity.state = "idle";
       MainActivity.debugCounter = 0;
-    } else if (MainActivity.state.equals("scolded")) {
-      MainActivity.state = "idle";
-      MainActivity.myRunnable.j = 0;
-      Animations.animation_counter = 0;
+    } else if (MainActivity.state.equals("advent calendar")) {
+      if (SantaTama.adventVisits[Tama.age - 100] == 0) {
+        AdventCalendar.generateObject();
+        AdventCalendarPainter.prepareAnimation();
+        MainActivity.state = "opening advent calendar";
+      }
+    } else if (MainActivity.state.equals("bag")) {
+      if (SantaTama.bag[BagPainter.objectIndex] > 0) {
+        SantaTama.bag[BagPainter.objectIndex]--;
+        BagPainter.prepareAnimation();
+        SantaEvolver.determineEvolution(BagPainter.objectIndex);
+        MainActivity.state = "transforming";
+      }
+    } else if (MainActivity.state.equals("tama tv")) {
+      MainActivity.catchingUp = true;
+      for (int i = 0; i < 3600*24; i++) {
+        Updater.update();
+      }
+      MainActivity.catchingUp = false;
     }
   }
 }

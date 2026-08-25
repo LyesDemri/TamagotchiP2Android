@@ -1,6 +1,7 @@
 package com.example.mytama;
 
 import android.graphics.Rect;
+import java.lang.Math;
 
 public class SantaStatsPainter extends StatsPainter {
   public static void draw() {
@@ -16,7 +17,7 @@ public class SantaStatsPainter extends StatsPainter {
       drawSpriteAt("num" + digits[1], 19, 0);
       drawSpriteAt("yr_jp", 24, 0);
       drawSpriteAt("scale_icon", 0, 8);
-      digits = Utils.numDecomposition(Tama.weight - 100);
+      digits = Utils.numDecomposition((int)Math.round(SantaTama.weight - 100));
       drawSpriteAt("num1", 9, 8);
       drawSpriteAt("num" + digits[0], 14, 8);
       drawSpriteAt("num" + digits[1], 19, 8);
@@ -26,9 +27,12 @@ public class SantaStatsPainter extends StatsPainter {
       drawSpriteAt("discipline_bar", 0, 8);
     } else if (MainActivity.state.equals("StatScreen3")) {
       drawSpriteAt("santarashisa_jp", 0, 0);
-      for (int j = 0; j < 4; j++) {
+      /*
+      for (int j = 0; j < SantaTama.santaness; j++) {
         drawSpriteAt("bell_empty",j*8,8);
       }
+      */
+      drawHeartScreen("santarashisa_jp", SantaTama.santaness, "bell_empty", "bell_full");
     }
     else if (MainActivity.state.equals("StatScreen4")) {
       drawHeartScreen("hungry_jp", Tama.stomach, "empty_heart", "full_heart");

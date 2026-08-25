@@ -62,9 +62,11 @@ public class P2Tama extends Tama{
     tfdc = 0;
     cakesEaten = 0;
     dcp = 5.5*3600;
-    Graphics.loadCharacterGraphics(MainActivity.context, "babytchi");
+    Graphics.loadCharacterGraphics("babytchi");
     ttgsfa = 42*3600;
     Sounds.playSound("reset_sound");
+    updatesWhileAbsent = 0;
+    notificationsSent = 0;
   }
   
   public static void displayVars(){

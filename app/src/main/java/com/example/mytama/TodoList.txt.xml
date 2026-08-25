@@ -1,14 +1,27 @@
 ---General---
 *Quand le tama fait caca, le menu devient inutilisable
 *Implementer un systeme de notifications
+*Faire en sorte de pouvoir muter le tamagotchi
 
 ---P2---
 *Trouver pourquoi l'horloge du tmgc se deregle
 *Si tu ouvres l'application pendant le hatching le babytchi est remplace par l'oeuf
 *Faire en sorte que les boutons puissent apparaitre et disparaitre
-*Implementer le nouveau (vrai) systeme d'evolution
 *Implementer l'animation de quand le tamagotchi meurt et pond un oeuf
 *Si tu negliges completement un tonmarutchi, il devient tongaritchi parce que'il n'a pas eu assez de CMs (implementer les CMs plus fidelement?)
+*Apparemment, le poids peut descendre en dessous du poids minimal autorise dans certains circonstances
 
 ---Santa---
-*Implementer le menu stats
+*Recopier plus de dessins:
+  *Sprites de tous les persos
+  *Tous les Tama TV
+  *Tous les objets
+*Transcrire les sons
+  *Intro du jeu
+  *Son du soot
+  *Son de trouver un tama dans la cheminee
+  *Son de trouvage d'un objet
+  *Son qui joue quand le rideau est baisse
+*Implementer l'evolution
+*Completer le advent calendar
+*Implementer les sons

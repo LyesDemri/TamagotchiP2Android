@@ -22,15 +22,20 @@ public class MyRunnable extends Thread {
       @Override public void run() {
         try {
           long elapsedTime = new Date().getTime();
-          i = (i+1)%25;
-          j = (j+1)%25;
-          k = (k+1)%250; //(longest animation in seconds x 10)
-          if (i==0 || i == 13) {  //even is flipped twice per second
+          i = (i + 1) % 25;
+          j = (j + 1) % 25;
+          k = (k + 1) % 250; //(longest animation in seconds x 10)
+          if (i == 0 || i == 13) {  //even is flipped twice per second
             MainActivity.even = 1 - MainActivity.even;
             if (Tama.isAlive && i == 0) { // update once per second if tama is alive and we're playing'
               if (!MainActivity.state.equals("reset_screen") && !MainActivity.state.equals("tama_select_screen") && !MainActivity.state.equals("version_select_screen")){
                 try {
                   Updater.update();
+                  //The app increasingly lags behind as it's being used
+                  //this fixes it but it would be better to find the cause of the lag
+                  long delta = TimeWizard.getTime() - TimeWizard.getTamagotchiLongTime();
+                  if (delta > 1000)
+                    Updater.update();   
                 } catch (Exception e) {
                   Printer.log("Error updating game: " + e.getMessage());
                 }

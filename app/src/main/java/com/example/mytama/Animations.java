@@ -33,7 +33,7 @@ public class Animations {
     
     eatAnim = new int[]{1, 1, 2, 1, 2, 1, 2};
     foodAnim = new int[]{0, 0, 1, 1, 2, 2, 2};
-    santaEatAnim = new int[]{1, 2, 1, 2, 1, 2, 1, 2};
+    santaEatAnim = new int[]{0, 1, 0, 1, 0, 1, 0, 1};
     santaFoodAnim = new int[]{0, 0, 1, 1, 2, 2, 2};
   }
   

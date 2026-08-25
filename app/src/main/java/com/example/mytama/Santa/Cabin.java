@@ -9,12 +9,12 @@ public class Cabin {
     else if (MainActivity.state.equals("hatching")) {
       if (Tama.t == 11) {
         Tama.character = "santatchi";
-        Graphics.loadCharacterGraphics(MainActivity.context, Tama.character);
+        Graphics.loadCharacterGraphics(Tama.character);
         MainActivity.state = "idle";
         Tama.x = 12;
         Tama.y = 0;
         Sounds.playSound("santa_call_sound");
-        Utils.notifyUser();
+        Utils.notifyUser("Santatchi got out of his cabin!", "santa_call_sound");
       }
     }
   }

@@ -2,16 +2,14 @@ package com.example.mytama;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.content.Context;
 import android.content.res.Resources;
 import java.util.HashMap;
 
 public class P2Graphics extends Graphics {
-  Context c;
   public static String[] foods = {"hamburger_", "cake_"};
   public static String[] characterGraphics = {"idle","eat","no","sick","play","sleep","unhappy"};
 
-  public static void loadGeneralGraphics(Context c) {
+  public static void loadGeneralGraphics() {
     //chargement des graphismes
     hashMap = new HashMap<String, Bitmap>();
         
@@ -25,10 +23,10 @@ public class P2Graphics extends Graphics {
     "unhappy_cloud_1","unhappy_cloud_2","up_arrow","vs","yr","z1","z2","z1dark","z2dark"};
     
     try{
-      Resources r = c.getResources();
-      String pkg = c.getPackageName();
+      Resources r = MainActivity.context.getResources();
+      String pkg = MainActivity.context.getPackageName();
       for (int i = 0; i < scalar_graphics_titles.length; i++){
-        hashMap.put(scalar_graphics_titles[i], BitmapFactory.decodeResource(r,r.getIdentifier(scalar_graphics_titles[i],"drawable",pkg)));
+        hashMap.put(scalar_graphics_titles[i], BitmapFactory.decodeResource(r, r.getIdentifier(scalar_graphics_titles[i], "drawable", pkg)));
       }
     } catch (Exception e) {
       Printer.log("Error loading graphics");
@@ -37,14 +35,14 @@ public class P2Graphics extends Graphics {
     Screen.bgimgH = hashMap.get("p2bg").getHeight()/30;
   }
 
-  public static void loadCharacterGraphics(Context c, String character) {
-    loadGeneralGraphics(c);
-    Resources r = c.getResources();
-    String pkg = c.getPackageName();
+  public static void loadCharacterGraphics(String character) {
+    loadGeneralGraphics();
+    Resources r = MainActivity.context.getResources();
+    String pkg = MainActivity.context.getPackageName();
     try {
       for (int i = 0; i < 2; i++) {
         for (int j = 0; j < characterGraphics.length; j++) {
-          hashMap.put(character+"_"+characterGraphics[j]+"_"+(i+1), BitmapFactory.decodeResource(c.getResources(), r.getIdentifier(character+"_"+characterGraphics[j]+"_"+(i+1), "drawable", pkg)));
+          hashMap.put(character+"_"+characterGraphics[j]+"_"+(i+1), BitmapFactory.decodeResource(MainActivity.context.getResources(), r.getIdentifier(character+"_"+characterGraphics[j]+"_"+(i+1), "drawable", pkg)));
         }
       }
       hashMap.put(character + "_happy", BitmapFactory.decodeResource(r,r.getIdentifier(character+"_happy","drawable",pkg)));

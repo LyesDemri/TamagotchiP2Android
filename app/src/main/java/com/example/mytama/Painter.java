@@ -68,11 +68,22 @@ public class Painter {
     double scaling_factor = 2.8125; // Android scales the graphics by this factor
     int h = (int)(sprite.getHeight()/scaling_factor);
     int w = (int)(sprite.getWidth()/scaling_factor);
-    canvas.drawBitmap(sprite,null, new Rect(x, y, x+w, y+h),paint);
+    if (sprite != null)
+      canvas.drawBitmap(sprite,null, new Rect(x, y, x+w, y+h),paint);
+    else
+      Printer.print("Unavailable resource: " + sprite, true);
   }
   
-  public static void drawSpriteAt(String resource, int x, int y){
-    drawSpriteAt(Graphics.hashMap.get(resource), x, y);
+  public static void drawSpriteAt(String resource, int x, int y) {
+    if (Graphics.hashMap.get(resource) != null)
+      drawSpriteAt(Graphics.hashMap.get(resource), x, y);
+    else
+      Printer.print("Unavailable resource: " + resource, true);
+  }
+  
+  public static void drawSpriteAt(String resource, int x, int y, boolean flip){
+    if (!flip) drawSpriteAt(resource, x, y);
+    else drawSpriteAt(flip(SantaGraphics.hashMap.get(resource)), x, y);
   }
   
   public static void drawDotAt(int x, int y){
@@ -82,7 +93,7 @@ public class Painter {
   public static void drawSquareAt(int x, int y, int side) {
     for (int l = 0; l < side; l++) {
       for (int c = 0; c < side; c++) {
-        drawDotAt(x+l,y+c);
+        drawDotAt(x + l, y + c);
       }
     }
   }

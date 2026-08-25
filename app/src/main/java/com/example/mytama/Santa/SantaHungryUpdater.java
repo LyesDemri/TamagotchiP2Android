@@ -1,33 +1,49 @@
 package com.example.mytama;
 
+import java.lang.Math;
+
 public class SantaHungryUpdater extends HungryUpdater {
   public static void update() {
-    if (Tama.stomach == 0) {
-      Tama.timeSinceHungry++;
-      if (Tama.timeSinceHungry == 900) {
-        Printer.log("15s since hungry");
-        //Tama.tier++;
-        if (SantaTama.food > 0) {
-          Printer.log("Food is available. Eating all of it'");
-          SantaTama.stomach = SantaTama.food;
-          SantaTama.food = 0;
-          Tama.timeSinceHungry = 0;
+    if (!Tama.sleeping) {
+      SantaTama.ttlhungryh--;
+      SantaTama.timeToEat--;
+    }
+    if (SantaTama.ttlhungryh == 0) {
+      if (SantaTama.stomach > 0) {
+        SantaTama.stomach--;
+        SantaTama.ttlhungryh = SantaTama.hghlp;
+        if (SantaTama.stomach == 0) {
+          if (SantaTama.food > 0) {
+            //Eat random amount
+            eatRandomAmount();
+          } else {
+            Utils.notifyUser(Tama.character + " is hungry", "");
+          }
         }
       }
-      if (Tama.timeSinceHungry == 24*3600) {
-        MainActivity.state = "cabin";
-        Tama.isAlive = false;
-        Utils.notifyUser();
-      }
     }
-    Tama.timeSinceHungryChanged++;
-    if (Tama.timeSinceHungryChanged == Tama.hghlp) {
-      Tama.stomach = Math.max(Tama.stomach - 1, 0);
-      Tama.timeSinceHungryChanged = 0;
-      if (Tama.stomach == 0) {
-        Tama.isCalling = true;
-        Utils.notifyUser();
-      }
+    if (SantaTama.ttlhungryh == -900) {
+      SantaTama.tier--;
+    } else if (SantaTama.ttlhungryh == -12*3600) {
+      SantaTama.isAlive = false;
     }
+    if (SantaTama.timeToEat == 0) {
+      eatRandomAmount();
+      SantaTama.timeToEat = 3600;
+      SantaTama.ttlhungryh = 3600;//find a better value and whether to keep this
+    }
+  }
+  
+  public static void eatRandomAmount() {
+    int max = Math.min(SantaTama.food, 4 - SantaTama.stomach)+1;
+    int amount = (int)(Math.floor(Math.random()*max));
+    if (amount > 0) {
+      MainActivity.food_index = 0;
+      MainActivity.oldState = "idle";
+      MainActivity.state = "eating";
+    }
+    SantaTama.stomach += amount;
+    SantaTama.food -= amount;
+    SantaTama.weight += amount;
   }
 }

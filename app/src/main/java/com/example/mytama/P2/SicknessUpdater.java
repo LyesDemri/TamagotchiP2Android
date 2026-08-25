@@ -1,11 +1,14 @@
 package com.example.mytama;
 
+import com.example.mytama.P2Tama;
+
+
 public class SicknessUpdater {
   public static void update() {
     if (Tama.t==1980) {
       P2Tama.sick = true;
       MainActivity.state = "idle";
-      Utils.notifyUser();
+      Utils.notifyUser(Tama.name + " became sick!", "call");
     }
     //sickness due to age
     if (Tama.t == P2Tama.ttgsfa) {
@@ -13,7 +16,7 @@ public class SicknessUpdater {
       //heart loss period ne peut être inférieur à 10 min
       P2Tama.ttgsfa = P2Tama.ttgsfa+72*3600;
       P2Tama.sick  = true;
-      Utils.notifyUser();
+      Utils.notifyUser(Tama.name + " became sick!", "call");
       if (Tama.t > 5*24*3600) {
         Tama.hghlp = Math.max(Tama.hghlp-300,10*60);
         Tama.timeSinceHungryChanged = Math.min(Tama.hghlp-10,Tama.timeSinceHungryChanged);
@@ -28,7 +31,7 @@ public class SicknessUpdater {
       double diff = Tama.weight - P2Tama.idealWeight;
       if (Math.random() < (diff/100)) {
         P2Tama.sick = true;
-        Utils.notifyUser();
+        Utils.notifyUser(Tama.name + " became sick!", "call");
         Tama.hghlp = Math.max(Tama.hghlp - 300, 10*60);
         Tama.timeSinceHungryChanged = Math.min(Tama.hghlp-10, Tama.timeSinceHungryChanged);
         Tama.hphlp = Math.max(Tama.hphlp - 300, 10*60);
@@ -40,9 +43,10 @@ public class SicknessUpdater {
     //Doit on ajouter un care miss ou mourir?
     if ((P2Tama.sick) && (!Tama.sleeping)) {
       P2Tama.timeSinceSick += 1;
-      if (P2Tama.timeSinceSick == 15*60)
-        P2Tama.careMisses += 1;
-      else if (P2Tama.timeSinceSick == 12*3600) {
+      if (P2Tama.timeSinceSick == 15*60) {
+        P2Tama.careMisses++;
+      }
+      if (P2Tama.timeSinceSick == 12*3600) {
         MainActivity.state = "dead1";
         Tama.isAlive = false;
       }

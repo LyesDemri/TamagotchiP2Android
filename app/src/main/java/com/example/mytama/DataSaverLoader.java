@@ -18,19 +18,25 @@ public class DataSaverLoader {
       dos.writeLong(new Date().getTime());
       dos.writeUTF(MainActivity.state);
       dos.writeUTF(MainActivity.version);
-      
       Field[] fields = Tama.class.getDeclaredFields();
-      for (int j = 0; j < 2; j++){
+      for (int j = 0; j < 2; j++) {
         for (int i = 0; i < fields.length; i++) {
-        Object value = fields[i].get(null);
-        if (value instanceof Double)
-          dos.writeDouble((double)value);
-        else if (value instanceof Integer)
-          dos.writeInt((int)value);
-        else if (value instanceof Boolean)
-          dos.writeBoolean((boolean)value);
-        else if (value instanceof Long)
-          dos.writeLong((long)value);
+          Object value = fields[i].get(null);
+          if (value instanceof Double)
+            dos.writeDouble((double)value);
+          else if (value instanceof Integer)
+            dos.writeInt((int)value);
+          else if (value instanceof Boolean)
+            dos.writeBoolean((boolean)value);
+          else if (value instanceof Long)
+            dos.writeLong((long)value);
+          else if (value instanceof int[]) {
+            int[] table = (int[])value;
+            dos.writeInt(table.length);
+            for (int k = 0; k < table.length; k++) {
+              dos.writeInt(table[k]);
+            }
+          }
         }
         if (MainActivity.version.equals("P2")){
           fields = P2Tama.class.getDeclaredFields();
@@ -38,6 +44,10 @@ public class DataSaverLoader {
           fields = SantaTama.class.getDeclaredFields();
         }
       }
+      
+      if (MainActivity.version.equals("Santa")) {
+        dos.writeUTF(SantaTama.companion);
+      }  
       dos.close(); fos.close();
     } catch (Exception e) {
       Printer.log("Error saving data: " + e.getMessage());
@@ -59,12 +69,13 @@ public class DataSaverLoader {
       }
       
       Field[] fields = Tama.class.getDeclaredFields();
-      
+      Printer.print("Loaded fields:");
       for (int j = 0; j < 2; j++) {
         for (int i = 0; i < fields.length; i++) {
           fields[i].setAccessible(true);
-
+          
           Class<?> type = fields[i].getType();
+          Printer.append(" " + fields[i].getName());
           if (type == int.class)
             fields[i].setInt(null, dis.readInt());
           else if (type == double.class)
@@ -73,6 +84,17 @@ public class DataSaverLoader {
             fields[i].setBoolean(null, dis.readBoolean());
           else if (type == long.class)
             fields[i].setLong(null, dis.readLong());
+          else if (type == int[].class) {
+            Printer.append("Reading table " + fields[i].getName(), false);
+            int l = dis.readInt();
+            Printer.append("length =  " + l, false);
+            int[] table = new int[l];
+            for (int k = 0; k < l; k++) {
+              table[k] = dis.readInt();
+              Printer.append("Value " + k + ": " + table[k], false);
+            }
+            fields[i].set(null, table);
+          }
         }
         if (MainActivity.version.equals("P2")){
           fields = P2Tama.class.getDeclaredFields();
@@ -81,15 +103,21 @@ public class DataSaverLoader {
         }
       }
       
+      if (MainActivity.version.equals("Santa")) {
+          SantaTama.companion = dis.readUTF();
+      }
       dis.close();fis.close();
                   
       long currentTime = new Date().getTime();
-      Tama.timeSinceLeft = Math.round((double)((currentTime-timeUponClosing)/1000));
-      Graphics.loadCharacterGraphics(MainActivity.context, Tama.character);
+      Tama.timeSinceLeft = Math.round((double)((currentTime-TimeWizard.getTamagotchiLongTime())/1000));
+      Graphics.loadCharacterGraphics(Tama.character);
       catchUp();
+      Printer.print(Tama.name);
+      Printer.append("\n" + Tama.updatesWhileAbsent + " updates while absent", false);
+      Printer.append("\n" + Tama.notificationsSent + " notifications sent", false);
     } catch (Exception e) {
       Printer.log("Error loading save file: " + e.getMessage());
-      MainActivity.version = "P2";
+      //MainActivity.version = "P2";
       Tama.reset();
     }
   }

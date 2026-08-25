@@ -63,10 +63,10 @@ public class Darwin {
     P2Tama.tfdc = Tama.t + P2Tama.dcp;
     P2Tama.weight = Math.max(Tama.weight, P2Tama.idealWeight);
     Graphics.clearCharacterGraphics();
-    Graphics.loadCharacterGraphics(MainActivity.context, Tama.character);
+    Graphics.loadCharacterGraphics(Tama.character);
     Tama.x = 16 - Tama.W/2;
     Sounds.playSound("evolve_sound");
-    Utils.notifyUser();
+    Utils.notifyUser(Tama.name + " evolved into " + Tama.character, "evolve_sound");
     } catch (Exception e) {
       Sounds.playSound("bad_sound");
       Printer.log("Error evolving character");

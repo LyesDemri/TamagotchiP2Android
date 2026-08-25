@@ -4,6 +4,11 @@ import java.io.File;
 
 public class Printer {
   static int msgCounter = 0;
+  
+  public static void print(Object text) {
+    Printer.print(text, false);
+  }
+  
   public static void print(Object text, boolean count) {
     MainActivity.tv.setText("");
     if (count) {
@@ -13,8 +18,11 @@ public class Printer {
     msgCounter++;
   }
   
+  public static void append(Object text) {
+    Printer.append(text,false);
+  }
+  
   public static void append(Object text, boolean count) {
-    MainActivity.tv.append("\n");
     if (count) {
       MainActivity.tv.append("(" + msgCounter + ") ");
     }
@@ -26,7 +34,7 @@ public class Printer {
     Tama.displayVars();
   }
   
-  public static void log(Object text){
+  public static void log(Object text) {
     if (MainActivity.debugMode == 1 || Tama.name.startsWith("DEBUG")) {
       append(text, true);
     }

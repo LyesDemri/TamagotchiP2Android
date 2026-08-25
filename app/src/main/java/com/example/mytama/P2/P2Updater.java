@@ -4,6 +4,7 @@ public class P2Updater extends Updater {
   public static void update() {
     //update
     Tama.t++;
+   // Darwin2.evolve();
     if (Tama.character.equals("egg")) {
       P2Egg.update();
     }
@@ -17,16 +18,16 @@ public class P2Updater extends Updater {
       P2SleepUpdater.update();
       DisciplineUpdater.update();
       //Evolution Stuff
-      if (Tama.t == (65*60) || Tama.t == 2*24*3600 || Tama.t == 6*24*3600||
-        ((Tama.t == 9*24*3600)&&(Tama.character.equals("zuccitchi")))) {
+      if (Tama.t == (65*60) || Tama.t == 2*24*3600 || Tama.t == 5*24*3600||
+        ((Tama.t == 10*24*3600)&&(Tama.character.equals("zuccitchi")))) {
         Darwin2.evolve();
       }
       //Death stuff
-      if (Tama.t == 25*24*3600 || P2Tama.careMisses >= 50) {
+      if (Tama.t == 25*24*3600 || P2Tama.careMisses >= 10 || P2Tama.disciplineMistakes >= 10) {
         MainActivity.state = "dead1";
         Tama.isAlive = false;
       }
-    }
+    } 
   }
   
   public static void skipDuration(int dur) {

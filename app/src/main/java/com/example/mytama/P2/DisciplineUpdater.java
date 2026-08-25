@@ -7,7 +7,7 @@ public class DisciplineUpdater {
       if (!Tama.sleeping) {
         P2Tama.needsDiscipline = true;
         P2Tama.timeSinceNeedsDiscipline = 0;
-        Utils.notifyUser();
+        Utils.notifyUser(Tama.name + " needs attention", "call");
       }
       P2Tama.tfdc = P2Tama.tfdc + P2Tama.dcp;
     }

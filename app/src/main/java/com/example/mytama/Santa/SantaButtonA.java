@@ -16,12 +16,12 @@ public class SantaButtonA {
       Animations.animation_counter = 0;
       MainActivity.state = "food choice";
     } else if (MainActivity.state.equals("storing")) {
-      MainActivity.state = "food choice";
+      MainActivity.state = MainActivity.oldState;
     } else if (MainActivity.state.equals("saying no food")) {
       Animations.animation_counter = 0;
       MainActivity.state = "food choice";
     } else if (MainActivity.state.equals("playing")) {
-      SantaGamePainter.arrowPos = (SantaGamePainter.arrowPos+1) % 3;
+      SantaGame.selectedChimney = (SantaGame.selectedChimney + 1) % 3;
     } else if (MainActivity.state.equals("StatScreen0")) {
       SantaTama.stats_index = 1 - SantaTama.stats_index;
     } else if (MainActivity.state.equals("StatScreen1"))
@@ -55,9 +55,12 @@ public class SantaButtonA {
         Printer.print(MainActivity.menu_list[MainActivity.menu_index], false);
       }
     }
-    else if (MainActivity.state.equals("scolded")) {
-      MainActivity.state = "idle";
-      Animations.animation_counter = 0;
+    else if (MainActivity.state.equals("bag")) {
+      if (!SantaTama.sulking) {
+        BagPainter.objectIndex = (BagPainter.objectIndex + 1) % 6;
+      }
+    } else if (MainActivity.state.equals("tama tv")) {
+      SantaTama.won = true;
     }
     else {
       Printer.log("Unknown state: " + MainActivity.state);
