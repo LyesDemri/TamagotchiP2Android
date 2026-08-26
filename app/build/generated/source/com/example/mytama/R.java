@@ -99,11 +99,11 @@ public final class R {
         public static final int egg_idle_2=0x7f02004e;
         public static final int empty_heart=0x7f02004f;
         public static final int emptyarrow=0x7f020050;
-        public static final int envelope=0x7f020051;
-        public static final int envelope_open=0x7f020052;
-        public static final int envelope_open_with_letter_1=0x7f020053;
-        public static final int envelope_open_with_letter_2=0x7f020054;
-        public static final int envelope_open_with_letter_3=0x7f020055;
+        public static final int envelope_1=0x7f020051;
+        public static final int envelope_2=0x7f020052;
+        public static final int envelope_3=0x7f020053;
+        public static final int envelope_4=0x7f020054;
+        public static final int envelope_5=0x7f020055;
         public static final int evolving_screen=0x7f020056;
         public static final int face_icon=0x7f020057;
         public static final int flying_in_sky_1=0x7f020058;

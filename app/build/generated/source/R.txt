@@ -84,11 +84,11 @@ int drawable egg_idle_1 0x7f02004d
 int drawable egg_idle_2 0x7f02004e
 int drawable empty_heart 0x7f02004f
 int drawable emptyarrow 0x7f020050
-int drawable envelope 0x7f020051
-int drawable envelope_open 0x7f020052
-int drawable envelope_open_with_letter_1 0x7f020053
-int drawable envelope_open_with_letter_2 0x7f020054
-int drawable envelope_open_with_letter_3 0x7f020055
+int drawable envelope_1 0x7f020051
+int drawable envelope_2 0x7f020052
+int drawable envelope_3 0x7f020053
+int drawable envelope_4 0x7f020054
+int drawable envelope_5 0x7f020055
 int drawable evolving_screen 0x7f020056
 int drawable face_icon 0x7f020057
 int drawable flying_in_sky_1 0x7f020058

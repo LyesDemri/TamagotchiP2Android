@@ -10,8 +10,7 @@ public class SantaButtonC
         MainActivity.icon_number = 0;
       } else {
         //MainActivity.state = "tama_select_screen";
-        SuperKuchipatchiPainter.initializeAnimation("leaving");
-        MainActivity.state = "leaving";
+        SantaTama.sulking = true;
       }
       MainActivity.tv.setText(MainActivity.icon_list[MainActivity.icon_number]);
     }

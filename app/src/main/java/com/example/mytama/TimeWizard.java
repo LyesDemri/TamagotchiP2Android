@@ -70,6 +70,14 @@ public class TimeWizard {
     return new Date(currentTime*1000);
   }
   
+  public static int getTamagotchiDay(){
+    return getTamagotchiTime().getDate();
+  }
+  
+  public static int getTamagotchiMonth(){
+    return getTamagotchiTime().getMonth() + 1;
+  }
+  
   public static String getSleepingTime() {
     long sleepingTime = (long)Tama.timeToSleep + Tama.t1970birth/1000;
     return (new Date(sleepingTime*1000)).toString();

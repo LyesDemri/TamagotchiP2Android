@@ -23,8 +23,8 @@ public class SantaGraphics extends Graphics {
     "christmas_tree_1", "christmas_tree_2", "christmas_tree_3", "christmas_tree_4", "christmas_tree_5_1", "christmas_tree_5_2", "christmas_tree_6_1", "christmas_tree_6_2", 
     "curtains_0", "curtains_1", "curtains_2", "curtains_3",
     "days_jp", "disappear",  "disappear_big", "discipline_bar", "distance_jp", "down_arrow",  
-    "empty_heart", "emptyarrow", 
-    "food_jp", "fullarrow","full_heart",
+    "empty_heart", "emptyarrow", "envelope_1", "envelope_2", "envelope_3", "envelope_4", "envelope_5",
+    "flying_in_sky_1", "flying_in_sky_2", "food_jp", "fullarrow","full_heart",
     "happy_sun", "happy_jp", "hungry_jp",
     "lb","left_arrow",
     "magician_hat", "mclock", "meal_pie_1", "meal_pie_2", "meal_pie_3", "months_jp", "mysanta",
@@ -49,7 +49,7 @@ public class SantaGraphics extends Graphics {
     "star1", "star2", "star3", "stats_menu_choice_1","stats_menu_choice_2", 
     "super_kuchipatchi", "super_kuchipatchi_flying",
     "santa_scale_icon", "santa_food_icon", "santa_game_icon", "santa_bag_icon", "santa_super_kuchipatchi_icon", "santa_advent_calendar_icon", "santa_tv_icon", "santa_attention_icon",
-    "tadaa_screen", "tama_tv_present", "tamatchi_watering_1", "tamatchi_watering_2", "tv_babytchi_1", "tv_babytchi_2", 
+    "sulking_bubble", "tadaa_screen", "tama_tv_present", "tamatchi_watering_1", "tamatchi_watering_2", "tv_babytchi_1", "tv_babytchi_2", 
     "ufo", "unhappy_cloud_1", "unhappy_cloud_2", "up_arrow",
     "vs", 
     "weight_jp", 
@@ -84,6 +84,8 @@ public class SantaGraphics extends Graphics {
       hashMap.put(Tama.character + "_working", BitmapFactory.decodeResource(r, r.getIdentifier(Tama.character+"_working","drawable",pkg)));
       hashMap.put(Tama.character + "_left", BitmapFactory.decodeResource(r, r.getIdentifier(Tama.character+"_left","drawable",pkg)));
       hashMap.put(Tama.character + "_brought_back", BitmapFactory.decodeResource(r, r.getIdentifier(Tama.character+"_brought_back","drawable",pkg)));
+      hashMap.put(Tama.character + "_sulking", BitmapFactory.decodeResource(r, r.getIdentifier(Tama.character+"_sulking","drawable",pkg)));
+      hashMap.put(Tama.character + "_sulking_end", BitmapFactory.decodeResource(r, r.getIdentifier(Tama.character+"_sulking_end","drawable",pkg)));
     } catch (Exception e) {
       Printer.log("Error loading Santa character graphics");
     }
@@ -107,6 +109,9 @@ public class SantaGraphics extends Graphics {
     hashMap.remove(Tama.character + "_working"); 
     hashMap.remove(Tama.character + "_left");
     hashMap.remove(Tama.character + "_brought_back");
+    hashMap.remove(Tama.character + "_sulking");
+    hashMap.remove(Tama.character + "_sulking_end");
+
   }
   
   public static void loadCompanionGraphics(String companion) {

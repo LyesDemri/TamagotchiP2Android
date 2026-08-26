@@ -15,8 +15,8 @@ public class AdventCalendarPainter extends Painter {
       Printer.append(SantaTama.adventVisits[i] +", ");
     }
     
-    int month = TimeWizard.getTamagotchiTime().getMonth() + 1;
-    int day = TimeWizard.getTamagotchiTime().getDate();
+    int month = TimeWizard.getTamagotchiMonth();
+    int day = TimeWizard.getTamagotchiDay();
     int[] monthDigits = Utils.numDecomposition(month);
     int[] dayDigits = Utils.numDecomposition(day);
     

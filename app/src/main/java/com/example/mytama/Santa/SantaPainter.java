@@ -49,14 +49,12 @@ public class SantaPainter extends Painter {
             if (Tama.t ==9) Sounds.playSound("new_character");
             canvas.drawBitmap(SantaGraphics.hashMap.get("santatchi_hatching"),null, new Rect(80+Screen.offsetX, 0+Screen.offsetY, 240+Screen.offsetX, 160+Screen.offsetY), paint);
           }
-        } else if (MainActivity.state.startsWith("dead"))
-          DeadPainter.draw();
-        else if (MainActivity.state.equals("clock"))
+        } else if (MainActivity.state.equals("clock"))
           ClockPainter.showClock();
         else if (MainActivity.state.equals("bag"))
           BagPainter.drawSelectionScreen();
         else if (MainActivity.state.equals("letter")) {
-          LetterPainter.draw();
+          SantaSulkingPainter.draw();
         } else if (MainActivity.state.equals("transforming")) {
           BagPainter.drawTransformation();
         } else if (MainActivity.state.equals("super kuchipatchi")) {

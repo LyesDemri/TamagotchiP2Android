@@ -148,7 +148,7 @@ public class DataSaverLoader {
           MainActivity.state = "dead1";
         }
       }
-    } else {
+    } else if (MainActivity.version.equals("P2")){
       Tama.isAlive = false;
       MainActivity.state = "dead1";
     }

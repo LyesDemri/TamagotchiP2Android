@@ -14,19 +14,26 @@ public class SantaIdlePainter extends SantaPainter {
     int xIncrement = Tama.xIncrement;
     try {
       if (Tama.sleeping) {
-        drawSpriteAt("santaclautchi_sleeping", 0, 0);
-        drawSpriteAt("z" + (MainActivity.even + 1) + "dark", 24, 0);
+        if ((TimeWizard.getTamagotchiDay() == 24 || TimeWizard.getTamagotchiDay() == 25) && TimeWizard.getTamagotchiMonth() == 12) {
+          drawSpriteAt("flying_in_sky_" + (MainActivity.even + 1), 0, 0);
+        } else {
+          drawSpriteAt("santaclautchi_sleeping", 0, 0);
+          drawSpriteAt("z" + (MainActivity.even + 1) + "dark", 24, 0);
+        }
       } else {
-        if (SantaTama.companion.equals("")){
-          if (MainActivity.myRunnable.i==0 || MainActivity.myRunnable.i==13) {
+        if (SantaTama.sulking) {
+          drawSpriteAt(Tama.character + "_sulking", 8, 0);
+          drawSpriteAt("sulking_bubble", 24 + 8*MainActivity.even, 0);
+        } else if (SantaTama.companion.equals("")){
+          if (MainActivity.myRunnable.i == 0 || MainActivity.myRunnable.i == 13) {
             //if santa is on the edge of the screen, turn around
-            if ((x == 0 || x == 32-W) && jumpCtr == 0) {
+            if ((x == 0 || x == 32 - W) && jumpCtr == 0) {
               goingBack = false;
               jumpCtr = 5;
             } else if ((x == 2) && !goingBack && xIncrement < 0) {
               xIncrement = -xIncrement;
               goingBack = true;
-            } else if ((x == 30-W) && !goingBack && xIncrement > 0) {
+            } else if ((x == 30 - W) && !goingBack && xIncrement > 0) {
               xIncrement = -xIncrement;
               goingBack = true;
             } else if ((x == 6 && xIncrement > 0 || x == 10 && xIncrement < 0) && goingBack) {
@@ -46,7 +53,7 @@ public class SantaIdlePainter extends SantaPainter {
             if (jumpCtr == 4 || jumpCtr == 2)
               drawSpriteAt(SantaGraphics.hashMap.get(Tama.character+"_happy"), x, y);
             else
-              drawSpriteAt(SantaGraphics.hashMap.get(Tama.character+"_idle_"+(MainActivity.even+1)), x, y);
+              drawSpriteAt(SantaGraphics.hashMap.get(Tama.character+"_idle_"+(MainActivity.even + 1)), x, y);
           } else {
             if (jumpCtr == 4 || jumpCtr == 2)
               drawSpriteAt(flip(SantaGraphics.hashMap.get(Tama.character+"_happy")), x, y);
@@ -56,7 +63,7 @@ public class SantaIdlePainter extends SantaPainter {
         } else {
           // if character has a companion
           Printer.print("x = " + x);
-          if (MainActivity.myRunnable.i==0 || MainActivity.myRunnable.i==13) {
+          if (MainActivity.myRunnable.i == 0 || MainActivity.myRunnable.i == 13) {
             x--;
             if (x <= -16) {
               x = 48;

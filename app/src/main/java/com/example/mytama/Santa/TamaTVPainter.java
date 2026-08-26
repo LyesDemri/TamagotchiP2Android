@@ -42,6 +42,7 @@ public class TamaTVPainter extends Painter {
       drawSpriteAt("santaclautchi_mametchi_" + phase, 16, 0);
     }
     Printer.print("age:" + Tama.age + "\nt = " + Tama.t);
+    Printer.print("\n" + TimeWizard.getTamagotchiTime());
     
     k = (k+1) % 50;
   }

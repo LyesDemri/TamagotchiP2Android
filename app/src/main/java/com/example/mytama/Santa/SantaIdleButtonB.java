@@ -31,6 +31,7 @@ public class SantaIdleButtonB extends IdleButtonB {
         if (SantaTama.sulking) {
           SantaTama.sulking = false;
           SantaTama.timeSinceSulking = 0;
+          SantaSulkingPainter.prepareAnimation();
           MainActivity.state = "letter";
         } else {
           BagPainter.objectIndex = 0;
