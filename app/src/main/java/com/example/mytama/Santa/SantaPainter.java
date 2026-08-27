@@ -68,13 +68,19 @@ public class SantaPainter extends Painter {
           TamaTVPainter.draw();
         } else if (MainActivity.state.equals("opening advent calendar")) {
           AdventCalendarPainter.drawAnimation();
+        } else if (MainActivity.state.equals("sulking")){
+          SantaSulkingPainter.drawSulking();
+        } else if (MainActivity.state.equals("dying")) {
+          SantaDyingPainter.draw();
+        } else if (MainActivity.state.equals("ending")){
+          SantaEndingPainter.draw();
         }
         
         BlackScreenPainter.drawPixelGrid();      
         IconsPainter.draw();
         
         //draw tama shell
-        canvas.drawBitmap(SantaGraphics.hashMap.get("mysanta"), null, new Rect(bgx,bgy,bgx+bgW,bgy+bgH),paint);
+        canvas.drawBitmap(SantaGraphics.hashMap.get("mysanta"), null, new Rect(bgx, bgy, bgx + bgW, bgy + bgH),paint);
       }
     }
   }

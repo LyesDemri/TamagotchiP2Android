@@ -8,6 +8,8 @@ public class SantaTama extends Tama {
   static public boolean isCalling;
   static public boolean left;
   static public boolean sulking;
+  public static boolean endingPlayed;
+  public static boolean arrivedOnTime;
   public static int[] adventVisits;
   public static int[] santaObjects;
   static public double timeToAge;
@@ -24,7 +26,7 @@ public class SantaTama extends Tama {
   static public int timeToEat;
   static public int timeToSnack;
   public static int santaness;
-  public static boolean won;
+  public static int distance;
   static public void reset() {
     t = 0;
     character = "cabin";
@@ -50,13 +52,15 @@ public class SantaTama extends Tama {
     ttlhappyh = 3600;
     timeToEat = 3600;
     timeToSnack = 3600;
+    distance = 0;
     
     TimeWizard.computeSleepWakeTimes(20,9);
     sleeping = false;
     sulking = false;
     left = false;
     isAlive = true;
-    won = false;
+    endingPlayed = false;
+    arrivedOnTime = false;
     
     bag = new int[]{10, 10, 10, 10, 10, 10};
     santaObjects = new int[]{0, 0, 0, 0};
@@ -70,7 +74,7 @@ public class SantaTama extends Tama {
     x = 8;
     y = 0;
     xIncrement = 1;
-    Graphics.loadCharacterGraphics("babytchi");
+    SantaGraphics.loadCharacterGraphics();
     Sounds.playSound("reset_sound");
   }
   
@@ -91,6 +95,18 @@ public class SantaTama extends Tama {
           "\nsleeping time: " + TimeWizard.getSleepingTime()+
           "\nwaking time: " + TimeWizard.getWakingTime(),
           true);
+    }
+  }
+  
+  public static void die(){
+    SantaDyingPainter.prepareAnimation();
+    MainActivity.state = "dying";
+  }
+  
+  public static void runEnding() {
+    if (SantaTama.distance >= 14) {
+      SantaEndingPainter.prepareAnimation();
+      MainActivity.state = "ending";
     }
   }
   

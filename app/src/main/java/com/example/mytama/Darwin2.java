@@ -18,7 +18,7 @@ public class Darwin2 {
     data.put("hashizotchi", new int[]{70*60, 80*60, 3*3600, 0, 6*3600,22,10,0,30,1});
     data.put("takotchi", new int[]{55*60, 55*60, 5*3600, 0, 1*3600,23,8,0,20,0});
     data.put("kusatchi", new int[]{40*60, 40*60, (int)1.5*3600, 0, (int)5.5*3600, 22, 9, 0, 20, 1});
-    data.put("zatchi", new int[]{55*60, 55*60, 5*3600, 0, 1*3600, 22, 9, 0, 20, 0});
+    data.put("zatchi", new int[]{120*60, 120*60, 5*3600, 0, 99*24*3600, 22, 9, 0, 20, 0});
   }
   
   static public void evolve() {
@@ -94,6 +94,8 @@ public class Darwin2 {
       }
     } else if (Tama.character.equals("zuccitchi") && !P2Tama.superTeen) {
       evolveInto("zatchi");
+      P2Tama.careMisses = 0;
+      P2Tama.disciplineMistakes = 0;
     } else {
       Printer.log("Error: unknown character");
     }
@@ -105,7 +107,7 @@ public class Darwin2 {
     P2Tama.tfdc = Tama.t + P2Tama.dcp/2;
     P2Tama.weight = Math.max(Tama.weight, P2Tama.idealWeight);
     Graphics.clearCharacterGraphics();
-    Graphics.loadCharacterGraphics(Tama.character);
+    Graphics.loadCharacterGraphics();
     Tama.x = 16 - Tama.W/2;
     Sounds.playSound("evolve_sound");
     Utils.notifyUser(Tama.name + " evolved into " + Tama.character, "evolve_sound");

@@ -110,7 +110,7 @@ public class DataSaverLoader {
                   
       long currentTime = new Date().getTime();
       Tama.timeSinceLeft = Math.round((double)((currentTime-TimeWizard.getTamagotchiLongTime())/1000));
-      Graphics.loadCharacterGraphics(Tama.character);
+      Graphics.loadCharacterGraphics();
       catchUp();
       Printer.print(Tama.name);
       Printer.append("\n" + Tama.updatesWhileAbsent + " updates while absent", false);

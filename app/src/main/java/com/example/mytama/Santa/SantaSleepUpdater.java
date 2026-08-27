@@ -17,6 +17,9 @@ public class SantaSleepUpdater extends SleepUpdater {
       Tama.timeToWake += 24*3600;
       Tama.age += 1;
       int[] newAdventVisits = new int[SantaTama.adventVisits.length + 1];
+      if (SantaTama.age == 111) {
+        SantaTama.runEnding();
+      }
       for (int i = 0; i < SantaTama.adventVisits.length; i++) {
         newAdventVisits[i] = SantaTama.adventVisits[i];
       }

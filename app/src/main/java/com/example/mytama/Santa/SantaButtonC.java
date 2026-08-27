@@ -10,9 +10,10 @@ public class SantaButtonC
         MainActivity.icon_number = 0;
       } else {
         //MainActivity.state = "tama_select_screen";
-        SantaTama.sulking = true;
+        SantaTama.distance++;
+        Printer.print("Distance = " + SantaTama.distance);
       }
-      MainActivity.tv.setText(MainActivity.icon_list[MainActivity.icon_number]);
+      //MainActivity.tv.setText(MainActivity.icon_list[MainActivity.icon_number]);
     }
     else if (MainActivity.state.equals("food choice")) {
       MainActivity.state="idle";

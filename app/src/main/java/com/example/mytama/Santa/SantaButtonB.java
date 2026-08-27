@@ -113,6 +113,8 @@ public class SantaButtonB {
         Updater.update();
       }
       MainActivity.catchingUp = false;
+    } else if (MainActivity.state.equals("ending")) {
+      SantaEndingPainter.phase++;
     }
   }
 }

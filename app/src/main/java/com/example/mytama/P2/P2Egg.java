@@ -9,7 +9,7 @@ public class P2Egg {
     else if (MainActivity.state.equals("hatching")) {
       if (Tama.t == 10) {
         Tama.character = "babytchi";
-        Graphics.loadCharacterGraphics(Tama.character);
+        Graphics.loadCharacterGraphics();
         MainActivity.state = "idle";
         Tama.x = 12;
         Tama.y = 8;

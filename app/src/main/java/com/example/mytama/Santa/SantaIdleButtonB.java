@@ -6,20 +6,21 @@ public class SantaIdleButtonB extends IdleButtonB {
       MainActivity.state = "StatScreen0";
     } else if (MainActivity.icon_list[MainActivity.icon_number] == "Food" && Tama.isAlive) {
       if (!Tama.sleeping) {
-        if (!SantaTama.sulking && !SantaTama.left) {
+        if (SantaTama.sulking) {
+          SantaSulkingPainter.prepareAnimation();
+          MainActivity.state = "sulking";
+        } else if (!SantaTama.left) {
           MainActivity.state = "food choice";
           MainActivity.food_index = 0;
           MainActivity.myRunnable.j = 0;
         }
       }
-    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Lights" && Tama.isAlive) {
-      P2Tama.lightsOn = !P2Tama.lightsOn;
-      if (Tama.sleeping) {
-        P2Tama.timeSinceNeedsLightsOff = 0;
-      }
     } else if (MainActivity.icon_list[MainActivity.icon_number] == "Game" && Tama.isAlive) {
       if (!Tama.sleeping) {
-        if (!SantaTama.sulking && !SantaTama.left) {
+        if (SantaTama.sulking) {
+          SantaSulkingPainter.prepareAnimation();
+          MainActivity.state = "sulking";
+        } else if (!SantaTama.left) {
           SantaGame.selectedChimney = 0;
           MainActivity.state = "game intro screen";
           Sounds.playSound("game_begin");

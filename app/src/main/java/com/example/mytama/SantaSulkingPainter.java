@@ -43,4 +43,11 @@ public class SantaSulkingPainter extends SantaPainter {
       }
     }
   }
+  
+  public static void drawSulking(){
+    drawSpriteAt(Tama.character + "_sulking_2",8 ,0);
+    if ((j++) == 25) {
+      MainActivity.state = "idle";
+    }
+  }
 }

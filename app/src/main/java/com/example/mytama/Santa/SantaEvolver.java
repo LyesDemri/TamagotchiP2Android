@@ -52,9 +52,9 @@ public class SantaEvolver {
   public static void evolve() {
     SantaTama.character = newCharacter;
     SantaGraphics.clearCharacterGraphics();
-    SantaGraphics.loadCharacterGraphics(SantaTama.character);
+    SantaGraphics.loadCharacterGraphics();
     if (!SantaTama.companion.equals("")) {
-      SantaGraphics.loadCompanionGraphics(SantaTama.companion);
+      SantaGraphics.loadCompanionGraphics();
     }
   }
 }

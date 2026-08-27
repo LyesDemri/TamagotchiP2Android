@@ -69,7 +69,7 @@ public class SantaGraphics extends Graphics {
     Screen.bgimgH = hashMap.get("santabg").getHeight()/30;
   }
   
-  public static void loadCharacterGraphics(String character) {
+  public static void loadCharacterGraphics() {
     loadGeneralGraphics();
     Resources r = MainActivity.context.getResources();
     String pkg = MainActivity.context.getPackageName();
@@ -85,13 +85,13 @@ public class SantaGraphics extends Graphics {
       hashMap.put(Tama.character + "_left", BitmapFactory.decodeResource(r, r.getIdentifier(Tama.character+"_left","drawable",pkg)));
       hashMap.put(Tama.character + "_brought_back", BitmapFactory.decodeResource(r, r.getIdentifier(Tama.character+"_brought_back","drawable",pkg)));
       hashMap.put(Tama.character + "_sulking", BitmapFactory.decodeResource(r, r.getIdentifier(Tama.character+"_sulking","drawable",pkg)));
-      hashMap.put(Tama.character + "_sulking_end", BitmapFactory.decodeResource(r, r.getIdentifier(Tama.character+"_sulking_end","drawable",pkg)));
+      hashMap.put(Tama.character + "_sulking_2", BitmapFactory.decodeResource(r, r.getIdentifier(Tama.character+"_sulking_2","drawable",pkg)));
     } catch (Exception e) {
       Printer.log("Error loading Santa character graphics");
     }
     
     if (!SantaTama.companion.equals("")) {
-      loadCompanionGraphics(SantaTama.companion);
+      loadCompanionGraphics();
     }
     
     //All santa characters have the same width and height
@@ -110,16 +110,15 @@ public class SantaGraphics extends Graphics {
     hashMap.remove(Tama.character + "_left");
     hashMap.remove(Tama.character + "_brought_back");
     hashMap.remove(Tama.character + "_sulking");
-    hashMap.remove(Tama.character + "_sulking_end");
-
+    hashMap.remove(Tama.character + "_sulking_2");
   }
   
-  public static void loadCompanionGraphics(String companion) {
+  public static void loadCompanionGraphics() {
     Resources r = MainActivity.context.getResources();
     String pkg = MainActivity.context.getPackageName();
     hashMap.remove(SantaTama.companion + "_idle_1");
     hashMap.remove(SantaTama.companion + "_idle_2");
-    hashMap.put(companion + "_idle_1", BitmapFactory.decodeResource(r, r.getIdentifier(companion + "_idle_1","drawable",pkg)));
-    hashMap.put(companion + "_idle_2", BitmapFactory.decodeResource(r, r.getIdentifier(companion + "_idle_2","drawable",pkg)));
+    hashMap.put(SantaTama.companion + "_idle_1", BitmapFactory.decodeResource(r, r.getIdentifier(SantaTama.companion + "_idle_1","drawable",pkg)));
+    hashMap.put(SantaTama.companion + "_idle_2", BitmapFactory.decodeResource(r, r.getIdentifier(SantaTama.companion + "_idle_2","drawable",pkg)));
   }
 }

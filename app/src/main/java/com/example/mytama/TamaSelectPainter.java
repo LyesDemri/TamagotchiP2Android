@@ -1,6 +1,5 @@
 package com.example.mytama;
 
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import com.example.mytama.MainActivity;

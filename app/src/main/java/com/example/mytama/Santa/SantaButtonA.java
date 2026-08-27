@@ -60,7 +60,6 @@ public class SantaButtonA {
         BagPainter.objectIndex = (BagPainter.objectIndex + 1) % 6;
       }
     } else if (MainActivity.state.equals("tama tv")) {
-      SantaTama.won = true;
     }
     else {
       Printer.log("Unknown state: " + MainActivity.state);

@@ -9,7 +9,7 @@ public class Cabin {
     else if (MainActivity.state.equals("hatching")) {
       if (Tama.t == 11) {
         Tama.character = "santatchi";
-        Graphics.loadCharacterGraphics(Tama.character);
+        Graphics.loadCharacterGraphics();
         MainActivity.state = "idle";
         Tama.x = 12;
         Tama.y = 0;

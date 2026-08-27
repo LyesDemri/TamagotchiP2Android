@@ -77,7 +77,7 @@ public final class R {
         public static final int classic_santa_no_2=0x7f020038;
         public static final int classic_santa_soot=0x7f020039;
         public static final int classic_santa_sulking=0x7f02003a;
-        public static final int classic_santa_sulking_end=0x7f02003b;
+        public static final int classic_santa_sulking_2=0x7f02003b;
         public static final int classic_santa_unhappy_1=0x7f02003c;
         public static final int classic_santa_unhappy_2=0x7f02003d;
         public static final int classic_santa_working=0x7f02003e;
@@ -164,7 +164,7 @@ public final class R {
         public static final int hat_santa_no_2=0x7f02008f;
         public static final int hat_santa_soot=0x7f020090;
         public static final int hat_santa_sulking=0x7f020091;
-        public static final int hat_santa_sulking_end=0x7f020092;
+        public static final int hat_santa_sulking_2=0x7f020092;
         public static final int hat_santa_unhappy_1=0x7f020093;
         public static final int hat_santa_unhappy_2=0x7f020094;
         public static final int hat_santa_working=0x7f020095;
@@ -204,7 +204,7 @@ public final class R {
         public static final int magician_santa_no_2=0x7f0200b7;
         public static final int magician_santa_soot=0x7f0200b8;
         public static final int magician_santa_sulking=0x7f0200b9;
-        public static final int magician_santa_sulking_end=0x7f0200ba;
+        public static final int magician_santa_sulking_2=0x7f0200ba;
         public static final int magician_santa_unhappy_1=0x7f0200bb;
         public static final int magician_santa_unhappy_2=0x7f0200bc;
         public static final int magician_santa_working=0x7f0200bd;
@@ -241,7 +241,7 @@ public final class R {
         public static final int missy_santa_no_2=0x7f0200dc;
         public static final int missy_santa_soot=0x7f0200dd;
         public static final int missy_santa_sulking=0x7f0200de;
-        public static final int missy_santa_sulking_end=0x7f0200df;
+        public static final int missy_santa_sulking_2=0x7f0200df;
         public static final int missy_santa_unhappy_1=0x7f0200e0;
         public static final int missy_santa_unhappy_2=0x7f0200e1;
         public static final int missy_santa_working=0x7f0200e2;
@@ -284,7 +284,7 @@ public final class R {
         public static final int penguin_santa_no_2=0x7f020107;
         public static final int penguin_santa_soot=0x7f020108;
         public static final int penguin_santa_sulking=0x7f020109;
-        public static final int penguin_santa_sulking_end=0x7f02010a;
+        public static final int penguin_santa_sulking_2=0x7f02010a;
         public static final int penguin_santa_unhappy_1=0x7f02010b;
         public static final int penguin_santa_unhappy_2=0x7f02010c;
         public static final int penguin_santa_working=0x7f02010d;
@@ -323,7 +323,7 @@ public final class R {
         public static final int prank_santa_no_2=0x7f02012e;
         public static final int prank_santa_soot=0x7f02012f;
         public static final int prank_santa_sulking=0x7f020130;
-        public static final int prank_santa_sulking_end=0x7f020131;
+        public static final int prank_santa_sulking_2=0x7f020131;
         public static final int prank_santa_unhappy_1=0x7f020132;
         public static final int prank_santa_unhappy_2=0x7f020133;
         public static final int prank_santa_working=0x7f020134;
@@ -345,7 +345,7 @@ public final class R {
         public static final int sailor_santa_no_2=0x7f020144;
         public static final int sailor_santa_soot=0x7f020145;
         public static final int sailor_santa_sulking=0x7f020146;
-        public static final int sailor_santa_sulking_reaction=0x7f020147;
+        public static final int sailor_santa_sulking_2=0x7f020147;
         public static final int sailor_santa_unhappy_1=0x7f020148;
         public static final int sailor_santa_unhappy_2=0x7f020149;
         public static final int sailor_santa_working=0x7f02014a;
@@ -403,7 +403,7 @@ public final class R {
         public static final int santatchi_no_2=0x7f02017e;
         public static final int santatchi_soot=0x7f02017f;
         public static final int santatchi_sulking=0x7f020180;
-        public static final int santatchi_sulking_end=0x7f020181;
+        public static final int santatchi_sulking_2=0x7f020181;
         public static final int santatchi_unhappy_1=0x7f020182;
         public static final int santatchi_unhappy_2=0x7f020183;
         public static final int santatchi_working=0x7f020184;
@@ -419,7 +419,7 @@ public final class R {
         public static final int scholar_santa_no_2=0x7f02018e;
         public static final int scholar_santa_soot=0x7f02018f;
         public static final int scholar_santa_sulking=0x7f020190;
-        public static final int scholar_santa_sulking_end=0x7f020191;
+        public static final int scholar_santa_sulking_2=0x7f020191;
         public static final int scholar_santa_unhappy_1=0x7f020192;
         public static final int scholar_santa_unhappy_2=0x7f020193;
         public static final int scholar_santa_working=0x7f020194;
@@ -436,7 +436,7 @@ public final class R {
         public static final int skate_santa_no_unhappy_1=0x7f02019f;
         public static final int skate_santa_soot=0x7f0201a0;
         public static final int skate_santa_sulking=0x7f0201a1;
-        public static final int skate_santa_sulking_end=0x7f0201a2;
+        public static final int skate_santa_sulking_2=0x7f0201a2;
         public static final int skate_santa_unhappy_2=0x7f0201a3;
         public static final int skate_santa_working=0x7f0201a4;
         public static final int skateboard=0x7f0201a5;
@@ -456,7 +456,7 @@ public final class R {
         public static final int sleigh_santa_no_2=0x7f0201b3;
         public static final int sleigh_santa_soot=0x7f0201b4;
         public static final int sleigh_santa_sulking=0x7f0201b5;
-        public static final int sleigh_santa_sulking_end=0x7f0201b6;
+        public static final int sleigh_santa_sulking_2=0x7f0201b6;
         public static final int sleigh_santa_unhappy_1=0x7f0201b7;
         public static final int sleigh_santa_unhappy_2=0x7f0201b8;
         public static final int sleigh_santa_working=0x7f0201b9;
@@ -474,7 +474,7 @@ public final class R {
         public static final int snowboard_santa_no_2=0x7f0201c5;
         public static final int snowboard_santa_soot=0x7f0201c6;
         public static final int snowboard_santa_sulking=0x7f0201c7;
-        public static final int snowboard_santa_sulking_end=0x7f0201c8;
+        public static final int snowboard_santa_sulking_2=0x7f0201c8;
         public static final int snowboard_santa_unhappy_1=0x7f0201c9;
         public static final int snowboard_santa_unhappy_2=0x7f0201ca;
         public static final int snowboard_santa_working=0x7f0201cb;

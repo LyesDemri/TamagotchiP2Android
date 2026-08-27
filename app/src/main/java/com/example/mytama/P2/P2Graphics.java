@@ -35,7 +35,8 @@ public class P2Graphics extends Graphics {
     Screen.bgimgH = hashMap.get("p2bg").getHeight()/30;
   }
 
-  public static void loadCharacterGraphics(String character) {
+  public static void loadCharacterGraphics() {
+    String character = Tama.character;
     loadGeneralGraphics();
     Resources r = MainActivity.context.getResources();
     String pkg = MainActivity.context.getPackageName();

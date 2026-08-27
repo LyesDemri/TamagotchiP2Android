@@ -62,7 +62,7 @@ int drawable classic_santa_no_1 0x7f020037
 int drawable classic_santa_no_2 0x7f020038
 int drawable classic_santa_soot 0x7f020039
 int drawable classic_santa_sulking 0x7f02003a
-int drawable classic_santa_sulking_end 0x7f02003b
+int drawable classic_santa_sulking_2 0x7f02003b
 int drawable classic_santa_unhappy_1 0x7f02003c
 int drawable classic_santa_unhappy_2 0x7f02003d
 int drawable classic_santa_working 0x7f02003e
@@ -149,7 +149,7 @@ int drawable hat_santa_no_1 0x7f02008e
 int drawable hat_santa_no_2 0x7f02008f
 int drawable hat_santa_soot 0x7f020090
 int drawable hat_santa_sulking 0x7f020091
-int drawable hat_santa_sulking_end 0x7f020092
+int drawable hat_santa_sulking_2 0x7f020092
 int drawable hat_santa_unhappy_1 0x7f020093
 int drawable hat_santa_unhappy_2 0x7f020094
 int drawable hat_santa_working 0x7f020095
@@ -189,7 +189,7 @@ int drawable magician_santa_no_1 0x7f0200b6
 int drawable magician_santa_no_2 0x7f0200b7
 int drawable magician_santa_soot 0x7f0200b8
 int drawable magician_santa_sulking 0x7f0200b9
-int drawable magician_santa_sulking_end 0x7f0200ba
+int drawable magician_santa_sulking_2 0x7f0200ba
 int drawable magician_santa_unhappy_1 0x7f0200bb
 int drawable magician_santa_unhappy_2 0x7f0200bc
 int drawable magician_santa_working 0x7f0200bd
@@ -226,7 +226,7 @@ int drawable missy_santa_no_1 0x7f0200db
 int drawable missy_santa_no_2 0x7f0200dc
 int drawable missy_santa_soot 0x7f0200dd
 int drawable missy_santa_sulking 0x7f0200de
-int drawable missy_santa_sulking_end 0x7f0200df
+int drawable missy_santa_sulking_2 0x7f0200df
 int drawable missy_santa_unhappy_1 0x7f0200e0
 int drawable missy_santa_unhappy_2 0x7f0200e1
 int drawable missy_santa_working 0x7f0200e2
@@ -269,7 +269,7 @@ int drawable penguin_santa_no_1 0x7f020106
 int drawable penguin_santa_no_2 0x7f020107
 int drawable penguin_santa_soot 0x7f020108
 int drawable penguin_santa_sulking 0x7f020109
-int drawable penguin_santa_sulking_end 0x7f02010a
+int drawable penguin_santa_sulking_2 0x7f02010a
 int drawable penguin_santa_unhappy_1 0x7f02010b
 int drawable penguin_santa_unhappy_2 0x7f02010c
 int drawable penguin_santa_working 0x7f02010d
@@ -308,7 +308,7 @@ int drawable prank_santa_no_1 0x7f02012d
 int drawable prank_santa_no_2 0x7f02012e
 int drawable prank_santa_soot 0x7f02012f
 int drawable prank_santa_sulking 0x7f020130
-int drawable prank_santa_sulking_end 0x7f020131
+int drawable prank_santa_sulking_2 0x7f020131
 int drawable prank_santa_unhappy_1 0x7f020132
 int drawable prank_santa_unhappy_2 0x7f020133
 int drawable prank_santa_working 0x7f020134
@@ -330,7 +330,7 @@ int drawable sailor_santa_no_1 0x7f020143
 int drawable sailor_santa_no_2 0x7f020144
 int drawable sailor_santa_soot 0x7f020145
 int drawable sailor_santa_sulking 0x7f020146
-int drawable sailor_santa_sulking_reaction 0x7f020147
+int drawable sailor_santa_sulking_2 0x7f020147
 int drawable sailor_santa_unhappy_1 0x7f020148
 int drawable sailor_santa_unhappy_2 0x7f020149
 int drawable sailor_santa_working 0x7f02014a
@@ -388,7 +388,7 @@ int drawable santatchi_no_1 0x7f02017d
 int drawable santatchi_no_2 0x7f02017e
 int drawable santatchi_soot 0x7f02017f
 int drawable santatchi_sulking 0x7f020180
-int drawable santatchi_sulking_end 0x7f020181
+int drawable santatchi_sulking_2 0x7f020181
 int drawable santatchi_unhappy_1 0x7f020182
 int drawable santatchi_unhappy_2 0x7f020183
 int drawable santatchi_working 0x7f020184
@@ -404,7 +404,7 @@ int drawable scholar_santa_no_1 0x7f02018d
 int drawable scholar_santa_no_2 0x7f02018e
 int drawable scholar_santa_soot 0x7f02018f
 int drawable scholar_santa_sulking 0x7f020190
-int drawable scholar_santa_sulking_end 0x7f020191
+int drawable scholar_santa_sulking_2 0x7f020191
 int drawable scholar_santa_unhappy_1 0x7f020192
 int drawable scholar_santa_unhappy_2 0x7f020193
 int drawable scholar_santa_working 0x7f020194
@@ -421,7 +421,7 @@ int drawable skate_santa_no_2 0x7f02019e
 int drawable skate_santa_no_unhappy_1 0x7f02019f
 int drawable skate_santa_soot 0x7f0201a0
 int drawable skate_santa_sulking 0x7f0201a1
-int drawable skate_santa_sulking_end 0x7f0201a2
+int drawable skate_santa_sulking_2 0x7f0201a2
 int drawable skate_santa_unhappy_2 0x7f0201a3
 int drawable skate_santa_working 0x7f0201a4
 int drawable skateboard 0x7f0201a5
@@ -441,7 +441,7 @@ int drawable sleigh_santa_no_1 0x7f0201b2
 int drawable sleigh_santa_no_2 0x7f0201b3
 int drawable sleigh_santa_soot 0x7f0201b4
 int drawable sleigh_santa_sulking 0x7f0201b5
-int drawable sleigh_santa_sulking_end 0x7f0201b6
+int drawable sleigh_santa_sulking_2 0x7f0201b6
 int drawable sleigh_santa_unhappy_1 0x7f0201b7
 int drawable sleigh_santa_unhappy_2 0x7f0201b8
 int drawable sleigh_santa_working 0x7f0201b9
@@ -459,7 +459,7 @@ int drawable snowboard_santa_no_1 0x7f0201c4
 int drawable snowboard_santa_no_2 0x7f0201c5
 int drawable snowboard_santa_soot 0x7f0201c6
 int drawable snowboard_santa_sulking 0x7f0201c7
-int drawable snowboard_santa_sulking_end 0x7f0201c8
+int drawable snowboard_santa_sulking_2 0x7f0201c8
 int drawable snowboard_santa_unhappy_1 0x7f0201c9
 int drawable snowboard_santa_unhappy_2 0x7f0201ca
 int drawable snowboard_santa_working 0x7f0201cb

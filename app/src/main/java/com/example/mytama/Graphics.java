@@ -19,11 +19,11 @@ public class Graphics {
     }   
   }
   
-  public static void loadCharacterGraphics(String character) {
+  public static void loadCharacterGraphics() {
     if (MainActivity.version.equals("P2")){
-      P2Graphics.loadCharacterGraphics(character);
+      P2Graphics.loadCharacterGraphics();
     } else if (MainActivity.version.equals("Santa")) {
-      SantaGraphics.loadCharacterGraphics(character);
+      SantaGraphics.loadCharacterGraphics();
     }
   }
   

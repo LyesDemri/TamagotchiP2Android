@@ -29,20 +29,29 @@ public class TamaTVPainter extends Painter {
     } else if (Tama.age == 107) {
       drawSpriteAt("christmas_tree_5_2", 0, 0);
       drawSpriteAt("santaclautchi_ginjirotchi_" + phase, 16, 0);
-    } else if (Tama.age >= 108 && Tama.age < 112) {
+    } else if (Tama.age >= 108 && Tama.age < 111) {
       drawSpriteAt("christmas_tree_5_" + phase, 0, 0);
       drawSpriteAt("santaclautchi_mametchi_" + (phase+2), 16, 0);
-    } else if (Tama.age >= 111 && !SantaTama.won) {
-      //ages 112+ (if lost)
+    } else if (Tama.age == 111 && !SantaTama.endingPlayed) {
+      //12th day but santa hasn't arrived'
+      drawSpriteAt("christmas_tree_5_" + phase, 0, 0);
+      drawSpriteAt("santaclautchi_mametchi_" + (phase+2), 16, 0);
+    } else if (Tama.age == 111 && SantaTama.endingPlayed) {
+      //12th day and santa has arrived
+      drawSpriteAt("tama_tv_present", 0, 0);
+      drawSpriteAt("santaclautchi_mametchi_" + (phase+2), 16, 0);
+    } else if (Tama.age >= 112 && !SantaTama.endingPlayed) {
+      //post-12th day but santa hasn't come
       drawSpriteAt("santaclautchi_oyajitchi_kicking_" + phase, 16, 0);
       drawSpriteAt("christmas_tree_6_1", 0, 0);
-    } else if (Tama.age >= 111 && SantaTama.won) {
-      //ages 112+ (if won)
+    } else if (Tama.age >= 112 && SantaTama.endingPlayed) {
+      //post-12th day and santa has arrived
       drawSpriteAt("tama_tv_present", 0, 0);
-      drawSpriteAt("santaclautchi_mametchi_" + phase, 16, 0);
+      if (SantaTama.arrivedOnTime) drawSpriteAt("santaclautchi_mametchi_" + phase, 16, 0);
+      else drawSpriteAt("santaclautchi_oyajitchi_" + phase, 16, 0);
     }
     Printer.print("age:" + Tama.age + "\nt = " + Tama.t);
-    Printer.print("\n" + TimeWizard.getTamagotchiTime());
+    Printer.append("\n" + TimeWizard.getTamagotchiTime());
     
     k = (k+1) % 50;
   }
