@@ -28,7 +28,7 @@ public class P2IdlePainter extends P2Painter {
         if (P2Tama.walks) {
           //pour changer de sprite chaque 2 top d'horloge
           double even2 = Math.floor(((Tama.t*2)%4)/2);         
-          if (MainActivity.myRunnable.i == 0 || MainActivity.myRunnable.i==13) {
+          if (MainActivity.myRunnable.i == 0 || MainActivity.myRunnable.i == 13) {
               //si le tamagotchi est sur les bords, on le force à quitter le bord
               if (x == 0)
                 Tama.xIncrement = 2;

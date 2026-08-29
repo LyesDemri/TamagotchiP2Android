@@ -8,7 +8,7 @@ public class P2HungryUpdater extends HungryUpdater {
         P2Tama.careMisses++;
       }
       if (Tama.timeSinceHungry == 24*3600) {
-        MainActivity.state = "dead1";
+        MainActivity.state = "dead";
         Tama.isAlive = false;
         Utils.notifyUser(Tama.name + " died of hunger", "call");
       }

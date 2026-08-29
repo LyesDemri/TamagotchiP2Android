@@ -25,6 +25,8 @@ public class SantaButtonB {
         } else {
           MainActivity.state = "saying no food";
           Animations.animation_counter = 8;
+          SantaTama.santaness++;
+          Printer.print("Santaness = " + SantaTama.santaness); 
         }
       } else {
         if (SantaTama.snacks < 4) {
@@ -115,6 +117,8 @@ public class SantaButtonB {
       MainActivity.catchingUp = false;
     } else if (MainActivity.state.equals("ending")) {
       SantaEndingPainter.phase++;
+    } else if (MainActivity.state.equals("dead")) {
+      SantaTama.reset();
     }
   }
 }

@@ -13,7 +13,7 @@ public class P2ButtonC {
       MainActivity.tv.setText(MainActivity.icon_list[MainActivity.icon_number]);
     }
     else if (MainActivity.state.equals("food choice")) {
-      MainActivity.state="idle";
+      MainActivity.state = "idle";
       Tama.x = 16 - Tama.W/2;
     }
     else if (MainActivity.state.equals("saying no food")) {
@@ -49,18 +49,18 @@ public class P2ButtonC {
     }
     else if (MainActivity.state.equals("Menu")){
       MainActivity.state = "idle";
-      MainActivity.menu_index=0;
+      MainActivity.menu_index = 0;
       MainActivity.tv.setText("Menu");
-      MainActivity.displayVariables=false;
+      MainActivity.displayVariables = false;
     }
-    else if (MainActivity.state.equals("dead1")){
-      MainActivity.state="dead2";
+    else if (MainActivity.state.equals("dead")){
+      MainActivity.state = "dead2";
     }
     else if (MainActivity.state.equals("dead2")){
-      MainActivity.state="dead1";
+      MainActivity.state = "dead";
     }
     else if (MainActivity.state.equals("scolded")){
-      MainActivity.state="idle";
+      MainActivity.state = "idle";
       Animations.animation_counter=0;
     } else if (MainActivity.state.equals("clock")) {
       MainActivity.debugCounter++;

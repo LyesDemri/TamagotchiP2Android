@@ -8,7 +8,7 @@ public class P2HappyUpdater extends HappyUpdater {
          P2Tama.careMisses++;
       }
       if ( Tama.timeSinceBored == 24*3600) {
-        MainActivity.state = "dead1";
+        MainActivity.state = "dead";
          Tama.isAlive = false;
         Utils.notifyUser(Tama.name + " left because of boredom","call");
       }

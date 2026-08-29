@@ -25,13 +25,12 @@ public class SantaStatsPainter extends StatsPainter {
     } else if (MainActivity.state.equals("StatScreen2")) {
       drawSpriteAt("distance_jp", 0, 0);
       drawSpriteAt("discipline_bar", 0, 8);
+      for (int i = 0; i < SantaTama.distance; i++) {
+        drawDotAt(i*2 + 3, 11);
+        drawDotAt(i*2 + 3, 12);
+      }
     } else if (MainActivity.state.equals("StatScreen3")) {
       drawSpriteAt("santarashisa_jp", 0, 0);
-      /*
-      for (int j = 0; j < SantaTama.santaness; j++) {
-        drawSpriteAt("bell_empty",j*8,8);
-      }
-      */
       drawHeartScreen("santarashisa_jp", SantaTama.santaness, "bell_empty", "bell_full");
     }
     else if (MainActivity.state.equals("StatScreen4")) {

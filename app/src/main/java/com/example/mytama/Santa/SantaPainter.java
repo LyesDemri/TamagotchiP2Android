@@ -74,6 +74,8 @@ public class SantaPainter extends Painter {
           SantaDyingPainter.draw();
         } else if (MainActivity.state.equals("ending")){
           SantaEndingPainter.draw();
+        } else if (MainActivity.state.equals("dead")) {
+          SantaDyingPainter.drawDead();
         }
         
         BlackScreenPainter.drawPixelGrid();      

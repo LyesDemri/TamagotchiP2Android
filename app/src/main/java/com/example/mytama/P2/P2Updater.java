@@ -24,7 +24,7 @@ public class P2Updater extends Updater {
       }
       //Death stuff
       if (Tama.t == 25*24*3600 || P2Tama.careMisses >= 10 || P2Tama.disciplineMistakes >= 10) {
-        MainActivity.state = "dead1";
+        MainActivity.state = "dead";
         Tama.isAlive = false;
       }
     } 

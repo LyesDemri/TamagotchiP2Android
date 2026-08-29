@@ -14,7 +14,7 @@ public class NoPoopPainter extends Painter {
         Tama.x = 8;
       }
     }
-    else if (MainActivity.state.equals("pooping")) {
+    else if (MainActivity.state.equals("pooping") && !MainActivity.catchingUp) {
       if (Animations.animation_counter > 8)
         drawSpriteAt(P2Graphics.hashMap.get(Tama.character+"_no_1"), (16-W/2+MainActivity.even), y);
       else {

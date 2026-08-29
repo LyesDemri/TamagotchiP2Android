@@ -47,7 +47,7 @@ public class SicknessUpdater {
         P2Tama.careMisses++;
       }
       if (P2Tama.timeSinceSick == 12*3600) {
-        MainActivity.state = "dead1";
+        MainActivity.state = "dead";
         Tama.isAlive = false;
       }
     }

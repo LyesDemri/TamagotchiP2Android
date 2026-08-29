@@ -108,13 +108,15 @@ public class MainActivity extends Activity {
     Tama.notificationsSent = 0;
     Tama.updatesWhileAbsent = 0;
     myHandler.removeCallbacks(myRunnable.runnable);
-    if (Tama.isAlive) {
+    
+    
+    //if (Tama.isAlive) {
       DataSaverLoader.saveData();
       alarmMgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                                    SystemClock.elapsedRealtime() + 600*1000,
                                    600*1000,
                                    alarmIntent);
-    }
+    //}
     isOpen = false;
   }
 

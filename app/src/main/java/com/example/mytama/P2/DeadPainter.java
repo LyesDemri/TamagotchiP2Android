@@ -4,7 +4,7 @@ import android.graphics.Rect;
 
 public class DeadPainter extends Painter {
   public static void draw() {
-    if (MainActivity.state.equals("dead1")) {
+    if (MainActivity.state.equals("dead")) {
       if (MainActivity.even==1)
         canvas.drawBitmap(P2Graphics.hashMap.get("ufo"), null, new Rect(0+Screen.offsetX,0+Screen.offsetY,160+Screen.offsetX,160+Screen.offsetY),paint);
       else

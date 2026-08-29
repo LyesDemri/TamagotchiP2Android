@@ -111,6 +111,7 @@ public class DataSaverLoader {
       long currentTime = new Date().getTime();
       Tama.timeSinceLeft = Math.round((double)((currentTime-TimeWizard.getTamagotchiLongTime())/1000));
       Graphics.loadCharacterGraphics();
+      
       catchUp();
       Printer.print(Tama.name);
       Printer.append("\n" + Tama.updatesWhileAbsent + " updates while absent", false);
@@ -137,20 +138,18 @@ public class DataSaverLoader {
   public static void catchUp() {
     MainActivity.isOpen = false;
     MainActivity.catchingUp = true;
-    if (Tama.timeSinceLeft <= 3*24*3600) {
-      if (Tama.isAlive) {
-        for (int i = 0; i < Tama.timeSinceLeft; i++) {
-          Updater.update();
-        }
-        if (Tama.isAlive) {
-          MainActivity.state = "idle";
-        } else {
-          MainActivity.state = "dead1";
-        }
+    if (Tama.timeSinceLeft <= 3*24*3600 && Tama.isAlive) {
+      //Printer.print("Tama is alive and you left for less than 3 days");
+      for (int i = 0; i < Tama.timeSinceLeft; i++) {
+        Updater.update();
       }
-    } else if (MainActivity.version.equals("P2")){
+      //Printer.print("Updated");
+      if (Tama.isAlive) MainActivity.state = "idle";
+      else MainActivity.state = "dead";
+    } else {
+      //Printer.print("Tama was dead when you left or you left for more than 3 days");
       Tama.isAlive = false;
-      MainActivity.state = "dead1";
+      MainActivity.state = "dead";
     }
     MainActivity.isOpen = true;
     MainActivity.catchingUp = false;

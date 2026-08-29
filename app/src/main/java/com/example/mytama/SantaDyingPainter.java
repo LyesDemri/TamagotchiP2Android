@@ -29,7 +29,18 @@ public class SantaDyingPainter extends SantaPainter {
     if (j++ == phaseDurations[phase]){
       j = 0;
       if (phase < 3) phase++;
-      else SantaTama.reset();
+      else {
+        SantaTama.isAlive = false;
+        MainActivity.state = "dead";
+      }
     }
+  }
+  
+  public static void drawDead() {
+    int k = ((int)(j / 25)) == 0 ? 1 : 2;
+    drawSpriteAt("cabin_idle_" + k, 8, 0);
+    Printer.print("Press B to restart");
+    Printer.append("\nisAlive = " + SantaTama.isAlive);
+    j = (j + 1) % 50;
   }
 }

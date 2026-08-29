@@ -62,7 +62,7 @@ public class SantaTama extends Tama {
     endingPlayed = false;
     arrivedOnTime = false;
     
-    bag = new int[]{10, 10, 10, 10, 10, 10};
+    bag = new int[]{-1, -1, -1, -1, -1, -1};
     santaObjects = new int[]{0, 0, 0, 0};
     companion = "";
     santaness = 0;
@@ -101,6 +101,7 @@ public class SantaTama extends Tama {
   public static void die(){
     SantaDyingPainter.prepareAnimation();
     MainActivity.state = "dying";
+    Tama.isAlive = false;
   }
   
   public static void runEnding() {

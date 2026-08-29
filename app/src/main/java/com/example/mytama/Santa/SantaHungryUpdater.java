@@ -14,7 +14,6 @@ public class SantaHungryUpdater extends HungryUpdater {
         SantaTama.ttlhungryh = SantaTama.hghlp;
         if (SantaTama.stomach == 0) {
           if (SantaTama.food > 0) {
-            //Eat random amount
             eatRandomAmount();
           } else {
             Utils.notifyUser(Tama.character + " is hungry", "");
@@ -22,15 +21,15 @@ public class SantaHungryUpdater extends HungryUpdater {
         }
       }
     }
-    if (SantaTama.ttlhungryh == -900) {
+    if (SantaTama.ttlhungryh == -900 && !Tama.sleeping) {
       SantaTama.tier--;
-    } else if (SantaTama.ttlhungryh == -12*3600) {
-      SantaTama.isAlive = false;
+    } else if (SantaTama.ttlhungryh == -12*3600 && !Tama.sleeping) {
+      SantaTama.die();
     }
-    if (SantaTama.timeToEat == 0) {
+    if (SantaTama.timeToEat == 0 && !Tama.sleeping) {
       eatRandomAmount();
       SantaTama.timeToEat = 3600;
-      SantaTama.ttlhungryh = 3600;//find a better value and whether to keep this
+      SantaTama.ttlhungryh = 3600; //find a better value and whether to keep this
     }
   }
   

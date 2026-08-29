@@ -13,9 +13,10 @@ public class SantaGame {
     double x = Math.random();
     try {
     if (x > 0.5) {
-      if (x > 0.95) {
+      if (x > 0.95 && AdventCalendar.visitedEveryDay() && SantaTama.age > 102) {
         result = "object";
-        receivedObjectIndex = (int)(Math.floor(Math.random()*6));
+        int k = (SantaTama.santaness == 4) ? 6 : 4;
+        receivedObjectIndex = (int)(Math.floor(Math.random()*k));
         receivedObject = SantaTama.objects[receivedObjectIndex];
         SantaTama.receiveObject(receivedObjectIndex);
       } else {
@@ -28,11 +29,11 @@ public class SantaGame {
     }
     selectedChimney = 0;
     } catch (Exception e) {
-      Printer.print(e, false);
-      Printer.append("received object index: " + receivedObjectIndex, false);
-      Printer.append("received object: " + receivedObject, false);
-      Printer.append("bag: " + SantaTama.bag, false);
-      Printer.append("objects: " + SantaTama.objects, false);
+      Printer.append(e, false);
+      Printer.append("\nreceived object index: " + receivedObjectIndex, false);
+      Printer.append("\nreceived object: " + receivedObject, false);
+      Printer.append("\nbag: " + SantaTama.bag, false);
+      Printer.append("\nobjects: " + SantaTama.objects, false);
     }
   }
 }
