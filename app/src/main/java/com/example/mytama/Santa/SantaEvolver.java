@@ -24,24 +24,39 @@ public class SantaEvolver {
     tier = Math.max(tier, 0);
     String oldCharacter = SantaTama.character;
     if (objectIndex <= 2) {
+      //we're using a yarn ball, wrapping paper, or a chisel
       newCharacter = evolutionChart[objectIndex][tier];
       object = objectsChart[objectIndex][tier];
       if (tier == 3) {
+        //if we're receiving a Santa item, count it
+        //also, the speed is now dependent on the received object
         SantaTama.santaObjects[objectIndex] = 1;
+        SantaTama.characterSpeed = objectIndex + 3;
+      } else {
+        // if we're just receiving a simple object, the 
+        //speed is 1 or 2
+        SantaTama.characterSpeed = (tier == 0) ? 1 : 2;
       }
     } else if (objectIndex == 3) {
+      //if we're receiving a companion, character stays the same
+      //we now just have a companion
       newCharacter = oldCharacter;
       SantaTama.companion = evolutionChart[objectIndex][tier];
-      object = "santa_egg_hatching";
+      object = "santa_egg_hatching"; // for animation
       if (tier == 3) {
         SantaTama.santaObjects[objectIndex] = 1;
       }
+      //character speed isn't modified here for the companion
+      //instead, the DistanceUpdater will just add 1 if we have
+      //a companion.
     } else if (objectIndex == 4) {
       newCharacter = "missy_santa";
       object = "perfume";
+      SantaTama.characterSpeed = 6;
     } else if (objectIndex == 5) {
       newCharacter = "prank_santa";
       object = "poison";
+      SantaTama.characterSpeed = 6;
     }
         
     SantaTama.santaness = Utils.sum(SantaTama.santaObjects);

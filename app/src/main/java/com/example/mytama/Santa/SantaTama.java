@@ -27,6 +27,10 @@ public class SantaTama extends Tama {
   static public int timeToSnack;
   public static int santaness;
   public static int distance;
+  public static int characterSpeed;
+  public static int ttleave;
+  public static double steps;
+  
   static public void reset() {
     t = 0;
     character = "cabin";
@@ -54,7 +58,7 @@ public class SantaTama extends Tama {
     timeToSnack = 3600;
     distance = 0;
     
-    TimeWizard.computeSleepWakeTimes(20,9);
+    TimeWizard.computeSleepWakeTimes(21,8);
     sleeping = false;
     sulking = false;
     left = false;
@@ -67,7 +71,11 @@ public class SantaTama extends Tama {
     companion = "";
     santaness = 0;
     
+    characterSpeed = 0;
+    steps = 0;
+    
     MainActivity.menu_index = 0;
+    ttleave = 5*3600;
     weight = 100;
     idealWeight = 5;
     age = 100;
@@ -83,10 +91,13 @@ public class SantaTama extends Tama {
       Printer.print("Name:" + name+
           "\nCurrent time: " + t +
           "\n" + age+"yr, " + weight + "oz, " + stomach + "hg, " + happy + "hp" + 
-          "\nTSHgC=" + timeSinceHungryChanged+"/" + hghlp +
-          "\nTSH=" + timeSinceHungry +
-          "\nTSHpC=" + timeSinceHappyChanged + "/" + hphlp +
-          "\nTSB=" + timeSinceBored +
+          "\n Distance=" + distance +
+          "\n Steps=" + steps +
+          "\n Santaness=" + santaness +
+          "\n Food stock=" + food +
+          "\n Snack stock=" + snacks +
+          "\n Tier = " + tier +
+          "\n Time to leave=" + ttleave +
           "\nTTS=" + timeToSleep +
           "\nTTW=" + timeToWake +
           "\nalive=" + isAlive +

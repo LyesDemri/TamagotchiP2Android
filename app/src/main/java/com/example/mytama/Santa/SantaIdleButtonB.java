@@ -4,7 +4,7 @@ public class SantaIdleButtonB extends IdleButtonB {
   public static void handle() {
     if (MainActivity.icon_list[MainActivity.icon_number] == "Status") {
       MainActivity.state = "StatScreen0";
-    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Food" && Tama.isAlive) {
+    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Food" && Tama.isAlive && !SantaTama.left) {
       if (!Tama.sleeping) {
         if (SantaTama.sulking) {
           SantaSulkingPainter.prepareAnimation();
@@ -15,19 +15,19 @@ public class SantaIdleButtonB extends IdleButtonB {
           MainActivity.myRunnable.j = 0;
         }
       }
-    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Game" && Tama.isAlive) {
+    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Game" && Tama.isAlive && !SantaTama.left) {
       if (!Tama.sleeping) {
         if (SantaTama.sulking) {
           SantaSulkingPainter.prepareAnimation();
           MainActivity.state = "sulking";
-        } else if (!SantaTama.left) {
+        } else {
           SantaGame.selectedChimney = 0;
           MainActivity.state = "game intro screen";
           Sounds.playSound("game_begin");
           MainActivity.myRunnable.k = 0;
         }
       }
-    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Present" && Tama.isAlive) {
+    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Present" && Tama.isAlive && !SantaTama.left) {
       if (!Tama.sleeping) {
         if (SantaTama.sulking) {
           SantaTama.sulking = false;
@@ -39,14 +39,32 @@ public class SantaIdleButtonB extends IdleButtonB {
           MainActivity.state = "bag";
         }
       }
-    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Super Kuchipatchi" && Tama.isAlive && !SantaTama.sulking) {
+    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Super Kuchipatchi" && Tama.isAlive) {
+      try {
       if (!Tama.sleeping) {
-        SuperKuchipatchiPainter.initializeAnimation("");
+        if (SantaTama.left) {
+          SuperKuchipatchiPainter.initializeAnimation("fetching");
+          SantaTama.left = false;
+          SantaTama.tier = Math.min(SantaTama.tier + 1, 4);
+          SantaTama.ttleave = (5 + SantaTama.tier + SantaTama.santaness)*3600;
+          Printer.print("Tier = " + SantaTama.tier);
+          Printer.append("Time to leave = " + SantaTama.ttleave);
+          if (SantaTama.sulking) {
+            SantaTama.timeSinceSulking = 0;
+          }
+        } else {
+          Printer.print("Initializing animation");
+          SuperKuchipatchiPainter.initializeAnimation("");
+        }
         MainActivity.state = "super kuchipatchi";
       }
-    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Advent Calendar") {
+      } catch (Exception e) {
+        Printer.print("Error calling Super Kuchipatchi");
+        Printer.append("\n" + e.getMessage());
+      }
+    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Advent Calendar" && !SantaTama.left) {
       MainActivity.state = "advent calendar";
-    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Tama TV"){
+    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Tama TV" && !SantaTama.left){
       MainActivity.state = "tama tv";
     } else if (MainActivity.icon_list[MainActivity.icon_number] == "Menu") {
       //Menu:

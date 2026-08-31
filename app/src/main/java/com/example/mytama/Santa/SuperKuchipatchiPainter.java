@@ -4,15 +4,19 @@ public class SuperKuchipatchiPainter extends SantaPainter {
   static int phase = 0;
   static int j = 0;
   static int x = 32;
+  static boolean returnWithCharacter = false;
   
   public static void initializeAnimation(String animation) {
+    Printer.print("We are in initializeAnimation()");
     j = 0;
     phase = 0;
-    if (!animation.equals("leaving")) x = 32;
+    if (animation.equals("fetching") || animation.equals("")) x = 32;
+    if (animation.equals("fetching")) returnWithCharacter = true;
+    Printer.print("We are leaving initializeAnimation()");
   }
     
   public static void drawLeaving() {
-    Printer.print(j);
+    Printer.print("We are in drawLeaving()");
     if (phase == 0) {
       drawSpriteAt(Tama.character+"_happy", Tama.x, Tama.y);
       if ((j++) == 25){
@@ -26,14 +30,16 @@ public class SuperKuchipatchiPainter extends SantaPainter {
         SantaTama.left = true;
       }      
     }
+    Printer.print("We are leaving drawLeaving");
   }
   
   public static void draw() {
+    Printer.print("We are in SuperKuchiPatchiPainter.draw()");
     if (phase == 0) {
       drawSpriteAt("super_kuchipatchi_flying", x, 0);
       x--;
       if (x == -16) {
-        if (SantaTama.left) {
+        if (returnWithCharacter) {
           phase = 1;
           j=5;
         } else {
@@ -65,12 +71,11 @@ public class SuperKuchipatchiPainter extends SantaPainter {
       j++;
       if (j == 50) {
         MainActivity.state = "idle";
-        SantaTama.left = false;
         Tama.x = 8;
-        SantaTama.tier++;
       }
     } else {
       Printer.log("Unexpected value for phase");
     }
+    Printer.print("We are in SuperKuchiPatchiPainter.draw()");
   }
 }
