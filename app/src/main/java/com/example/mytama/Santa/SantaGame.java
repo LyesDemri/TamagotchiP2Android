@@ -24,6 +24,7 @@ public class SantaGame {
         SantaGamePainter.sleepingTamaIndex = (int)(Math.floor(Math.random()*3));
       }
       SantaTama.happy = Math.min(SantaTama.happy + 1, 4);
+      SantaTama.ttlhappyh = 3600;
     } else {
       result = "soot";
     }

@@ -18,6 +18,7 @@ public class SantaButtonB {
             SantaTama.weight = Math.min(SantaTama.weight + 1, 199);
             Tama.timeSinceHungryChanged = 0;
             Tama.timeSinceHungry = 0;
+            SantaTama.ttlhungryh = 3600;
           } else {
             StoringPainter.startStoringAnimation();
             SantaTama.food = Math.min(SantaTama.food + 1, 4);
@@ -35,6 +36,7 @@ public class SantaButtonB {
             SantaTama.weight = Math.min(SantaTama.weight + 2, 199);
             Tama.timeSinceBored = 0;
             Tama.timeSinceHappyChanged = 0;
+            SantaTama.ttlhappyh = 3600;
           } else {
             StoringPainter.startStoringAnimation();
             SantaTama.snacks = Math.min(SantaTama.snacks + 1, 4);

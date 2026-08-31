@@ -19,15 +19,14 @@ public class SantaHappyUpdater extends HappyUpdater {
         }
       }
     }
-    if (SantaTama.ttlhappyh == -900) {
-      SantaTama.tier--;
-    } else if (SantaTama.ttlhappyh == -12*3600) {
-      SantaTama.isAlive = false;
+    if ((((SantaTama.ttlhappyh == (-6*3600)))  // first time around, sulk after 6 hrs
+          || ((SantaTama.ttlhappyh < -6*3600) && ((SantaTama.ttlhappyh%(-3600)) == 0))) //after that, sulk after 1 hr
+        && !Tama.sleeping) {
+      SantaTama.sulking = true;
     }
     if (SantaTama.timeToSnack == 0) {
       eatRandomAmount();
       SantaTama.timeToSnack = 3600;
-      SantaTama.ttlhappyh = 3600;//find a better value and whether to keep this
     }
   }
   
@@ -37,6 +36,8 @@ public class SantaHappyUpdater extends HappyUpdater {
     if (amount > 0) {
       MainActivity.food_index = 1;
       MainActivity.state = "eating";
+      SantaTama.ttlhappyh = 3600;//find a better value and whether to keep this
+
     }
     SantaTama.happy += amount;
     SantaTama.snacks -= amount;

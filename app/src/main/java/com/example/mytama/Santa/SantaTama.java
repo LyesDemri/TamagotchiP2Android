@@ -52,8 +52,8 @@ public class SantaTama extends Tama {
     t1970birth = TimeWizard.getTime();
     adventVisits = new int[]{0};
     tier = 0;
-    ttlhungryh = 3600;
-    ttlhappyh = 3600;
+    ttlhungryh = 0;
+    ttlhappyh = 0;
     timeToEat = 3600;
     timeToSnack = 3600;
     distance = 0;
