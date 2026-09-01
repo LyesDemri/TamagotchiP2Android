@@ -1,6 +1,6 @@
 # TamagotchiP2Android
 
-September 2025: <br/>
+September 2026: <br/>
 The Santaclautchi should now be completely playable, but missing a few sounds. I have 2 or 3 improvement ideas I'd like to implement to spice things up compared to the original.
 
 April 2026 Update: <br/>
