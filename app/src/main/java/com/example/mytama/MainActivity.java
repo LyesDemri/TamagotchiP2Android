@@ -138,10 +138,14 @@ public class MainActivity extends Activity {
   }
   
   public static void fillIconList() {
-    if (MainActivity.version.equals("P2")){
-      MainActivity.icon_list = new String[]{"", "Food","Lights","Game","Medicine","Toilet","Status","Discipline","Menu"};
-    } else {
-      MainActivity.icon_list = new String[]{"", "Status","Food","Game","Present","Super Kuchipatchi","Advent Calendar","Tama TV","Menu"};
+    try {
+      if (MainActivity.version.equals("P2")){
+        MainActivity.icon_list = new String[]{"", "Food","Lights","Game","Medicine","Toilet","Status","Discipline","Menu"};
+      } else {
+        MainActivity.icon_list = new String[]{"", "Status","Food","Game","Present","Super Kuchipatchi","Advent Calendar","Tama TV","Menu"};
+      }
+    } catch (Exception e) {
+      Printer.print("Error filling icon list: " + e.getMessage());
     }
   }
 }

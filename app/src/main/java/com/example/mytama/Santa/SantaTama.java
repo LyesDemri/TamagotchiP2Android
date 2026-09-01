@@ -45,7 +45,7 @@ public class SantaTama extends Tama {
     hphlp = 3600; 
     happy = 0; 
     timeSinceHappyChanged = 0;
-    food = 4; 
+    food = 0; 
     snacks = 0; 
     timeSinceBored = 0;
     //get current millisecond relative to 1970 

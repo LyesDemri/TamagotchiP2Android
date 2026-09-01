@@ -14,7 +14,7 @@ public class ResetScreen {
         //if no name was input, go back to main screen
         if (Tama.inputName.length() == 0) {
           if (!Tama.name.equals("")) {
-            MainActivity.state = "idle";
+            MainActivity.state = MainActivity.oldState;
             MainActivity.menu_index = 0;
           } else {
             Printer.print("Please name your first tama!", false);

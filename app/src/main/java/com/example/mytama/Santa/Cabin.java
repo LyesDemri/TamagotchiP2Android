@@ -14,7 +14,7 @@ public class Cabin {
         Tama.x = 12;
         Tama.y = 0;
         Sounds.playSound("santa_call_sound");
-        Utils.notifyUser("Santatchi got out of his cabin!", "santa_call_sound");
+        Utils.notifyUser(Tama.name + " got out of his cabin!", "santa_call_sound");
       }
     }
   }

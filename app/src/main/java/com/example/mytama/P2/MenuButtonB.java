@@ -7,6 +7,7 @@ public class MenuButtonB {
       Tama.reset();
     }
     if (MainActivity.menu_index==2) {
+      MainActivity.oldState = MainActivity.state;
       MainActivity.state = "version_select_screen";
     } else if (MainActivity.menu_index==3)
       MainActivity.state = "tama_select_screen";
