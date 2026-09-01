@@ -1,8 +1,5 @@
 package com.example.mytama;
 
-import android.graphics.Rect;
-import android.view.animation.Animation;
-
 public class SantaGamePainter extends Painter {
   static int sleepingTamaIndex = 0;
   static int offsetX = (int)(Screen.surfW/2 - 320/2);

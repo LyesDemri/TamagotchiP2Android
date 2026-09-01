@@ -17,7 +17,7 @@ public class StoringPainter extends Painter {
   }
   
   public static void draw() {
-    Printer.print("Storing:" + object + ", " + disappear,false);
+    Printer.log("Storing:" + object + ", " + disappear);
     i = (Animations.animation_counter + 1) % 2;
     alt = new String[]{object, disappear}; 
     j = (int)MainActivity.myRunnable.j / 3;

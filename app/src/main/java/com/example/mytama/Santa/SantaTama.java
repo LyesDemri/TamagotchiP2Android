@@ -45,7 +45,7 @@ public class SantaTama extends Tama {
     hphlp = 3600; 
     happy = 0; 
     timeSinceHappyChanged = 0;
-    food = 0; 
+    food = 4; 
     snacks = 0; 
     timeSinceBored = 0;
     //get current millisecond relative to 1970 
@@ -113,6 +113,7 @@ public class SantaTama extends Tama {
     SantaDyingPainter.prepareAnimation();
     MainActivity.state = "dying";
     Tama.isAlive = false;
+    Utils.notifyUser(Tama.name + " returned home", "");
   }
   
   public static void runEnding() {

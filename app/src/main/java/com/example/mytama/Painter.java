@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import java.lang.Math;
 
 public class Painter {
   static int i;
@@ -61,6 +60,7 @@ public class Painter {
     dst.setDensity(DisplayMetrics.DENSITY_DEFAULT);
     return dst;
   }
+  
   
   public static void drawSpriteAt(Bitmap sprite, int x, int y){
     x = x*10 + Screen.offsetX;

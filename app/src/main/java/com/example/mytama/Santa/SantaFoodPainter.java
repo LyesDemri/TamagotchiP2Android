@@ -11,6 +11,7 @@ public class SantaFoodPainter extends FoodPainter {
       i = 7 - Animations.animation_counter;
       drawSpriteAt(Tama.character + eatingStages[Animations.santaEatAnim[i]], 16 - Animations.santaEatAnim[i], y);
       if (i < 6) {
+        Printer.logPrint("i < 6");
         drawSpriteAt(SantaGraphics.foods[MainActivity.food_index] + (Animations.santaFoodAnim[i] + 1), 8, 8);
       }
       if (MainActivity.myRunnable.j == 0 || MainActivity.myRunnable.j == 13) {

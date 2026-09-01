@@ -16,16 +16,16 @@ public class SantaHungryUpdater extends HungryUpdater {
           if (SantaTama.food > 0) {
             eatRandomAmount();
           } else {
-            Utils.notifyUser(Tama.character + " is hungry", "");
+            Utils.notifyUser(Tama.name + " is hungry", "santa_call_sound");
           }
         }
       }
     }
-    Printer.print("Ttlhungryh="+SantaTama.ttlhungryh);
     if ((((SantaTama.ttlhungryh == (-6*3600)))  // first time around, sulk after 6 hrs
           || ((SantaTama.ttlhungryh < -6*3600) && ((SantaTama.ttlhungryh%(-3600)) == 0))) //after that, sulk after 1 hr
         && !Tama.sleeping) {
       SantaTama.sulking = true;
+      Utils.notifyUser(Tama.name + " is sulking", "santa_call_sound");
     }
     if (SantaTama.timeToEat == 0 && !Tama.sleeping) {
       eatRandomAmount();
@@ -38,9 +38,11 @@ public class SantaHungryUpdater extends HungryUpdater {
     int amount = (int)(Math.floor(Math.random()*max));
     if (amount > 0) {
       MainActivity.food_index = 0;
-      MainActivity.oldState = "idle";
+      MainActivity.oldState = MainActivity.state; // not too sure about this
+      Animations.animation_counter = 7;
       MainActivity.state = "eating";
       SantaTama.ttlhungryh = 3600; //find a better value and whether to keep this
+      Utils.notifyUser(Tama.name + " is eating", "santa_small_beep");
     }
     SantaTama.stomach += amount;
     SantaTama.food -= amount;

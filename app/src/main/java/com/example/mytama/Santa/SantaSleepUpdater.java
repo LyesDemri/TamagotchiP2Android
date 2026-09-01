@@ -1,12 +1,10 @@
 package com.example.mytama;
 
-import java.util.Date;
-
 public class SantaSleepUpdater extends SleepUpdater {
   public static void update() {
-    int currentHour = new Date().getHours();
-    int currentMinute = new Date().getMinutes();
-    int currentSecond = new Date().getSeconds();
+    //int currentHour = new Date().getHours();
+    //int currentMinute = new Date().getMinutes();
+   // int currentSecond = new Date().getSeconds();
     
     if (Tama.t == Tama.timeToSleep) {
       Tama.sleeping = true;

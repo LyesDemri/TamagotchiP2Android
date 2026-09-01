@@ -53,7 +53,6 @@ public class SantaIdleButtonB extends IdleButtonB {
             SantaTama.timeSinceSulking = 0;
           }
         } else {
-          Printer.print("Initializing animation");
           SuperKuchipatchiPainter.initializeAnimation("");
         }
         MainActivity.state = "super kuchipatchi";

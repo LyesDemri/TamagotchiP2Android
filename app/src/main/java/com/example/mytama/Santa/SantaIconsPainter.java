@@ -20,7 +20,10 @@ public class SantaIconsPainter extends IconsPainter {
       canvas.drawBitmap(SantaGraphics.hashMap.get("santa_tv_icon"), null, new Rect(160+20+Screen.offsetX,160+20+Screen.offsetY,240+Screen.offsetX-20,240+Screen.offsetY-20),paint);
     
     //Code for attention icon:
-    if (Tama.timeSinceHungry > 0 && Tama.timeSinceHungry < 900 && Tama.stomach == 0 || true) {
+    if (SantaTama.ttlhungryh < 0 && SantaTama.ttlhungryh > -900 ||
+        SantaTama.ttlhappyh < 0 && SantaTama.ttlhappyh > -900 ||
+        SantaTama.timeSinceSulking > 0 && SantaTama.timeSinceSulking < 900 ||
+        SantaTama.ttleave < 0 && SantaTama.ttleave > -900) {
       canvas.drawBitmap(SantaGraphics.hashMap.get("santa_attention_icon"), null, new Rect(240+20+Screen.offsetX, 160+20+Screen.offsetY, 320+Screen.offsetX-20, 240+Screen.offsetY-20),paint);
     }
   }

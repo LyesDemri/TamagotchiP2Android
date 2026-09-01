@@ -110,11 +110,13 @@ public class SantaButtonB {
         MainActivity.state = "transforming";
       }
     } else if (MainActivity.state.equals("tama tv")) {
-      MainActivity.catchingUp = true;
-      for (int i = 0; i < 3600*24; i++) {
-        Updater.update();
+      if (MainActivity.debugMode == 1){
+        MainActivity.catchingUp = true;
+        for (int i = 0; i < 3600*24; i++) {
+          Updater.update();
+        }
+        MainActivity.catchingUp = false;
       }
-      MainActivity.catchingUp = false;
     } else if (MainActivity.state.equals("ending")) {
       SantaEndingPainter.phase++;
     } else if (MainActivity.state.equals("dead")) {

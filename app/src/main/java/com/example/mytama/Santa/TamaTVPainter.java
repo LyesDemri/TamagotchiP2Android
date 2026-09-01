@@ -50,8 +50,8 @@ public class TamaTVPainter extends Painter {
       if (SantaTama.arrivedOnTime) drawSpriteAt("santaclautchi_mametchi_" + phase, 16, 0);
       else drawSpriteAt("santaclautchi_oyajitchi_" + phase, 16, 0);
     }
-    Printer.print("age:" + Tama.age + "\nt = " + Tama.t);
-    Printer.append("\n" + TimeWizard.getTamagotchiTime());
+    Printer.logPrint("age:" + Tama.age + "\nt = " + Tama.t);
+    Printer.logAppend("\n" + TimeWizard.getTamagotchiTime());
     
     k = (k+1) % 50;
   }

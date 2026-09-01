@@ -1,7 +1,5 @@
 package com.example.mytama;
 
-import java.io.File;
-
 public class Printer {
   static int msgCounter = 0;
   
@@ -37,6 +35,18 @@ public class Printer {
   public static void log(Object text) {
     if (MainActivity.debugMode == 1 || Tama.name.startsWith("DEBUG")) {
       append(text, true);
+    }
+  }
+  
+  public static void logPrint(Object text) {
+    if (MainActivity.debugMode == 1 || Tama.name.startsWith("DEBUG")) {
+      print(text, false);
+    }
+  }
+  
+  public static void logAppend(Object text) {
+    if (MainActivity.debugMode == 1 || Tama.name.startsWith("DEBUG")) {
+      append(text, false);
     }
   }
 }

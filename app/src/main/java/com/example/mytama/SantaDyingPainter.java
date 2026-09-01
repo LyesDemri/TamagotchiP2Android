@@ -40,7 +40,6 @@ public class SantaDyingPainter extends SantaPainter {
     int k = ((int)(j / 25)) == 0 ? 1 : 2;
     drawSpriteAt("cabin_idle_" + k, 8, 0);
     Printer.print("Press B to restart");
-    Printer.append("\nisAlive = " + SantaTama.isAlive);
     j = (j + 1) % 50;
   }
 }

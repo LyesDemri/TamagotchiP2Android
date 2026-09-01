@@ -1,10 +1,5 @@
 package com.example.mytama;
 
-import android.graphics.Rect;
-import android.graphics.Bitmap;
-import android.util.DisplayMetrics;
-import android.graphics.Canvas;
-
 public class SantaIdlePainter extends SantaPainter {
   static boolean goingBack = false;
   static int jumpCtr = 0;

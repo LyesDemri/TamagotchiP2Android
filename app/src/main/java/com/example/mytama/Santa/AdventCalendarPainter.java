@@ -10,9 +10,9 @@ public class AdventCalendarPainter extends Painter {
   }
   
   public static void drawIdleScreen(int phase) {
-    Printer.print("Advent Visits: ");
+    Printer.logPrint("Advent Visits: ");
     for (int i = 0; i < SantaTama.adventVisits.length; i++) {
-      Printer.append(SantaTama.adventVisits[i] +", ");
+      Printer.logAppend(SantaTama.adventVisits[i] +", ");
     }
     
     int month = TimeWizard.getTamagotchiMonth();

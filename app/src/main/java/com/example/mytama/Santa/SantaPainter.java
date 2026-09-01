@@ -1,12 +1,6 @@
 package com.example.mytama;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Rect;
-import java.lang.Math;
-import java.lang.reflect.Field;
 
 public class SantaPainter extends Painter {
   static double cabinCtr = 0;

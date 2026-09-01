@@ -21,10 +21,11 @@ public class SantaUpdater extends Updater  {
   }
   
   public static void updateDistance() {
-    SantaTama.steps += (SantaTama.tier + SantaTama.santaness + SantaTama.characterSpeed + 1)/SantaTama.weight;
+    SantaTama.steps += (Math.max(SantaTama.tier, 0) + SantaTama.santaness + SantaTama.characterSpeed + 1)/SantaTama.weight;
     SantaTama.distance = (int)(SantaTama.steps*14/50544);//50544 is the number of steps to do to reach the children
     SantaTama.distance = Math.min(SantaTama.distance, 14);
     if (SantaTama.distance >= 14) {
+      Utils.notifyUser(Tama.name + " is delivering the presents!", "cabin_exit");
       if (Tama.age <= 111 && !SantaTama.arrivedOnTime) {
         SantaTama.arrivedOnTime = true;
       }
@@ -67,7 +68,8 @@ public class SantaUpdater extends Updater  {
       //if we're not sulking, see if we should sulk
       if (!(Tama.t % 3600 == 0)) return;
       double x = Math.random();
-      if (x < (0.05 + (SantaTama.weight-100)/100)) {
+      if (x < (0.05 + (SantaTama.weight - 100)/100)) {
+        Utils.notifyUser(Tama.name + " is sulking", "santa_call_sound");
         SantaTama.sulking = true;
         SantaTama.timeSinceSulking = 0;
       }
@@ -77,12 +79,12 @@ public class SantaUpdater extends Updater  {
       if (SantaTama.timeSinceSulking == 900) {
         //after 15 minutes of sulking, lose a tier (and maybe die)
         SantaTama.tier--;
-        Printer.print("Tier = " + SantaTama.tier);
         if (SantaTama.tier < -4) SantaTama.die();
       } else if (SantaTama.timeSinceSulking == 3600) {
         //after 1 hour
         if (SantaTama.tier > -4) {
-          //leave
+          //leavesan
+          Utils.notifyUser(Tama.name + " fled!", "santa_call_sound");
           SantaTama.ttleave = 0;
           SuperKuchipatchiPainter.initializeAnimation("leaving");
           MainActivity.state = "leaving";

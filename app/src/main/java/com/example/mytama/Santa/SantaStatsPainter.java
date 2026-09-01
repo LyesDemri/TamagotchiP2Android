@@ -1,6 +1,5 @@
 package com.example.mytama;
 
-import android.graphics.Rect;
 import java.lang.Math;
 
 public class SantaStatsPainter extends StatsPainter {
@@ -29,8 +28,7 @@ public class SantaStatsPainter extends StatsPainter {
         drawDotAt(i*2 + 3, 11);
         drawDotAt(i*2 + 3, 12);
       }
-      Printer.print("Steps = " + SantaTama.steps);
-      Printer.append("\nDistance = " + SantaTama.distance);
+      Printer.logPrint("Steps = " + SantaTama.steps);
     } else if (MainActivity.state.equals("StatScreen3")) {
       drawSpriteAt("santarashisa_jp", 0, 0);
       drawHeartScreen("santarashisa_jp", SantaTama.santaness, "bell_empty", "bell_full");
