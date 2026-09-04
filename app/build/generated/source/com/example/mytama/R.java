@@ -632,11 +632,22 @@ public final class R {
         public static final int good_sound=0x7f050008;
         public static final int hatching_sound=0x7f050009;
         public static final int new_character=0x7f05000a;
-        public static final int reset_sound=0x7f05000b;
-        public static final int santa_call_sound=0x7f05000c;
-        public static final int santa_small_beep=0x7f05000d;
-        public static final int santa_validate_sound=0x7f05000e;
-        public static final int small_beep=0x7f05000f;
+        public static final int one_horse_open_sleigh=0x7f05000b;
+        public static final int opening_advent_calendar=0x7f05000c;
+        public static final int reset_sound=0x7f05000d;
+        public static final int santa_call_sound=0x7f05000e;
+        public static final int santa_changing_clothes=0x7f05000f;
+        public static final int santa_dying=0x7f050010;
+        public static final int santa_found_child=0x7f050011;
+        public static final int santa_found_soot=0x7f050012;
+        public static final int santa_game_start=0x7f050013;
+        public static final int santa_happy=0x7f050014;
+        public static final int santa_micro_beep=0x7f050015;
+        public static final int santa_shutting_door=0x7f050016;
+        public static final int santa_small_beep=0x7f050017;
+        public static final int santa_unhappy_sound=0x7f050018;
+        public static final int santa_validate_sound=0x7f050019;
+        public static final int small_beep=0x7f05001a;
     }
     public static final class string {
         public static final int app_name=0x7f070000;

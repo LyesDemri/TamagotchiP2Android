@@ -20,6 +20,7 @@ public class AdventCalendarPainter extends Painter {
     int[] monthDigits = Utils.numDecomposition(month);
     int[] dayDigits = Utils.numDecomposition(day);
     
+    if (k==0 && phase == 2) Sounds.playSound("opening_advent_calendar");
     drawSpriteAt("calendar_door_" + phase, 0, 0);
     if (monthDigits[0] != 0)
       drawSpriteAt("num" + monthDigits[0], 16, -1);
@@ -35,6 +36,7 @@ public class AdventCalendarPainter extends Painter {
     if (phase < 5) {
       drawIdleScreen(phase);
     } else {
+      if (k == 0) Sounds.playSound("one_horse_open_sleigh");
       drawSpriteAt(AdventCalendar.generatedObject, 0, 0);
       drawSpriteAt(Tama.character + "_happy" , 16, 0);
     }

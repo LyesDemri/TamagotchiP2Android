@@ -13,15 +13,20 @@ public class SantaGamePainter extends Painter {
   
   public static void showGameResult() {
     String result = SantaGame.result;
+    String sound =  "";
     if (result.equals("soot")) {
       drawSpriteAt(Tama.character+"_soot", 8, 0);
+      sound = "santa_found_soot";
     } else if (result.equals("tama")) {
       drawSpriteAt(sleepingTamas[sleepingTamaIndex], 0, 0);
       drawSpriteAt(Tama.character+"_idle_2", 16, 0);
+      sound = "santa_found_child";
     } else if (result.equals("object")) {
       drawSpriteAt(SantaGame.receivedObject, 0, 0);
       drawSpriteAt(Tama.character+"_idle_2", 16, 0);
+      sound = "one_horse_open_sleigh";
     }
+    if (Animations.animation_counter == 3) Sounds.playSound(sound);
     if (Animations.decreaseAnimationCounter()) {
       MainActivity.myRunnable.j = 0;
       Animations.animation_counter = 10;
@@ -57,6 +62,8 @@ public class SantaGamePainter extends Painter {
       Animations.animation_counter = 3;
       MainActivity.state = "show game result";
     }
+    if ((MainActivity.myRunnable.j == 0 || MainActivity.myRunnable.j == 13))
+      Sounds.playSound("santa_micro_beep");
   }
 
   public static void showGameIntroScreen() {    

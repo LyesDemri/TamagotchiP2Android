@@ -86,10 +86,15 @@ public class MainActivity extends Activity {
     MainActivity.isOpen = true;
     
     // Check if permission is granted
-    if (checkSelfPermission("android.permission.POST_NOTIFICATIONS") != android.content.pm.PackageManager.PERMISSION_GRANTED) {
-      // Request the permission
-      requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"}, 101);
+    try {
+      if (checkSelfPermission("android.permission.POST_NOTIFICATIONS") != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+        // Request the permission
+        //requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"}, 101);
+      }
+    } catch (Exception e){
+      Printer.print("Couldn't ask notification permission: " + e.getMessage());
     }
+    
     
     Sounds.loadSounds(this);
     Animations.loadAnimations();
@@ -121,15 +126,19 @@ public class MainActivity extends Activity {
   }
 
   @Override public void onResume() {
+    try {
     super.onResume();
-    notificationManager.cancelAll();
+    //notificationManager.cancelAll();
     if (DataSaverLoader.getSaveFiles().length > 0)
       state = "tama_select_screen";
     else
-      state = "reset_screen";
+      state = "version_select_screen";
     isOpen = true;
     myHandler.postDelayed(myRunnable.runnable,40);
     alarmMgr.cancel(alarmIntent);
+    } catch (Exception e) {
+      Printer.print("Error in MainActivity.onResume(): " + e.getMessage());
+    }
   }
   
   @Override public void onDestroy() {

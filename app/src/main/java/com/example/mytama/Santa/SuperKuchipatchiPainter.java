@@ -63,6 +63,7 @@ public class SuperKuchipatchiPainter extends SantaPainter {
     } else if (phase == 3) {
       drawSpriteAt("super_kuchipatchi", 16, 0);
       drawSpriteAt(Tama.character + "_unhappy_1", 0, 0);
+      if (j==0) Sounds.playSound("santa_found_child");
       j++;
       if (j == 50) {
         MainActivity.state = "idle";

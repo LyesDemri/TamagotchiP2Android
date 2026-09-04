@@ -27,6 +27,7 @@ public class StoringPainter extends Painter {
     if (Animations.animation_counter > 1) {
       drawSpriteAt(alt[j], pos, pos);
       drawSpriteAt(Tama.character + suffixes[i], 16, 0);
+      if (MainActivity.myRunnable.j == 13) Sounds.playSound("santa_happy");
     } else {
       drawSpriteAt(disappear, pos, pos);
       drawSpriteAt(Tama.character + "_idle_2", 16, 0);

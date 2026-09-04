@@ -46,8 +46,22 @@ public class Sounds {
       "good_sound", "hatching_sound", "reset_sound","small_beep"};
     } else if (MainActivity.version.equals("Santa")){
       soundList = new String[]{"cabin_exit",
-      "new_character", "reset_sound", "game_begin",
-      "santa_call_sound", "santa_small_beep", "santa_validate_sound"};
+      "new_character", 
+      "one_horse_open_sleigh",
+      "opening_advent_calendar",
+      "reset_sound", "santa_call_sound",
+      "santa_changing_clothes",
+      "santa_dying", 
+      "santa_found_child",
+      "santa_found_soot",
+      "santa_game_start",
+      "santa_happy", 
+      "santa_micro_beep",
+      "santa_shutting_door", 
+      "santa_small_beep",
+      "santa_unhappy_sound",
+      "santa_validate_sound",  
+      };
     } else{
       Printer.log("Unknown version:" + MainActivity.version);
     }

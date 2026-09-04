@@ -127,7 +127,7 @@ public class DataSaverLoader {
     File[] files = MainActivity.context.getFilesDir().listFiles();
     String[] fileNames = new String[files.length];
     if (files.length == 0)
-      MainActivity.state = "reset_screen";
+      MainActivity.state = "version_select_screen";
     else {
       for (int i = 0; i < files.length; i++)
         fileNames[i] = files[i].getName().substring(0,(files[i].getName().length()-4));
@@ -139,15 +139,12 @@ public class DataSaverLoader {
     MainActivity.isOpen = false;
     MainActivity.catchingUp = true;
     if (Tama.timeSinceLeft <= 3*24*3600 && Tama.isAlive) {
-      //Printer.print("Tama is alive and you left for less than 3 days");
       for (int i = 0; i < Tama.timeSinceLeft; i++) {
         Updater.update();
       }
-      //Printer.print("Updated");
       if (Tama.isAlive) MainActivity.state = "idle";
       else MainActivity.state = "dead";
     } else {
-      //Printer.print("Tama was dead when you left or you left for more than 3 days");
       Tama.isAlive = false;
       MainActivity.state = "dead";
     }

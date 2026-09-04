@@ -23,7 +23,7 @@ public class SantaIdleButtonB extends IdleButtonB {
         } else {
           SantaGame.selectedChimney = 0;
           MainActivity.state = "game intro screen";
-          Sounds.playSound("game_begin");
+          Sounds.playSound("santa_game_start");
           MainActivity.myRunnable.k = 0;
         }
       }
@@ -47,8 +47,8 @@ public class SantaIdleButtonB extends IdleButtonB {
           SantaTama.left = false;
           SantaTama.tier = Math.min(SantaTama.tier + 1, 4);
           SantaTama.ttleave = (5 + SantaTama.tier + SantaTama.santaness)*3600;
-          Printer.print("Tier = " + SantaTama.tier);
-          Printer.append("Time to leave = " + SantaTama.ttleave);
+          Printer.logPrint("Tier = " + SantaTama.tier);
+          Printer.logAppend("Time to leave = " + SantaTama.ttleave);
           if (SantaTama.sulking) {
             SantaTama.timeSinceSulking = 0;
           }

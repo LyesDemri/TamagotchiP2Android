@@ -29,22 +29,29 @@ public class BagPainter extends Painter {
   public static void drawTransformation() {
     //NOTE: For missy santa and prank santa, phases 1 & 2 are skipped and it just shows the character happy with the new object
     if (phase == 0) {
+      //object blinking
       if (((k/1.5) % 2 == 0) && (k < 21))
         drawSpriteAt(SantaTama.objects[objectIndex], 8, 0);
       drawSpriteAt("small_left_arrow", 0, 0);
     } else if (phase == 1) {
+      //Santa working
+      if (k%13 == 0) Sounds.playSound("santa_micro_beep");
       drawSpriteAt(SantaTama.objects[objectIndex], 0, 0);
       drawSpriteAt(Tama.character + workingStates[(int)((k / 12.5) % 2)], 16, 0);
     } else if (phase == 2) {
+      //object received starts appearing
       String sprite = (((k/1.5) % 2 == 0) && (k < 50)) ? SantaTama.objects[objectIndex] : SantaEvolver.object;
       drawSpriteAt(sprite, 0, 0);
       drawSpriteAt(Tama.character + "_working", 16, 0);
     } else if (phase == 3) {
+      //character looks happily at new object
+      if (k == 0) Sounds.playSound("one_horse_open_sleigh");
       drawSpriteAt(SantaEvolver.object, 0, 0);
       drawSpriteAt(Tama.character + "_happy", 16, 0);
     } else if (phase == 4) {
       int curtainIndex = 0;
       for (int i = 0; i < curtainsDurations.length; i++) {
+        if (k == 37) Sounds.playSound("santa_changing_clothes");
         if (k > curtainsDurations[i])
           curtainIndex++;
         else
@@ -52,6 +59,7 @@ public class BagPainter extends Painter {
       }
       drawSpriteAt("curtains_" + curtainsIndices[curtainIndex], 0, 0);
     } else if (phase == 5) {
+      if (k == 0) Sounds.playSound("new_character"); 
       if (objectIndex != 3) {
         drawSpriteAt("tadaa_screen", 0, 0);
         drawSpriteAt(Tama.character + "_happy", 8, 0);

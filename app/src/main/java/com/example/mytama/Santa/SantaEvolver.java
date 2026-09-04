@@ -60,8 +60,8 @@ public class SantaEvolver {
     }
         
     SantaTama.santaness = Utils.sum(SantaTama.santaObjects);
-    Printer.print("Tier = " + tier + ", Object index = " + objectIndex);
-    Printer.append("\n" + oldCharacter + " evolved into " + newCharacter);
+    Printer.logPrint("Tier = " + tier + ", Object index = " + objectIndex);
+    Printer.logAppend("\n" + oldCharacter + " evolved into " + newCharacter);
   }
   
   public static void evolve() {
