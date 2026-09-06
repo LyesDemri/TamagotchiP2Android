@@ -4,7 +4,9 @@ import java.lang.Math;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Utils 
 {
@@ -66,5 +68,16 @@ public class Utils
       sum += array[i];
     }
     return sum;
+  }
+  
+  public static int[] randperm(int length) {
+    List<Integer> list = new ArrayList<Integer>();
+    for (int i = 0; i < length; i++)
+      list.add(i);
+    Collections.shuffle(list);
+    int[] array = new int[length];
+    for (int i = 0; i < length; i++)
+      array[i] = list.get(i);
+    return array;
   }
 }

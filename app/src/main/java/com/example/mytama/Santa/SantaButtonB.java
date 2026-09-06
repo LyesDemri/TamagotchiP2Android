@@ -120,6 +120,7 @@ public class SantaButtonB {
     } else if (MainActivity.state.equals("ending")) {
       SantaEndingPainter.phase++;
     } else if (MainActivity.state.equals("dead")) {
+      Printer.print("");
       SantaTama.reset();
     }
   }

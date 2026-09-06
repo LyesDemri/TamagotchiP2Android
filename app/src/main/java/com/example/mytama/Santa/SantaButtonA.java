@@ -59,7 +59,9 @@ public class SantaButtonA {
       if (!SantaTama.sulking) {
         BagPainter.objectIndex = (BagPainter.objectIndex + 1) % 6;
       }
-    } else if (MainActivity.state.equals("tama tv")) {
+    } else if (MainActivity.state.equals("clock")) {
+      //SantaTama.tier = (SantaTama.tier+1)%4;
+      //Printer.print("Tier: " + SantaTama.tier);
     }
     else {
       Printer.log("Unknown state: " + MainActivity.state);

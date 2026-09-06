@@ -67,6 +67,7 @@ public class SantaTama extends Tama {
     arrivedOnTime = false;
     
     bag = new int[]{-1, -1, -1, -1, -1, -1};
+    //bag = new int[]{7, 7, 7, 7, 7, 7};
     santaObjects = new int[]{0, 0, 0, 0};
     companion = "";
     santaness = 0;
@@ -121,6 +122,15 @@ public class SantaTama extends Tama {
       SantaEndingPainter.prepareAnimation();
       MainActivity.state = "ending";
     }
+  }
+  
+  public static void call() {
+    int day = TimeWizard.getTamagotchiDay();
+    int month = TimeWizard.getTamagotchiMonth();
+    if (day >= 17 && day <= 24 && month == 12)
+      Sounds.playSound("cabin_exit");
+    else
+      Sounds.playSound("santa_call_sound");
   }
   
   public static void receiveObject(int receivedObjectIndex) {

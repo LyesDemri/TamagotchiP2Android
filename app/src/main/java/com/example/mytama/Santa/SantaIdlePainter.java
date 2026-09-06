@@ -57,12 +57,9 @@ public class SantaIdlePainter extends SantaPainter {
           }
         } else {
           // if character has a companion
-          Printer.print("x = " + x);
           if (MainActivity.myRunnable.i == 0 || MainActivity.myRunnable.i == 13) {
             x--;
-            if (x <= -16) {
-              x = 48;
-            }
+            if (x <= -16) x = 48;
           }
           drawSpriteAt(SantaTama.character + "_idle_" + (MainActivity.even + 1), x, y);
           drawSpriteAt(SantaTama.companion + "_idle_" + (MainActivity.even + 1), x-16, y);

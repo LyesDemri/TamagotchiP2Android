@@ -29,6 +29,7 @@ public class SantaStatsPainter extends StatsPainter {
         drawDotAt(i*2 + 3, 12);
       }
       Printer.logPrint("Steps = " + SantaTama.steps);
+      Printer.logAppend("\nCharacter Speed = " + SantaTama.characterSpeed);
     } else if (MainActivity.state.equals("StatScreen3")) {
       drawSpriteAt("santarashisa_jp", 0, 0);
       drawHeartScreen("santarashisa_jp", SantaTama.santaness, "bell_empty", "bell_full");

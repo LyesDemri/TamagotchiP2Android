@@ -16,13 +16,14 @@ public class SantaDyingPainter extends SantaPainter {
       int k = ((int)((j%25)/12)) == 0 ? 1 : 2;
       drawSpriteAt(Tama.character + "_unhappy_" + k, 8, 0);
       drawSpriteAt("unhappy_cloud_" + k, 24, 0);
+      if (j%25 == 0 && j <= 75) Sounds.playSound("santa_unhappy_sound");
     } else if (phase == 1) {
       drawSpriteAt(Tama.character + "_sulking", 8, 0);
-      Printer.print("missing sound");
+      if (j == 0) Sounds.playSound("santa_dying");
     } else if (phase == 2) {
       drawSpriteAt("cabin_open_door", 8, 0);
     } else if (phase == 3) {
-      Printer.print("missing sound");
+      if (j == 0) Sounds.playSound("santa_shutting_door");
       drawSpriteAt("cabin_idle_2", 8, 0);
     }
     

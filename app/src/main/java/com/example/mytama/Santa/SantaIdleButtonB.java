@@ -21,6 +21,7 @@ public class SantaIdleButtonB extends IdleButtonB {
           SantaSulkingPainter.prepareAnimation();
           MainActivity.state = "sulking";
         } else {
+          SantaGame.determineChimneyLuck();
           SantaGame.selectedChimney = 0;
           MainActivity.state = "game intro screen";
           Sounds.playSound("santa_game_start");
