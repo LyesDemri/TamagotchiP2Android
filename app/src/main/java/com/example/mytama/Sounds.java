@@ -20,8 +20,8 @@ public class Sounds {
         hashMap.put(soundList[i], mp);
       }
     } catch (Exception e) {
-      Printer.log("Error loading sounds");
-      Printer.log("Error message: " + e.getMessage());
+      Printer.append("\nError loading sounds");
+      Printer.append("\nError message: " + e.getMessage());
     }
   }
   

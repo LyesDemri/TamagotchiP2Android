@@ -1,9 +1,9 @@
 package com.example.mytama;
 
 public class SantaEvolver {
-  
   static String newCharacter = "";
   static String object = "";
+  public static String oldCharacter = "";                           
   
   public static void determineEvolution(int objectIndex){
     //evolution uses an evolution matrix:
@@ -26,19 +26,20 @@ public class SantaEvolver {
     
     int tier = Math.min(SantaTama.tier, 3);
     tier = Math.max(tier, 0);
-    String oldCharacter = SantaTama.character;
+    oldCharacter = SantaTama.character; // need it for transformation animation.
+                               
     if (objectIndex <= 2) {
       //we're using a yarn ball, wrapping paper, or a chisel
       if (tier < 3) {
         //for normal transformations, just look up the tables
-        newCharacter = evolutionChart[objectIndex][tier];
+        SantaTama.character = evolutionChart[objectIndex][tier];
         object = objectsChart[objectIndex][tier];
         SantaTama.characterSpeed = speeds[objectIndex][tier];
       } else {
         //santa evolutions need to happen in a specific order
         if (objectIndex == 0){
           // any character can evolve into hat santa
-          newCharacter = "hat_santa";
+          SantaTama.character = "hat_santa";
           object = "santa_hat";
           SantaTama.characterSpeed = 3;
           SantaTama.santaObjects[objectIndex] = 1;
@@ -46,12 +47,12 @@ public class SantaEvolver {
           // you have to be hat santa to become classic santa
           // otherwise you revert to penguin santa
           if (oldCharacter.equals("hat_santa") || oldCharacter.equals("classic_santa") || oldCharacter.equals("sleigh_santa") || oldCharacter.equals("missy_santa")) {
-            newCharacter = "classic_santa";
+            SantaTama.character = "classic_santa";
             object = "santa_cloth";
             SantaTama.characterSpeed = 4;
             SantaTama.santaObjects[objectIndex] = 1;
           } else {
-            newCharacter = "penguin_santa";
+            SantaTama.character = "penguin_santa";
             object = "penguin_suit";
             SantaTama.characterSpeed = 2;
           }
@@ -59,13 +60,12 @@ public class SantaEvolver {
           // you have to be classic santa to become sleigh santa
           // otherwise you revert to skate santa
           if (oldCharacter.equals("classic_santa") || oldCharacter.equals("sleigh_santa") || oldCharacter.equals("missy_santa")) {
-
-            newCharacter = "sleigh_santa";
+            SantaTama.character = "sleigh_santa";
             object = "sleigh";
             SantaTama.characterSpeed = 5;
             SantaTama.santaObjects[objectIndex] = 1;
           } else {
-            newCharacter = "skate_santa";
+            SantaTama.character = "skate_santa";
             object = "skateboard";
             SantaTama.characterSpeed = 3;
           }
@@ -74,7 +74,7 @@ public class SantaEvolver {
     } else if (objectIndex == 3) {
       //if we're receiving a companion, character stays the same
       //we now just have a companion
-      newCharacter = oldCharacter;
+      SantaTama.character = oldCharacter;
       object = "santa_egg_hatching"; // for animation
       if (tier < 3) {
         SantaTama.companion = evolutionChart[objectIndex][tier];
@@ -87,23 +87,20 @@ public class SantaEvolver {
         }
       }
     } else if (objectIndex == 4) {
-      newCharacter = "missy_santa";
+      SantaTama.character = "missy_santa";
       object = "perfume";
       SantaTama.characterSpeed = 6;
     } else if (objectIndex == 5) {
-      newCharacter = "prank_santa";
+      SantaTama.character = "prank_santa";
       object = "poison";
       SantaTama.characterSpeed = 6;
     }
-        
+                               
     SantaTama.santaness = Utils.sum(SantaTama.santaObjects);
-    Printer.logPrint("Tier = " + tier + ", Object index = " + objectIndex);
-    Printer.logAppend("\n" + oldCharacter + " evolved into " + newCharacter);
-    Printer.logAppend("\nSpeed: " + SantaTama.characterSpeed);
+                               
   }
   
   public static void evolve() {
-    SantaTama.character = newCharacter;
     SantaGraphics.clearCharacterGraphics();
     SantaGraphics.loadCharacterGraphics();
     if (!SantaTama.companion.equals("")) {

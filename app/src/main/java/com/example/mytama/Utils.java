@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class Utils 
 {
+  public static int counter = 0;
   public static int[] numDecomposition(int n){
     int tens;
     int units;
@@ -56,7 +57,8 @@ public class Utils
       notiBuilder.setOnlyAlertOnce(true);
       notiBuilder.setContentIntent(MainActivity.notificationIntent);
       Notification noti = notiBuilder.build();
-      MainActivity.notificationManager.notify(0, noti);
+      MainActivity.notificationManager.notify(counter, noti);
+      counter++;
       Sounds.playSound(sound);
       Tama.notificationsSent++;
     }

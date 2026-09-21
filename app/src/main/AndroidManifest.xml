@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mytama">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="29" />
+        android:minSdkVersion="24"
+        android:targetSdkVersion="35" />
 
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
-   
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+   <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/mytama3"
@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
-          android:screenOrientation="portrait">
+          android:screenOrientation="portrait"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -29,10 +30,14 @@
         </activity>
         <!--Cette application a un receiver qui reçoit des broadcasts destinés à AlarmReceiver-->
         <!--L'intention UPDATE TAMAGOTCHI est envoyée par le système à AlarmReceiver-->
-        <receiver android:name=".AlarmReceiver">
+        <receiver android:name=".AlarmReceiver"
+            android:exported="false">
           <intent-filter>
             <action android:name="UPDATETAMAGOTCHI" />
           </intent-filter>
         </receiver>
+        <service android:name=".MyForegroundService"
+                 android:foregroundServiceType="dataSync"
+                 android:exported="false"/>
     </application>
 </manifest>

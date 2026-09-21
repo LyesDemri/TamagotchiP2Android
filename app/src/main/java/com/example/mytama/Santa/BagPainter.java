@@ -37,17 +37,17 @@ public class BagPainter extends Painter {
       //Santa working
       if (k%13 == 0) Sounds.playSound("santa_micro_beep");
       drawSpriteAt(SantaTama.objects[objectIndex], 0, 0);
-      drawSpriteAt(Tama.character + workingStates[(int)((k / 12.5) % 2)], 16, 0);
+      drawSpriteAt(SantaEvolver.oldCharacter + workingStates[(int)((k / 12.5) % 2)], 16, 0);
     } else if (phase == 2) {
       //object received starts appearing
       String sprite = (((k/1.5) % 2 == 0) && (k < 50)) ? SantaTama.objects[objectIndex] : SantaEvolver.object;
       drawSpriteAt(sprite, 0, 0);
-      drawSpriteAt(Tama.character + "_working", 16, 0);
+      drawSpriteAt(SantaEvolver.oldCharacter + "_working", 16, 0);
     } else if (phase == 3) {
       //character looks happily at new object
       if (k == 0) Sounds.playSound("one_horse_open_sleigh");
       drawSpriteAt(SantaEvolver.object, 0, 0);
-      drawSpriteAt(Tama.character + "_happy", 16, 0);
+      drawSpriteAt(SantaEvolver.oldCharacter + "_happy", 16, 0);
     } else if (phase == 4) {
       int curtainIndex = 0;
       for (int i = 0; i < curtainsDurations.length; i++) {
@@ -75,14 +75,9 @@ public class BagPainter extends Painter {
     }
     k++;
     if (k == phaseEnds[phase] && phase < phaseEnds.length) {
-      if (objectIndex > 3 && phase == 0) {
-        phase = 3;
-      } else {
-        phase++;
-      }
-      if (phase == 4) {
-        SantaEvolver.evolve();
-      }
+      if (objectIndex > 3 && phase == 0) phase = 3;
+      else phase++;
+      if (phase == 4) SantaEvolver.evolve();
       k = 0;
     }
   }

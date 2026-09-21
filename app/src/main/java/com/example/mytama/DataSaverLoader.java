@@ -114,24 +114,30 @@ public class DataSaverLoader {
       
       catchUp();
       Printer.print(Tama.name);
-      Printer.append("\n" + Tama.updatesWhileAbsent + " updates while absent", false);
-      Printer.append("\n" + Tama.notificationsSent + " notifications sent", false);
     } catch (Exception e) {
       Printer.log("Error loading save file: " + e.getMessage());
-      //MainActivity.version = "P2";
-      Tama.reset();
+      Printer.append("\nDowngrading the app to an earlier version should solve the issue");
     }
   }
 
   public static String[] getSaveFiles() {
     File[] files = MainActivity.context.getFilesDir().listFiles();
     String[] fileNames = new String[files.length];
-    if (files.length == 0)
-      MainActivity.state = "version_select_screen";
-    else {
-      for (int i = 0; i < files.length; i++)
-        fileNames[i] = files[i].getName().substring(0,(files[i].getName().length()-4));
+    int j = 0;
+    for (int i = 0; i < files.length; i++) {
+      if (!files[i].getName().equals("null.txt") && !files[i].getName().startsWith("profileInsta")) {
+        fileNames[j] = files[i].getName().substring(0,(files[i].getName().length()-4));
+        j++;
+      }
     }
+    String[] nonNullFileNames = new String[j];
+    for (int i = 0; i < j; i++)
+      nonNullFileNames[i] = fileNames[i];
+    fileNames = nonNullFileNames;
+    if (fileNames.length == 0) {
+      MainActivity.state = "version_select_screen";
+    }
+    
     return fileNames;
   }
 

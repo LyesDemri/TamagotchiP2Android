@@ -3,6 +3,7 @@ package com.example.mytama;
 import java.lang.Math;
 
 
+
 public class SantaGame {
   public static String result;
   public static int selectedChimney = 0;
@@ -15,12 +16,15 @@ public class SantaGame {
     double x = Math.random();
     try {
     if (x > chimneyLuck[selectedChimney]) {
-      if (x > 0.95 && AdventCalendar.visitedEveryDay() && SantaTama.age > 102) {
+      if (x > 0.95 && AdventCalendar.visitedEveryDay() && SantaTama.age >= 102) {
         result = "object";
-        int k = (SantaTama.santaness == 4) ? 6 : 4;
+        int k;
+        if (SantaTama.age < 107) k = 3;
+        else k = (SantaTama.santaness == 4) ? 6 : 4;
         receivedObjectIndex = (int)(Math.floor(Math.random()*k));
         receivedObject = SantaTama.objects[receivedObjectIndex];
         SantaTama.receiveObject(receivedObjectIndex);
+        determineChimneyLuck();
       } else {
         result = "tama";
         SantaGamePainter.sleepingTamaIndex = (int)(Math.floor(Math.random()*3));

@@ -10,17 +10,7 @@ import android.os.SystemClock;
 
 public class AlarmReceiver extends BroadcastReceiver {
   @Override public void onReceive(Context context, Intent intent) {
-    
-    String[] files = DataSaverLoader.getSaveFiles();
-    
-    for (int i = 0; i < files.length; i++) {
-      Tama.name = files[i];
-      if (!MainActivity.isOpen || true) {
-        DataSaverLoader.loadData();
-        Tama.updatesWhileAbsent++;
-        DataSaverLoader.saveData();
-      }
-    }
+    Updater.updateAllTamas();
     MainActivity.isOpen = false;
     MainActivity.alarmMgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                                        SystemClock.elapsedRealtime() + 600*1000,

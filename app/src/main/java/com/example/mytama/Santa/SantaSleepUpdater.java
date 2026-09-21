@@ -2,13 +2,9 @@ package com.example.mytama;
 
 public class SantaSleepUpdater extends SleepUpdater {
   public static void update() {
-    //int currentHour = new Date().getHours();
-    //int currentMinute = new Date().getMinutes();
-   // int currentSecond = new Date().getSeconds();
-    
     if (Tama.t == Tama.timeToSleep) {
       Tama.sleeping = true;
-      Utils.notifyUser(Tama.name + " fell asleep", "call");
+      Utils.notifyUser(Tama.name + " fell asleep", "");
       Tama.timeToSleep += 24*3600;
     } else if (Tama.t == Tama.timeToWake) {
       Tama.sleeping = false;

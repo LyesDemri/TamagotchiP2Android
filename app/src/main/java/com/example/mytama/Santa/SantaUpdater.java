@@ -4,7 +4,6 @@ import java.lang.Math;
 
 public class SantaUpdater extends Updater  {
   public static void update() {
-    //update
     Tama.t++;
     if (Tama.character.equals("cabin")) {
       Cabin.update();
@@ -27,16 +26,16 @@ public class SantaUpdater extends Updater  {
     else if (SantaTama.companion.equals("rednosetchi")) companionSpeed = 3;
     else companionSpeed = 0;
     Printer.logPrint("Companion speed = " + companionSpeed);
-    SantaTama.steps += (Math.max(SantaTama.tier, 0) + SantaTama.santaness + SantaTama.characterSpeed + companionSpeed + 1)/SantaTama.weight;
+      SantaTama.steps += (Math.max(SantaTama.tier, 0) + SantaTama.santaness + SantaTama.characterSpeed + companionSpeed + 1)/SantaTama.weight;
     SantaTama.distance = (int)(SantaTama.steps*14/50544);//50544 is the number of steps to do to reach the children
     SantaTama.distance = Math.min(SantaTama.distance, 14);
     if (SantaTama.distance >= 14) {
-      Utils.notifyUser(Tama.name + " is delivering the presents!", "");
-      Sounds.playSound("cabin_exit");
       if (Tama.age <= 111 && !SantaTama.arrivedOnTime) {
         SantaTama.arrivedOnTime = true;
       }
       if (Tama.age >= 111 && !SantaTama.endingPlayed) {
+        Utils.notifyUser(Tama.name + " is delivering the presents!", "");
+        Sounds.playSound("cabin_exit");
         SantaTama.runEnding();
       }
     }

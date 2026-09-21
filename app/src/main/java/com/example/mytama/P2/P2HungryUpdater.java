@@ -16,8 +16,9 @@ public class P2HungryUpdater extends HungryUpdater {
     Tama.timeSinceHungryChanged++;
     if (Tama.timeSinceHungryChanged == Tama.hghlp) {
       Tama.stomach = Math.max(Tama.stomach-1, 0);
-      Tama.timeSinceHungryChanged = 0;
-      if (Tama.stomach == 0) {
+      if (Tama.stomach > 0) {
+        Tama.timeSinceHungryChanged = 0;
+      } else {
         Tama.isCalling = true;
         Utils.notifyUser(Tama.name + " is hungry", "call");
       }

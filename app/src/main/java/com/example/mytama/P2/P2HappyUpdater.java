@@ -16,8 +16,9 @@ public class P2HappyUpdater extends HappyUpdater {
      Tama.timeSinceHappyChanged++;
     if ( Tama.timeSinceHappyChanged ==  Tama.hphlp) {
        Tama.happy = Math.max(Tama.happy - 1,0);
-       Tama.timeSinceHappyChanged = 0;
-      if (Tama.happy == 0) {
+       if (Tama.happy > 0) {
+          Tama.timeSinceHappyChanged = 0;
+       } else {
          Tama.isCalling = true;
         Utils.notifyUser(Tama.name + " is bored","call");
       }
