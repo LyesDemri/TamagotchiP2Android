@@ -8,7 +8,7 @@ public class SantaUpdater extends Updater  {
     if (Tama.character.equals("cabin")) {
       Cabin.update();
     } else {
-      if (!Tama.sleeping) {
+      if (!Tama.sleeping && !MainActivity.state.equals("ending")) {
         SantaHungryUpdater.update();
         SantaHappyUpdater.update();
         updateDistance();
@@ -25,7 +25,6 @@ public class SantaUpdater extends Updater  {
     else if (SantaTama.companion.equals("tonatakotchi")) companionSpeed = 2;
     else if (SantaTama.companion.equals("rednosetchi")) companionSpeed = 3;
     else companionSpeed = 0;
-    Printer.logPrint("Companion speed = " + companionSpeed);
       SantaTama.steps += (Math.max(SantaTama.tier, 0) + SantaTama.santaness + SantaTama.characterSpeed + companionSpeed + 1)/SantaTama.weight;
     SantaTama.distance = (int)(SantaTama.steps*14/50544);//50544 is the number of steps to do to reach the children
     SantaTama.distance = Math.min(SantaTama.distance, 14);

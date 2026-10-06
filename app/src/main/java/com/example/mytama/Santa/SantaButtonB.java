@@ -10,7 +10,7 @@ public class SantaButtonB {
       MainActivity.myRunnable.j = 0;
       MainActivity.oldState = "food choice";
       if (MainActivity.food_index == 0) {
-        if (SantaTama.food < 4) {
+        if (SantaTama.food < 4 || Tama.stomach == 0) {
           if (Tama.stomach == 0) {
             Animations.animation_counter = 7;
             MainActivity.state = "eating";

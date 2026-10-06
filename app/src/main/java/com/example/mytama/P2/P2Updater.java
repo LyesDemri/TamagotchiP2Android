@@ -1,6 +1,7 @@
 package com.example.mytama;
 
 public class P2Updater extends Updater {
+  int timeToNextNotification = 0;
   public static void update() {
     //update
     Tama.t++;
@@ -27,8 +28,13 @@ public class P2Updater extends Updater {
         MainActivity.state = "dead";
         Tama.isAlive = false;
       }
-    } 
+    }
+    //calculateNextCallTime();
   }
+  
+  
+  
+  
   
   public static void skipDuration(int dur) {
     MainActivity.catchingUp = true;
@@ -36,8 +42,8 @@ public class P2Updater extends Updater {
       Updater.update();
     }
     MainActivity.catchingUp = false;
-    Printer.print("Done fast forwarding", false);
-    Printer.append("t =" + Tama.t, false);
-    Printer.append("Tama time: " + TimeWizard.getTamagotchiTime(), false);
+    Printer.logPrint("Done fast forwarding");
+    Printer.logAppend("t =" + Tama.t);
+    Printer.logAppend("Tama time: " + TimeWizard.getTamagotchiTime());
   }
 }

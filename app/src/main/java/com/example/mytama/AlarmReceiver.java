@@ -12,9 +12,9 @@ public class AlarmReceiver extends BroadcastReceiver {
   @Override public void onReceive(Context context, Intent intent) {
     Updater.updateAllTamas();
     MainActivity.isOpen = false;
-    MainActivity.alarmMgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                                       SystemClock.elapsedRealtime() + 600*1000,
-                                       600*1000,
-                                       MainActivity.alarmIntent);
+    Double d = new Double(Updater.timeForNextCall);
+    int duration = d.intValue();
+    Utils.notifyUser("AlarmReceiver: Calling you back in " + duration + "s","");
+    MainActivity.alarmMgr.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + duration*1000, MainActivity.alarmIntent);
   }
 }

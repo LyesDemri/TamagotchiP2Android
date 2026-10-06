@@ -2,23 +2,23 @@ package com.example.mytama;
 
 import android.app.Service;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import androidx.core.app.NotificationCompat;
+import android.app.NotificationManager;
 import android.content.pm.ServiceInfo;
 import androidx.core.app.ServiceCompat;
 import android.os.IBinder;
 import android.content.Intent;
 
 public class MyForegroundService extends Service {
-    /*public MyForegroundService() {
-        super();
-    }*/
-    
     public static boolean isRunning = false;
     
     public int onStartCommand(Intent intent, int flags, int startId) {
         try {
             if (isRunning) return 0;
             //super.onStartCommand(intent, flags, startId);
+            NotificationChannel channel = new NotificationChannel("tamagotchi_id", "Tamagotchi Alerts", NotificationManager.IMPORTANCE_HIGH);
+            MainActivity.notificationManager.createNotificationChannel(channel);
             Notification.Builder notiBuilder = new Notification.Builder(MainActivity.context, "tamagotchi_id");
             notiBuilder.setContentTitle("MyTama");
             notiBuilder.setContentText("MyTama service is running");
@@ -41,8 +41,10 @@ public class MyForegroundService extends Service {
     }
     
     public void onDestroy(){
+        Utils.notifyUser("Service has been destroyed (and restarted)", "");
         isRunning = false;
-        Utils.notifyUser("Service has been destroyed", "");
+        Intent serviceIntent = new Intent(this, MyForegroundService.class);
+        MainActivity.context.startForegroundService(serviceIntent);
     }
     
     public IBinder onBind(Intent i){

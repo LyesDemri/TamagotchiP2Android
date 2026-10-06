@@ -44,6 +44,8 @@ public class Utils
   }
   
   public static void notifyUser(String msg, String sound) {
+    try {
+    if (!MainActivity.permissionsObtained)  return;
     if (!MainActivity.isOpen||true) {
       NotificationChannel channel = new NotificationChannel("tamagotchi_id", "Tamagotchi Alerts", NotificationManager.IMPORTANCE_HIGH);
       MainActivity.notificationManager.createNotificationChannel(channel);
@@ -61,6 +63,9 @@ public class Utils
       counter++;
       Sounds.playSound(sound);
       Tama.notificationsSent++;
+    }
+    } catch (Exception e) {
+      Printer.print("Error sending notification" + e.getMessage());
     }
   }
   
@@ -81,5 +86,17 @@ public class Utils
     for (int i = 0; i < length; i++)
       array[i] = list.get(i);
     return array;
+  }
+  
+  public static double min(double[] values) {
+    double min = values[0];
+    int j = 0;
+    for (int i = 1; i < values.length; i++) {
+      if (min > values[i]){
+        min = values[i];
+        j = i;
+      }
+    }
+    return min;
   }
 }

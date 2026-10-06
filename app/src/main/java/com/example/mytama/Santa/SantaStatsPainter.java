@@ -30,12 +30,16 @@ public class SantaStatsPainter extends StatsPainter {
       }
       Printer.logPrint("Steps = " + SantaTama.steps);
       Printer.logAppend("\nCharacter Speed = " + SantaTama.characterSpeed);
+      Printer.logAppend("\nEnding Played = " + SantaTama.endingPlayed);
+      
     } else if (MainActivity.state.equals("StatScreen3")) {
       drawSpriteAt("santarashisa_jp", 0, 0);
       drawHeartScreen("santarashisa_jp", SantaTama.santaness, "bell_empty", "bell_full");
     }
     else if (MainActivity.state.equals("StatScreen4")) {
       drawHeartScreen("hungry_jp", Tama.stomach, "empty_heart", "full_heart");
+      Printer.logPrint("Hungry = "  + SantaTama.stomach);
+      Printer.logAppend("ttlhungrygh = " + SantaTama.ttlhungryh);
     } else if (MainActivity.state.equals("StatScreen5")) {
       drawHeartScreen("happy_jp", Tama.happy, "empty_heart", "full_heart");
     } else if (MainActivity.state.equals("Pantry1")) {

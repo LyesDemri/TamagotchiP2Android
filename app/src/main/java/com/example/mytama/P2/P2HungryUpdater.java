@@ -20,6 +20,7 @@ public class P2HungryUpdater extends HungryUpdater {
         Tama.timeSinceHungryChanged = 0;
       } else {
         Tama.isCalling = true;
+        Sounds.playSound("call");
         Utils.notifyUser(Tama.name + " is hungry", "call");
       }
     }

@@ -16,13 +16,14 @@ public class PoopUpdater {
     if (P2Tama.dirty) {
       if (!Tama.character.equals("Egg"))
         P2Tama.tsd++;
-      if (P2Tama.tsd == 12*60*60)
+      if (P2Tama.tsd == 12*3600)
         P2Tama.sick = true;
     }
   }
   
   public static void poop() {
     if (MainActivity.isOpen) {
+      MainActivity.oldState = MainActivity.state;
       MainActivity.state = "pooping";
       Animations.animation_counter = 16;
     }

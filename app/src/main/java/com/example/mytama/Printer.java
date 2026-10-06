@@ -1,5 +1,7 @@
 package com.example.mytama;
 
+import android.app.AlertDialog;
+
 public class Printer {
   static int msgCounter = 0;
   
@@ -21,6 +23,10 @@ public class Printer {
   }
   
   public static void append(Object text, boolean count) {
+    if (MainActivity.tv == null) {
+      print(text);
+      return;
+    }
     if (count) {
       MainActivity.tv.append("(" + msgCounter + ") ");
     }
@@ -33,20 +39,27 @@ public class Printer {
   }
   
   public static void log(Object text) {
-    if (MainActivity.debugMode == 1 || Tama.name.startsWith("DEBUG")) {
+    if (MainActivity.debugMode == 1 || Tama.name != null && Tama.name.startsWith("DEBUG")) {
       append(text, true);
     }
   }
   
   public static void logPrint(Object text) {
-    if (MainActivity.debugMode == 1 || Tama.name.startsWith("DEBUG")) {
+    if (MainActivity.debugMode == 1 || Tama.name != null && Tama.name.startsWith("DEBUG")) {
       print(text, false);
     }
   }
   
   public static void logAppend(Object text) {
-    if (MainActivity.debugMode == 1 || Tama.name.startsWith("DEBUG")) {
+    if (MainActivity.debugMode == 1 || Tama.name != null && Tama.name.startsWith("DEBUG")) {
       append(text, false);
     }
+  }
+  
+  public static void alert(String txt) {
+    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.context);
+    builder.setMessage(txt).setTitle("MyTama error");
+    AlertDialog dialog = builder.create();
+    dialog.show();
   }
 }

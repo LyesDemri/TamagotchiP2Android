@@ -50,7 +50,7 @@ public class DataSaverLoader {
       }  
       dos.close(); fos.close();
     } catch (Exception e) {
-      Printer.log("Error saving data: " + e.getMessage());
+      Printer.logPrint("Error saving data: " + e.getMessage());
     }
   }
 
@@ -148,8 +148,8 @@ public class DataSaverLoader {
       for (int i = 0; i < Tama.timeSinceLeft; i++) {
         Updater.update();
       }
-      if (Tama.isAlive) MainActivity.state = "idle";
-      else MainActivity.state = "dead";
+      if (Tama.isAlive && !MainActivity.state.equals("ending")) MainActivity.state = "idle";
+      else if (!Tama.isAlive) MainActivity.state = "dead";
     } else {
       Tama.isAlive = false;
       MainActivity.state = "dead";

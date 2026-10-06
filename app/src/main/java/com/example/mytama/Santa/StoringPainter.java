@@ -12,12 +12,11 @@ public class StoringPainter extends Painter {
     Animations.animation_counter = 9;
     StoringPainter.object = SantaGraphics.foods[MainActivity.food_index] + "1";
     StoringPainter.disappear = "disappear";
+    MainActivity.oldState = MainActivity.state;
     MainActivity.state = "storing";
-    MainActivity.oldState = "food choice";
   }
   
   public static void draw() {
-    Printer.log("Storing:" + object + ", " + disappear);
     i = (Animations.animation_counter + 1) % 2;
     alt = new String[]{object, disappear}; 
     j = (int)MainActivity.myRunnable.j / 3;
@@ -35,6 +34,4 @@ public class StoringPainter extends Painter {
     if (Animations.decreaseAnimationCounter())
       MainActivity.state = MainActivity.oldState;
   }
-  
-  
 }

@@ -14,11 +14,13 @@ import android.app.NotificationManager;
 import android.os.Vibrator;
 import android.view.WindowManager;
 import android.view.View;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkRequest;
 import java.util.concurrent.TimeUnit;
-import androidx.work.WorkManager;
+import android.os.Build;
+import android.content.pm.PackageManager;
+import android.Manifest;
+import android.Manifest.permission.*;
 import androidx.work.*;
+import androidx.core.app.ActivityCompat;
 
 public class MainActivity extends Activity {
   static public TextView tv;
@@ -41,8 +43,11 @@ public class MainActivity extends Activity {
   static public String state;
   static public String oldState;
   static public Vibrator vibrator;
-  public static WorkRequest workRequest;
-  public static MyForegroundService mfs;
+  public static boolean permissionsObtained;
+  public static boolean economyMode = false;
+  
+  private static final int NOTIFICATION_PERMISSION_CODE = 201;
+  
   @Override
   public void onCreate(Bundle savedInstanceState) {
     try {
@@ -63,6 +68,7 @@ public class MainActivity extends Activity {
       //On récupère une instance du TextView du layout
       tv = (TextView)findViewById(R.id.TV);
       tv.setBackgroundResource(R.color.white);
+      tv.setTextColor(R.color.black);
       //Elements du menu
       menu_list = new String[]{"", "Reset", "Create new tama","Switch tama","Display Variables","Skip 1 minute", "Skip 5 minutes","Skip 1 hour"};
       MyRunnable.initialize();
@@ -76,20 +82,21 @@ public class MainActivity extends Activity {
       alarmMgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
       Intent intent = new Intent(this, AlarmReceiver.class);
       alarmIntent = PendingIntent.getBroadcast(this, 0, intent, (PendingIntent.FLAG_IMMUTABLE));
-      workRequest = new PeriodicWorkRequest.Builder(MyWorker.class, 15, TimeUnit.MINUTES, 7, TimeUnit.MINUTES).build();
-      
-      //code pour les notifications
-      notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-      intent = new Intent(this, MainActivity.class);  //intent est une variable temporaire
-      notificationIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
       
       vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-      MainActivity.isOpen = true;
-      if (checkSelfPermission("android.permission.POST_NOTIFICATIONS") != android.content.pm.PackageManager.PERMISSION_GRANTED) {
-        requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"}, 101);
+      
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+          permissionsObtained = false;
+          requestNotificationPermission();
+        } else {
+          permissionsObtained = true;
+          setupNotifications();
+        }
+      } else {
+        permissionsObtained = true;
+        setupNotifications();
       }
-      Intent serviceIntent = new Intent(this, MyForegroundService.class);
-      this.startForegroundService(serviceIntent);
       
       Animations.loadAnimations();
     } catch (Exception e) {
@@ -105,35 +112,35 @@ public class MainActivity extends Activity {
   @Override public void onResume() {
     try {
       super.onResume();
-      if (DataSaverLoader.getSaveFiles().length > 0)
-      state = "tama_select_screen";
-      else {
-        state = "version_select_screen";
-      }
+      if (DataSaverLoader.getSaveFiles().length > 0) state = "tama_select_screen";
+      else state = "version_select_screen";
       isOpen = true;
-      WorkManager.getInstance(this).cancelAllWork();
+      
+      if (permissionsObtained) {
+        Intent serviceIntent = new Intent(this, MyForegroundService.class);
+        //this.stopService(serviceIntent);
+        myHandler.removeCallbacks(MyRunnable.runnable);
+        //MyForegroundService.isRunning = false;
+        this.startForegroundService(serviceIntent);
+        myHandler.postDelayed(MyRunnable.runnable, 40);
+      } else {
+        myHandler.removeCallbacks(MyRunnable.runnable);
+        myHandler.postDelayed(MyRunnable.runnable, 40);
+      }
     } catch (Exception e) {
       Printer.print("Error in MainActivity.onResume(): " + e.getMessage());
     }
+    isOpen = true;
   }
   
   @Override public void onPause() {
     super.onPause();
-    //if (Tama.isAlive) {
-      DataSaverLoader.saveData();
-      /*
-      alarmMgr.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                                   SystemClock.elapsedRealtime() + 600*1000,
-                                   600*1000,
-                                   alarmIntent);
-      */
-    //}
+    if (!(Tama.name == null)) DataSaverLoader.saveData();
     isOpen = false;
   }
   
   @Override public void onDestroy() {
     super.onDestroy();
-    Utils.notifyUser("MyTama process was killed. Click here to relaunch it", "");
   }
   
   public static void fillIconList() {
@@ -146,5 +153,39 @@ public class MainActivity extends Activity {
     } catch (Exception e) {
       Printer.print("Error filling icon list: " + e.getMessage());
     }
+  }
+  
+  @Override
+  public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    try {
+      super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+      if (requestCode == NOTIFICATION_PERMISSION_CODE) {
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+          permissionsObtained = true;
+          setupNotifications();
+        } else {
+          permissionsObtained = false;
+        }
+      }
+    } catch (Exception e) {
+      Printer.print("Error in onRequestPermissionResult: " + e.getMessage());
+    }
+    
+  }
+  
+  private void requestNotificationPermission() {
+    try {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, NOTIFICATION_PERMISSION_CODE);
+      }
+    } catch (Exception e) {
+      Printer.print("Error in requestNotificationPermission: " + e.getMessage());
+    }  
+  }
+  
+  public void setupNotifications() {
+    notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+    Intent intent = new Intent(MainActivity.context, MainActivity.class);  //intent est une variable temporaire
+    notificationIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
   }
 }

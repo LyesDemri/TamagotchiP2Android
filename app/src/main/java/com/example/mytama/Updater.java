@@ -1,6 +1,8 @@
 package com.example.mytama;
 
 public class Updater  {
+  public static boolean allSleeping = false;
+  public static double timeForNextCall;
   public static void update() {
     if (MainActivity.version.equals("P2")) {
       P2Updater.update();
@@ -25,12 +27,19 @@ public class Updater  {
   }
   
   public static void updateAllTamas(){
+    allSleeping = true;
     String[] files = DataSaverLoader.getSaveFiles();
+    double[] callTimes = new double[files.length];
     for (int i = 0; i < files.length; i++) {
       Tama.name = files[i];
       DataSaverLoader.loadData();
-      Tama.updatesWhileAbsent++;
+      if (!Tama.sleeping) allSleeping = false;
+      if (MainActivity.economyMode) {
+        if (MainActivity.version.equals("P2")) callTimes[i] = (double)P2FuturePredictor.calculateNextCallTime();
+        else callTimes[i] = 25*60*24; //infinty
+      }
       DataSaverLoader.saveData();
+      timeForNextCall = Utils.min(callTimes);
     }
   }
 }

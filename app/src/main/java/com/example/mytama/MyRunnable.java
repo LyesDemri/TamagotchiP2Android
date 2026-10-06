@@ -4,6 +4,9 @@ import android.content.Context;
 import java.lang.Runnable;
 import java.lang.Thread;
 import java.util.Date;
+import android.os.SystemClock;
+import android.app.AlarmManager;
+
 
 public class MyRunnable extends Thread {
   public static Runnable runnable;
@@ -31,9 +34,10 @@ public class MyRunnable extends Thread {
         try {
           currentFrameTime = new Date().getTime();
           frameDuration = currentFrameTime - oldTime;
+          if (frameDuration < 39) return;
           oldTime = currentFrameTime;
           //Printer.print("Frame duration = " + frameDuration + " (" +elapsedTime+")");
-          //Printer.append("\nrunnable inetance: " + System.identityHashCode(this));
+          //Printer.append("\nrunnable instance: " + System.identityHashCode(this));
           elapsedTime = currentFrameTime;
           if (MainActivity.isOpen) {
             i = (i + 1) % 25;
@@ -62,13 +66,21 @@ public class MyRunnable extends Thread {
               Printer.log("Error while drawing screen: " + e1.getMessage());
             }
             elapsedTime = new Date().getTime() - elapsedTime;
-            MainActivity.myHandler.postDelayed(this, 40L-elapsedTime*1 + 1*(40L-frameDuration));
+            MainActivity.myHandler.postDelayed(this, 40L - elapsedTime*1 + 0*(40L-frameDuration));
           } else {
             Updater.updateAllTamas();
             MainActivity.isOpen = false;
             numTamas = DataSaverLoader.getSaveFiles().length;
             elapsedTime = (new Date().getTime()) - elapsedTime;
-            MainActivity.myHandler.postDelayed(this, numTamas*1000 - elapsedTime);
+            if (!MainActivity.economyMode) { //cobdition might be useless
+              int secondsToNextUpdate = (Updater.allSleeping) ? 60 : numTamas*10;
+              MainActivity.myHandler.postDelayed(this, secondsToNextUpdate*1000 - elapsedTime);
+            } else {
+              Double d = new Double(Updater.timeForNextCall);
+              int duration = d.intValue();
+              Utils.notifyUser("MyRunnable: Next event in " + duration + "s","");
+              MainActivity.myHandler.postDelayed(this, duration*1000 - elapsedTime);
+            }
             //Utils.notifyUser("Updated all tamas at " + (new Date().getTime()) + " in " + elapsedTime, "");
           }
         } catch (Exception e2) {
