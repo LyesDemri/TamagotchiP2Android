@@ -10,7 +10,7 @@ I've now extensively reviewed the code to make it a lot less terrible. I cut up 
 ------- <br/>
 
 This is a reproduction of the P2 and Santaclautchi models of Bandai's 1997 tamagotchis <br/>
-This isn't the prettiest code I've written as I wrote it almost entirely on my phone (didn't use Android Studio) (I used APK Builder and Java-NIDE). <br/>
+This isn't the prettiest code I've written as I wrote it almost entirely on my phone (didn't use Android Studio) (I used APK Builder, Java-NIDE and JStudio). <br/>
 Also, I wasn't very good at Java when I started this project (back in 2020). I'm still getting the hang of it. <br/>
 There's an apk of the project in the main directory ( [(https://github.com/LyesDemri/TamagotchiP2Android/raw/refs/heads/main/MyTama_061020261617.apk)] ).<br/>
 The apk contains functioning versions of the P2 of the Santaclautchi. <br/>
