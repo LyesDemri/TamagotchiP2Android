@@ -11,7 +11,7 @@ import java.lang.reflect.Field;
 public class DataSaverLoader {
   public static void saveData() {
     try { 
-      FileOutputStream fos = new FileOutputStream(MainActivity.context.getFilesDir()+"/"+Tama.name+".txt");
+      FileOutputStream fos = new FileOutputStream(MainActivity.context.getFilesDir()+"/"+Tama.name+".sav");
       DataOutputStream dos = new DataOutputStream(fos);
       
       dos.writeUTF(Tama.character);
@@ -56,7 +56,7 @@ public class DataSaverLoader {
 
   public static void loadData() {
     try {
-      FileInputStream fis = new FileInputStream(MainActivity.context.getFilesDir()+"/"+Tama.name+".txt");
+      FileInputStream fis = new FileInputStream(MainActivity.context.getFilesDir()+"/"+Tama.name+".sav");
       DataInputStream dis = new DataInputStream(fis);
       
       Tama.character = dis.readUTF();
@@ -124,8 +124,10 @@ public class DataSaverLoader {
     File[] files = MainActivity.context.getFilesDir().listFiles();
     String[] fileNames = new String[files.length];
     int j = 0;
+    String filename;
     for (int i = 0; i < files.length; i++) {
-      if (!files[i].getName().equals("null.txt") && !files[i].getName().startsWith("profileInsta")) {
+      filename = files[i].getName();
+      if (!filename.equals("null.txt") && !filename.startsWith("profileInsta") && filename.endsWith(".sav")) {
         fileNames[j] = files[i].getName().substring(0,(files[i].getName().length()-4));
         j++;
       }

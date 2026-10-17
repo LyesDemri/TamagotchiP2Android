@@ -16,7 +16,7 @@ public class SantaGame {
     double x = Math.random();
     try {
     if (x > chimneyLuck[selectedChimney]) {
-      if (x > 0.95 && AdventCalendar.visitedEveryDay() && SantaTama.age >= 102) {
+      if (x > 0.99 && AdventCalendar.visitedEveryDay() && SantaTama.age >= 102) {
         result = "object";
         int k;
         if (SantaTama.age < 107) k = 3;

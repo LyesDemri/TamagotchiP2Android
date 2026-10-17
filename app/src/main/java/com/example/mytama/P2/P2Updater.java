@@ -29,12 +29,7 @@ public class P2Updater extends Updater {
         Tama.isAlive = false;
       }
     }
-    //calculateNextCallTime();
   }
-  
-  
-  
-  
   
   public static void skipDuration(int dur) {
     MainActivity.catchingUp = true;

@@ -41,10 +41,8 @@ public class MyForegroundService extends Service {
     }
     
     public void onDestroy(){
-        Utils.notifyUser("Service has been destroyed (and restarted)", "");
+        Utils.notifyUser("Service has been destroyed", "");
         isRunning = false;
-        Intent serviceIntent = new Intent(this, MyForegroundService.class);
-        MainActivity.context.startForegroundService(serviceIntent);
     }
     
     public IBinder onBind(Intent i){

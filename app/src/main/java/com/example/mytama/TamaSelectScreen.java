@@ -23,12 +23,12 @@ public class TamaSelectScreen {
         MainActivity.state = "version_select_screen";
       }
     } else {
-      File file = new File(MainActivity.context.getFilesDir() + "/" + tamaList[selectedLine] + ".txt");
+      File file = new File(MainActivity.context.getFilesDir() + "/" + tamaList[selectedLine] + ".sav");
       if (!Tama.name.equals(tamaList[selectedLine])) {
         try {
           file.delete();
         } catch (Exception e) {
-          Printer.log("Screen: Error erasing file: " + e.getMessage());
+          Printer.print("Screen: Error erasing file: " + e.getMessage());
         }
         Printer.print("Deleted " + String.valueOf(file), false);
       } else {

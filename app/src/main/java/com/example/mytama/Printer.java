@@ -1,7 +1,5 @@
 package com.example.mytama;
 
-import android.app.AlertDialog;
-
 public class Printer {
   static int msgCounter = 0;
   
@@ -54,12 +52,5 @@ public class Printer {
     if (MainActivity.debugMode == 1 || Tama.name != null && Tama.name.startsWith("DEBUG")) {
       append(text, false);
     }
-  }
-  
-  public static void alert(String txt) {
-    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.context);
-    builder.setMessage(txt).setTitle("MyTama error");
-    AlertDialog dialog = builder.create();
-    dialog.show();
   }
 }

@@ -20,10 +20,13 @@ public class TamaSelectPainter extends Painter{
     int verticalLineX = Painter.canvas.getWidth() - canvas.getWidth()/10;
     canvas.drawLine(verticalLineX, 0, verticalLineX, canvas.getHeight(), p);
     int offset = 60; //Need to find out why this is necessary
-    for (int i = 0; i < (tamaList.length); i++) {
+    int i;
+    for (i = 0; i < (tamaList.length); i++) {
       canvas.drawText(tamaList[i], 0, i*entryHeight - textSize/4 + offset, p);
       canvas.drawLine(0, i*entryHeight + offset, canvas.getWidth(), i*entryHeight + offset, p);
       canvas.drawText("X", verticalLineX, i*entryHeight - textSize/4 + offset, p);
     }
+    canvas.drawText("Create new tama...", 0, i*entryHeight - textSize/4 + offset, p);
   }
+  
 }

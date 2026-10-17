@@ -30,6 +30,8 @@ public class SuperKuchipatchiPainter extends SantaPainter {
   }
   
   public static void draw() {
+    Printer.logPrint("left: " + SantaTama.left);
+    Printer.logAppend("\ntimeToLeave:" + SantaTama.ttleave);
     if (phase == 0) {
       drawSpriteAt("super_kuchipatchi_flying", x, 0);
       x--;

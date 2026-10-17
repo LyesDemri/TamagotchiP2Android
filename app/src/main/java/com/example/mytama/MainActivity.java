@@ -21,6 +21,7 @@ import android.Manifest;
 import android.Manifest.permission.*;
 import androidx.work.*;
 import androidx.core.app.ActivityCompat;
+import android.util.Log;
 
 public class MainActivity extends Activity {
   static public TextView tv;
@@ -51,11 +52,14 @@ public class MainActivity extends Activity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     try {
+      Log.d(null, "starting MainActivity.onCreate()");
       // on appelle le onCreate du parent
       super.onCreate(savedInstanceState);
       
+      
       //On récupère le contexte
-      context = this;
+      //context = this;
+      context = getApplicationContext();
       
       //On inflate le layout XML
       setContentView(R.layout.activity_main);
@@ -73,15 +77,15 @@ public class MainActivity extends Activity {
       menu_list = new String[]{"", "Reset", "Create new tama","Switch tama","Display Variables","Skip 1 minute", "Skip 5 minutes","Skip 1 hour"};
       MyRunnable.initialize();
       
-      Screen.initScreen(this);
+      Screen.initScreen(context);
       
       layout.addView(Screen.screen,0);
       myHandler = new Handler();
       
       //code pour l'alarme
       alarmMgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-      Intent intent = new Intent(this, AlarmReceiver.class);
-      alarmIntent = PendingIntent.getBroadcast(this, 0, intent, (PendingIntent.FLAG_IMMUTABLE));
+      Intent intent = new Intent(context, AlarmReceiver.class);
+      alarmIntent = PendingIntent.getBroadcast(context, 0, intent, (PendingIntent.FLAG_IMMUTABLE));
       
       vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
       
@@ -97,11 +101,10 @@ public class MainActivity extends Activity {
         permissionsObtained = true;
         setupNotifications();
       }
-      
       Animations.loadAnimations();
     } catch (Exception e) {
-      Printer.append("Error in MainActivity.onCreate()", true);
-      Printer.append("\n" + e.getMessage());
+      Printer.print("Error in onCreate()" + e.getMessage());
+      Utils.notifyUser("Error in MainActivity.onCreate()" + e.getMessage(), "");
     }
   }
   
@@ -111,24 +114,28 @@ public class MainActivity extends Activity {
   
   @Override public void onResume() {
     try {
+      Log.d(null, "starting MainActivity.onResume()");
       super.onResume();
+      
       if (DataSaverLoader.getSaveFiles().length > 0) state = "tama_select_screen";
       else state = "version_select_screen";
       isOpen = true;
       
       if (permissionsObtained) {
-        Intent serviceIntent = new Intent(this, MyForegroundService.class);
+        Intent serviceIntent = new Intent(context, MyForegroundService.class);
         //this.stopService(serviceIntent);
         myHandler.removeCallbacks(MyRunnable.runnable);
         //MyForegroundService.isRunning = false;
         this.startForegroundService(serviceIntent);
         myHandler.postDelayed(MyRunnable.runnable, 40);
       } else {
+        Printer.print("WARNING: Turn on notifications for a better experience.");
         myHandler.removeCallbacks(MyRunnable.runnable);
         myHandler.postDelayed(MyRunnable.runnable, 40);
       }
     } catch (Exception e) {
-      Printer.print("Error in MainActivity.onResume(): " + e.getMessage());
+      Printer.print("Error in onResume()" + e.getMessage());
+      Utils.notifyUser("Error in MainActivity.onResume(): " + e.getMessage(), "");
     }
     isOpen = true;
   }
@@ -137,6 +144,7 @@ public class MainActivity extends Activity {
     super.onPause();
     if (!(Tama.name == null)) DataSaverLoader.saveData();
     isOpen = false;
+    //Printer.print("leaving onPause()");
   }
   
   @Override public void onDestroy() {
@@ -186,6 +194,6 @@ public class MainActivity extends Activity {
   public void setupNotifications() {
     notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
     Intent intent = new Intent(MainActivity.context, MainActivity.class);  //intent est une variable temporaire
-    notificationIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+    notificationIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
   }
 }

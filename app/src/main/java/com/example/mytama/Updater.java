@@ -2,7 +2,7 @@ package com.example.mytama;
 
 public class Updater  {
   public static boolean allSleeping = false;
-  public static double timeForNextCall;
+  public static int timeToWake;
   public static void update() {
     if (MainActivity.version.equals("P2")) {
       P2Updater.update();
@@ -26,20 +26,18 @@ public class Updater  {
     Printer.append("Tama time: " + TimeWizard.getTamagotchiTime(), false);
   }
   
-  public static void updateAllTamas(){
+  public static void updateAllTamas() {
     allSleeping = true;
     String[] files = DataSaverLoader.getSaveFiles();
-    double[] callTimes = new double[files.length];
+    double[] wakeTimes = new double[files.length];
     for (int i = 0; i < files.length; i++) {
       Tama.name = files[i];
       DataSaverLoader.loadData();
       if (!Tama.sleeping) allSleeping = false;
-      if (MainActivity.economyMode) {
-        if (MainActivity.version.equals("P2")) callTimes[i] = (double)P2FuturePredictor.calculateNextCallTime();
-        else callTimes[i] = 25*60*24; //infinty
-      }
+      wakeTimes[i] = Tama.timeToWake - Tama.t;
       DataSaverLoader.saveData();
-      timeForNextCall = Utils.min(callTimes);
     }
+    if (allSleeping) timeToWake = new Double(Utils.min(wakeTimes)).intValue();
+    //Utils.notifyUser("time to wake:" + timeToWake, "");
   }
 }

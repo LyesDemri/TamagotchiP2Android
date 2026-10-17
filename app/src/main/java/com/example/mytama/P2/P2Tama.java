@@ -38,7 +38,8 @@ public class P2Tama extends Tama{
     tslp = 0;
     //get current millisecond relative to 1970
     t1970birth = TimeWizard.getTime();
-    TimeWizard.computeSleepWakeTimes(20,9);
+    timeToSleep = 2400;
+    timeToWake = 2700;
     pp = 0;
     careMisses = 0;
     disciplineMistakes = 0;

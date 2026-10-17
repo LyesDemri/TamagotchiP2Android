@@ -72,15 +72,12 @@ public class MyRunnable extends Thread {
             MainActivity.isOpen = false;
             numTamas = DataSaverLoader.getSaveFiles().length;
             elapsedTime = (new Date().getTime()) - elapsedTime;
-            if (!MainActivity.economyMode) { //cobdition might be useless
-              int secondsToNextUpdate = (Updater.allSleeping) ? 60 : numTamas*10;
-              MainActivity.myHandler.postDelayed(this, secondsToNextUpdate*1000 - elapsedTime);
-            } else {
-              Double d = new Double(Updater.timeForNextCall);
-              int duration = d.intValue();
-              Utils.notifyUser("MyRunnable: Next event in " + duration + "s","");
-              MainActivity.myHandler.postDelayed(this, duration*1000 - elapsedTime);
-            }
+            int secondsToNextUpdate = (Updater.allSleeping) ? Updater.timeToWake : numTamas*30;
+            if (Updater.allSleeping){
+              MainActivity.alarmMgr.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + Updater.timeToWake*1000, MainActivity.alarmIntent);
+              Utils.notifyUser("All tamas sleeping. See you in " + Updater.timeToWake + " s", "");
+            } 
+            MainActivity.myHandler.postDelayed(this, secondsToNextUpdate*1000 - elapsedTime);
             //Utils.notifyUser("Updated all tamas at " + (new Date().getTime()) + " in " + elapsedTime, "");
           }
         } catch (Exception e2) {
