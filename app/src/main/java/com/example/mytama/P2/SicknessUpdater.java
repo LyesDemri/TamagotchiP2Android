@@ -8,7 +8,7 @@ public class SicknessUpdater {
     if (Tama.t==1980) {
       P2Tama.sick = true;
       MainActivity.state = "idle";
-      Utils.notifyUser(Tama.name + " became sick!", "call");
+      if (!P2Tama.sleeping) Utils.notifyUser(Tama.name + " is sick!", "call");
     }
     //sickness due to age
     if (Tama.t == P2Tama.ttgsfa) {
@@ -16,7 +16,7 @@ public class SicknessUpdater {
       //heart loss period ne peut être inférieur à 10 min
       P2Tama.ttgsfa = P2Tama.ttgsfa+72*3600;
       P2Tama.sick  = true;
-      Utils.notifyUser(Tama.name + " became sick!", "call");
+      if (!P2Tama.sleeping) Utils.notifyUser(Tama.name + " is sick!", "call");
       if (Tama.t > 5*24*3600) {
         Tama.hghlp = Math.max(Tama.hghlp-300,10*60);
         Tama.timeSinceHungryChanged = Math.min(Tama.hghlp-10,Tama.timeSinceHungryChanged);
@@ -31,7 +31,7 @@ public class SicknessUpdater {
       double diff = Tama.weight - P2Tama.idealWeight;
       if (Math.random() < (diff/100)) {
         P2Tama.sick = true;
-        Utils.notifyUser(Tama.name + " became sick!", "call");
+        if (!P2Tama.sleeping) Utils.notifyUser(Tama.name + " is sick!", "call");
         Tama.hghlp = Math.max(Tama.hghlp - 300, 10*60);
         Tama.timeSinceHungryChanged = Math.min(Tama.hghlp-10, Tama.timeSinceHungryChanged);
         Tama.hphlp = Math.max(Tama.hphlp - 300, 10*60);

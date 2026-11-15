@@ -16,8 +16,10 @@ public class PoopUpdater {
     if (P2Tama.dirty) {
       if (!Tama.character.equals("Egg"))
         P2Tama.tsd++;
-      if (P2Tama.tsd == 12*3600)
+      if (P2Tama.tsd == 12*3600 && !P2Tama.sick){
         P2Tama.sick = true;
+        if (!P2Tama.sleeping) Utils.notifyUser(Tama.name + " is sick!", "call");
+      }
     }
   }
   

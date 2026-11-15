@@ -10,7 +10,7 @@ import android.os.SystemClock;
 
 public class AlarmReceiver extends BroadcastReceiver {
   @Override public void onReceive(Context context, Intent intent) {
-    Utils.notifyUser("Alarm went off at " + TimeWizard.getDateTime(), "");
+    //Utils.notifyUser("Alarm went off at " + TimeWizard.getDateTime(), "");
     Updater.updateAllTamas();
     MainActivity.isOpen = false;
     /*

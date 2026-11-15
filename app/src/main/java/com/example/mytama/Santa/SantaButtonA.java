@@ -7,7 +7,9 @@ public class SantaButtonA {
     if (MainActivity.state.equals("idle") || MainActivity.state.startsWith("dead")) {
       MainActivity.icon_number = (MainActivity.icon_number + 1)%(MainActivity.icon_list.length);
       Printer.print(MainActivity.icon_list[MainActivity.icon_number], false);
-      if (MainActivity.icon_number == 8) {
+      if (MainActivity.icon_number == 8){
+        Printer.print("Language: " + SantaTama.language + "\nPress B to switch");
+      } else if (MainActivity.icon_number == 9) {
         Printer.print("Menu", false);
       }
     } else if (MainActivity.state.equals("food choice")) {

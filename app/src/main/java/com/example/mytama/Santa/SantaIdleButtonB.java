@@ -66,6 +66,9 @@ public class SantaIdleButtonB extends IdleButtonB {
       MainActivity.state = "advent calendar";
     } else if (MainActivity.icon_list[MainActivity.icon_number] == "Tama TV" && !SantaTama.left){
       MainActivity.state = "tama tv";
+    } else if (MainActivity.icon_list[MainActivity.icon_number] == "Language") {
+      SantaTama.language = (SantaTama.language.equals("en")) ? "jp" : "en";
+      Printer.print("Language: " + SantaTama.language + "\nPress B to switch");
     } else if (MainActivity.icon_list[MainActivity.icon_number] == "Menu") {
       //Menu:
       if (MainActivity.menu_index==0) {

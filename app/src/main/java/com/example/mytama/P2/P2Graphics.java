@@ -14,13 +14,13 @@ public class P2Graphics extends Graphics {
     hashMap = new HashMap<String, Bitmap>();
         
     String[] scalar_graphics_titles = {"aclock", "attention_icon","black_tile", "cake_1", "cake_2", "cake_3", "discipline_screen", "down_arrow", "egg_idle_1","egg_idle_2", "empty_heart", "emptyarrow", "face_icon",
-    "food_icon","fullarrow","full_heart","game_icon","happy_sun", "hamburger_1", "hamburger_2", "hamburger_3", "happy_word","hatching","hungry_word","lb","left_arrow",
+    "food_icon","fullarrow","full_heart","game_icon","happy_sun", "hamburger_1", "hamburger_2", "hamburger_3", "happy_en","hatching","hungry_en","lb_en","left_arrow",
     "lights_icon", "mclock", "medicine_icon", "mytama3",
     "num0", "num1", "num2", "num3", "num4", "num5", "num6", "num7", "num8", "num9",
     "num0small", "num1small", "num2small", "num3small", "num4small", "num5small", "num6small", "num7small", "num8small", "num9small", 
     "p2bg","pclock","poop_1","poop_2","right_arrow", "scale_icon","shower","skull",
     "star1", "star2", "star3","stats_icon","toilet_icon","training_icon","ufo", 
-    "unhappy_cloud_1","unhappy_cloud_2","up_arrow","vs","yr","z1","z2","z1dark","z2dark"};
+    "unhappy_cloud_1","unhappy_cloud_2","up_arrow","vs","yr_en","z1","z2","z1dark","z2dark"};
     
     try{
       Resources r = MainActivity.context.getResources();

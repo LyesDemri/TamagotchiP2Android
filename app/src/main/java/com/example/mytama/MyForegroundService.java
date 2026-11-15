@@ -21,7 +21,7 @@ public class MyForegroundService extends Service {
             MainActivity.notificationManager.createNotificationChannel(channel);
             Notification.Builder notiBuilder = new Notification.Builder(MainActivity.context, "tamagotchi_id");
             notiBuilder.setContentTitle("MyTama");
-            notiBuilder.setContentText("MyTama service is running");
+            notiBuilder.setContentText("MyTama service is running: " + TimeWizard.getDateTime());
             notiBuilder.setSmallIcon(R.drawable.face_icon);
             notiBuilder.setAutoCancel(true);
             //notiBuilder.setDefaults(Notification.DEFAULT_ALL);

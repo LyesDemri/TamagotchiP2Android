@@ -25,11 +25,11 @@ public class AdventCalendarPainter extends Painter {
     if (monthDigits[0] != 0)
       drawSpriteAt("num" + monthDigits[0], 16, -1);
     drawSpriteAt("num" + monthDigits[1], 21, -1);
-    drawSpriteAt("months_jp", 26, 0);
+    drawSpriteAt("month_" + SantaTama.language, 26, 0);
     if (dayDigits[0] != 0)
       drawSpriteAt("num" + dayDigits[0], 16, 7);
     drawSpriteAt("num" + dayDigits[1], 21, 7);
-    drawSpriteAt("days_jp", 26, 8);
+    drawSpriteAt("day_" + SantaTama.language, 26, 8);
   }
   
   public static void drawAnimation() {

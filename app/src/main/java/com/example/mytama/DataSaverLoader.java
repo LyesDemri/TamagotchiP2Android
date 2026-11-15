@@ -47,6 +47,7 @@ public class DataSaverLoader {
       
       if (MainActivity.version.equals("Santa")) {
         dos.writeUTF(SantaTama.companion);
+        dos.writeUTF(SantaTama.language);
       }  
       dos.close(); fos.close();
     } catch (Exception e) {
@@ -69,13 +70,13 @@ public class DataSaverLoader {
       }
       
       Field[] fields = Tama.class.getDeclaredFields();
-      Printer.print("Loaded fields:");
+      Printer.logPrint("Loaded fields:");
       for (int j = 0; j < 2; j++) {
         for (int i = 0; i < fields.length; i++) {
           fields[i].setAccessible(true);
           
           Class<?> type = fields[i].getType();
-          Printer.append(" " + fields[i].getName());
+          Printer.logAppend(" " + fields[i].getName());
           if (type == int.class)
             fields[i].setInt(null, dis.readInt());
           else if (type == double.class)
@@ -85,13 +86,13 @@ public class DataSaverLoader {
           else if (type == long.class)
             fields[i].setLong(null, dis.readLong());
           else if (type == int[].class) {
-            Printer.append("Reading table " + fields[i].getName(), false);
+            Printer.logAppend("Reading table " + fields[i].getName());
             int l = dis.readInt();
-            Printer.append("length =  " + l, false);
+            Printer.logAppend("length =  " + l);
             int[] table = new int[l];
             for (int k = 0; k < l; k++) {
               table[k] = dis.readInt();
-              Printer.append("Value " + k + ": " + table[k], false);
+              Printer.logAppend("Value " + k + ": " + table[k]);
             }
             fields[i].set(null, table);
           }
@@ -105,6 +106,7 @@ public class DataSaverLoader {
       
       if (MainActivity.version.equals("Santa")) {
           SantaTama.companion = dis.readUTF();
+          SantaTama.language = dis.readUTF();
       }
       dis.close();fis.close();
                   
@@ -115,8 +117,8 @@ public class DataSaverLoader {
       catchUp();
       Printer.print(Tama.name);
     } catch (Exception e) {
-      Printer.log("Error loading save file: " + e.getMessage());
-      Printer.append("\nDowngrading the app to an earlier version should solve the issue");
+      Printer.log("Error loading save file: " + e.getMessage() + ". Tama was reset.");
+      Tama.reset();
     }
   }
 

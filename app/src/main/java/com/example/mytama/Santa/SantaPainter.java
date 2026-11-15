@@ -76,7 +76,7 @@ public class SantaPainter extends Painter {
         IconsPainter.draw();
         
         //draw tama shell
-        canvas.drawBitmap(SantaGraphics.hashMap.get("mysanta"), null, new Rect(bgx, bgy, bgx + bgW, bgy + bgH),paint);
+        canvas.drawBitmap(SantaGraphics.hashMap.get("santa_shell_handmade_2"), null, new Rect(bgx, bgy, bgx + bgW, bgy + bgH),paint);
       }
     }
   }

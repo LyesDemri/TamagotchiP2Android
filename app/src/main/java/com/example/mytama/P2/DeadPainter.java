@@ -10,8 +10,7 @@ public class DeadPainter extends Painter {
       else
         canvas.drawBitmap(P2IdlePainter.flip(P2Graphics.hashMap.get("ufo")),null, new Rect(0+Screen.offsetX,0+Screen.offsetY,160+Screen.offsetX,160+Screen.offsetY),paint);
       drawStars(160);
-    }
-    else if (MainActivity.state.equals("dead2")) {
+    } else if (MainActivity.state.equals("dead2")) {
       drawStars(0);
       //display age
       int[] value;
@@ -19,7 +18,7 @@ public class DeadPainter extends Painter {
       if (value[0]>0)
         canvas.drawBitmap(P2Graphics.hashMap.get("num"+value[0]), null, new Rect(240-10+Screen.offsetX,0+Screen.offsetY,280-10+Screen.offsetX,80+Screen.offsetY),paint);
       canvas.drawBitmap(P2Graphics.hashMap.get("num"+value[1]), null, new Rect(280+Screen.offsetX,0+Screen.offsetY,320+Screen.offsetX,80+Screen.offsetY),paint);
-      canvas.drawBitmap(P2Graphics.hashMap.get("yr"), null, new Rect(240+Screen.offsetX,80+Screen.offsetY,320+Screen.offsetX,160+Screen.offsetY),paint);
+      canvas.drawBitmap(P2Graphics.hashMap.get("yr_en"), null, new Rect(240+Screen.offsetX,80+Screen.offsetY,320+Screen.offsetX,160+Screen.offsetY),paint);
       MainActivity.tv.setText("Press B to reset");
     }
   }

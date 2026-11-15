@@ -30,11 +30,13 @@ public class SantaTama extends Tama {
   public static int characterSpeed;
   public static int ttleave;
   public static double steps;
+  public static String language;
   
   static public void reset() {
     t = 0;
     character = "cabin";
     MainActivity.state = "Cabin";
+    language = "en";
     stomach = 0;
     happy = 0;
     inputName = "";

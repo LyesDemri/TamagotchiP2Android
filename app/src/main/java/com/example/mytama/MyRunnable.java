@@ -73,9 +73,10 @@ public class MyRunnable extends Thread {
             numTamas = DataSaverLoader.getSaveFiles().length;
             elapsedTime = (new Date().getTime()) - elapsedTime;
             int secondsToNextUpdate = (Updater.allSleeping) ? Updater.timeToWake : numTamas*30;
+            secondsToNextUpdate = (secondsToNextUpdate > 3600) ? 3600 : secondsToNextUpdate;
             if (Updater.allSleeping){
               MainActivity.alarmMgr.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + Updater.timeToWake*1000, MainActivity.alarmIntent);
-              Utils.notifyUser("All tamas sleeping. See you in " + Updater.timeToWake + " s", "");
+              //Utils.notifyUser("All tamas sleeping. See you in " + secondsToNextUpdate + " s", "");
             } 
             MainActivity.myHandler.postDelayed(this, secondsToNextUpdate*1000 - elapsedTime);
             //Utils.notifyUser("Updated all tamas at " + (new Date().getTime()) + " in " + elapsedTime, "");

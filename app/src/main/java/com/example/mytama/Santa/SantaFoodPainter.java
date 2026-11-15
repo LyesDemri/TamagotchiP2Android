@@ -5,8 +5,8 @@ public class SantaFoodPainter extends FoodPainter {
   public static void draw() {
     if (MainActivity.state.equals("food choice")) {
       drawSpriteAt("right_arrow", 0, MainActivity.food_index*8);
-      drawSpriteAt("food_jp", 8, 0);
-      drawSpriteAt("snack_jp", 8, 8);
+      drawSpriteAt("meat_pie_" + SantaTama.language, 8, 0);
+      drawSpriteAt("cake_" + SantaTama.language, 8, 8);
     } else if (MainActivity.state.equals("eating")) {
       i = 7 - Animations.animation_counter;
       drawSpriteAt(Tama.character + eatingStages[Animations.santaEatAnim[i]], 16 - Animations.santaEatAnim[i], y);

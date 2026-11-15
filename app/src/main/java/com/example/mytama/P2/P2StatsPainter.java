@@ -7,9 +7,9 @@ public class P2StatsPainter extends StatsPainter {
     if (MainActivity.state.equals("StatScreen1")) {
       try  {
         canvas.drawBitmap(Graphics.hashMap.get("face_icon"), null, new Rect(0 + Screen.offsetX, 0 + Screen.offsetY, 80 + Screen.offsetX, 80 + Screen.offsetY), paint);
-        canvas.drawBitmap(Graphics.hashMap.get("yr"),null, new Rect(240+Screen.offsetX,0+Screen.offsetY,320+Screen.offsetX,80+Screen.offsetY),paint);
+        canvas.drawBitmap(Graphics.hashMap.get("yr_en"),null, new Rect(240+Screen.offsetX,0+Screen.offsetY,320+Screen.offsetX,80+Screen.offsetY),paint);
         canvas.drawBitmap(Graphics.hashMap.get("scale_icon"), null, new Rect(0+Screen.offsetX,80+Screen.offsetY,80+Screen.offsetX,160+Screen.offsetY),paint);
-        canvas.drawBitmap(Graphics.hashMap.get("lb"), null, new Rect(240+Screen.offsetX,80+Screen.offsetY,320+Screen.offsetX,160+Screen.offsetY),paint);
+        canvas.drawBitmap(Graphics.hashMap.get("lb_en"), null, new Rect(240+Screen.offsetX,80+Screen.offsetY,320+Screen.offsetX,160+Screen.offsetY),paint);
         int[] value;
         value = Utils.numDecomposition(Tama.age);
         if (value[0]>0)
@@ -39,10 +39,10 @@ public class P2StatsPainter extends StatsPainter {
       }
     }
     else if (MainActivity.state.equals("StatScreen3")) {
-      drawSpriteAt("hungry_word", 0, 0);
+      drawSpriteAt("hungry_en", 0, 0);
       drawHearts(Tama.stomach);
     } else if (MainActivity.state.equals("StatScreen4")) {
-      drawSpriteAt("happy_word", 0, 0);
+      drawSpriteAt("happy_en", 0, 0);
       drawHearts(Tama.happy);
     }
   }

@@ -38,7 +38,7 @@ public class SantaSulkingPainter extends SantaPainter {
       if (j == 0) Sounds.playSound("one_horse_open_sleigh");
       drawSpriteAt("envelope_5", 0, 0);
       drawSpriteAt(Tama.character + "_happy", 16, 0);
-      if ((j++) == 100) {
+      if ((j++) == 60) {
         Animations.animation_counter = 9;
         StoringPainter.object = "envelope_5";
         StoringPainter.disappear = "disappear_big";
