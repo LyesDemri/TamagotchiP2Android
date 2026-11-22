@@ -1,6 +1,11 @@
 # TamagotchiP2Android
 
-Octobre 2026: <br/>
+November 2026: <br/>
+Added a mute functionality (Holding A then pressing C like on the real tamas. You need to press on the shell, not the grey rectangular buttons). Similarly, I added a pause function (Also A and C while in the clock). Pausing the tama desyncs the Tamagotchi from real world time. You can then resync it by entering debug mode (go to the clock and press C 10 times). While in debug mode, navigate to the menu, hit B, then select "Resync Tama". Be careful, the Tama will be fast forwarded to the current time and any thing that was supposed to happen will all happen at once. For example, if your tama was sick before resyncing, it might die during the resyncing process. I encourage you to fast forward time in increments of 5 minutes until the Tama time is close to the real time, before resyncing. That way if anything was to happen to your tama, you can care for them as things happen. <br/>
+The ability to fast forward also means your tama's time can be at some point in the future. Fast forwarding the tama also desyncs the tama. If your tama time is in the future, and you resync it, the tama will basically be paused while the app is closed, until the real world time catches up to your tama time. Basically, if your tama is in advance by 1 hour, and you resync it and leave the app, nothing more will happen to your tama for the next hour while the app is closed.<br/>
+I know this all sounds very confusing, but please keep in mind, pausing and fast forwarding time was never the intended behavior of the app (and of the actual tamagotchis).
+
+October 2026: <br/>
 The Santaclautchi is now be completely playable. <br/>
 
 April 2026 Update: <br/>
