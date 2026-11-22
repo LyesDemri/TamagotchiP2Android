@@ -114,7 +114,13 @@ public class DataSaverLoader {
       Tama.timeSinceLeft = Math.round((double)((currentTime-TimeWizard.getTamagotchiLongTime())/1000));
       Graphics.loadCharacterGraphics();
       
-      catchUp();
+      if (!Tama.paused) {
+        if (Tama.synced) Tama.timeSinceLeft = Math.round((double)((currentTime-TimeWizard.getTamagotchiLongTime())/1000));
+        else Tama.timeSinceLeft = Math.round((double)((currentTime-timeUponClosing)/1000));
+        catchUp();
+      } else {
+        MainActivity.state = "clock";
+      }
       Printer.print(Tama.name);
     } catch (Exception e) {
       Printer.log("Error loading save file: " + e.getMessage() + ". Tama was reset.");

@@ -63,8 +63,10 @@ public class SantaUpdater extends Updater  {
       if (SantaTama.ttleave == 0) {
         SantaTama.call();
         Utils.notifyUser(Tama.name + " fled!", "");
-        SuperKuchipatchiPainter.initializeAnimation("leaving");
-         MainActivity.state = "leaving";
+        if (MainActivity.isOpen) {
+          SuperKuchipatchiPainter.initializeAnimation("leaving");
+          MainActivity.state = "leaving";
+        }
         SantaTama.left = true;
       }
     }

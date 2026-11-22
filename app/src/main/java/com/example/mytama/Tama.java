@@ -17,6 +17,8 @@ public class Tama {
   static public String character, name, inputName;
   public static int updatesWhileAbsent, notificationsSent;
 
+  public static boolean synced = true;
+  public static boolean paused = false;
   static public void reset() {
     if (MainActivity.version.equals("P2")){
       P2Tama.reset();

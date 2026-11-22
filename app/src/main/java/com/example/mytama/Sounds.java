@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import java.util.HashMap;
 
 public class Sounds {
+  public static boolean playSounds = true;
   public static HashMap<String, MediaPlayer> hashMap;
   static String[] soundList;
   public static void loadSounds(Context c){
@@ -26,6 +27,7 @@ public class Sounds {
   }
   
   public static void playSound(String soundName) {
+    if (!playSounds) return;
     MediaPlayer mp = null;
     try {
       mp = hashMap.get(soundName);

@@ -19,6 +19,14 @@ public class MenuButtonB {
       Updater.skipDuration(300);
     } else if (MainActivity.menu_index == 7) {
       Updater.skipDuration(3600);
+    } else if (MainActivity.menu_index == 8) {
+      /*long currentTime = TimeWizard.getLongTime();
+      long tamaTime = TimeWizard.getTamagotchiTime();
+      Tama.timeSinceLeft = (currentTime - */
+      Tama.synced = true;
+      DataSaverLoader.saveData();
+      DataSaverLoader.loadData();
+    if (Tama.timeSinceLeft < 0) Utils.notifyUser("Tama is in the future. Wait until " + TimeWizard.getTamagotchiTime(), "");
     }
   }
 }

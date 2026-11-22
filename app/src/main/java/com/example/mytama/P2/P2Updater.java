@@ -30,15 +30,4 @@ public class P2Updater extends Updater {
       }
     }
   }
-  
-  public static void skipDuration(int dur) {
-    MainActivity.catchingUp = true;
-    for (int i = 0; i < dur; i++) {
-      Updater.update();
-    }
-    MainActivity.catchingUp = false;
-    Printer.logPrint("Done fast forwarding");
-    Printer.logAppend("t =" + Tama.t);
-    Printer.logAppend("Tama time: " + TimeWizard.getTamagotchiTime());
-  }
 }

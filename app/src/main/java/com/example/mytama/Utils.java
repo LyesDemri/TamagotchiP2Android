@@ -7,6 +7,9 @@ import android.app.NotificationManager;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
+import android.net.Uri;
+import android.media.AudioAttributes;
+import android.media.AudioAttributes.Builder;
 
 public class Utils 
 {
@@ -48,6 +51,7 @@ public class Utils
     if (!MainActivity.permissionsObtained)  return;
     if (!MainActivity.isOpen||true) {
       NotificationChannel channel = new NotificationChannel("tamagotchi_id", "Tamagotchi Alerts", NotificationManager.IMPORTANCE_HIGH);
+      channel.setSound(Uri.parse("android.resource://" + MainActivity.context.getPackageName() + "/raw/call"), new AudioAttributes.Builder().build());
       MainActivity.notificationManager.createNotificationChannel(channel);
       Notification.Builder notiBuilder = new Notification.Builder(MainActivity.context, "tamagotchi_id");
       notiBuilder.setContentTitle("MyTama");

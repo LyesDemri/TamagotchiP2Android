@@ -2,8 +2,8 @@ package com.example.mytama;
 
 public class SantaButtonA {
   public static void handle(){
-    Sounds.beep();
-    MainActivity.vibrator.vibrate(50);
+    //Sounds.beep();
+    //MainActivity.vibrator.vibrate(50);
     if (MainActivity.state.equals("idle") || MainActivity.state.startsWith("dead")) {
       MainActivity.icon_number = (MainActivity.icon_number + 1)%(MainActivity.icon_list.length);
       Printer.print(MainActivity.icon_list[MainActivity.icon_number], false);
@@ -62,8 +62,7 @@ public class SantaButtonA {
         BagPainter.objectIndex = (BagPainter.objectIndex + 1) % 6;
       }
     } else if (MainActivity.state.equals("clock")) {
-      //SantaTama.tier = (SantaTama.tier+1)%4;
-      //Printer.print("Tier: " + SantaTama.tier);
+      Printer.print("Hold A and press C to pause tama");
     }
     else {
       Printer.log("Unknown state: " + MainActivity.state);

@@ -2,8 +2,8 @@ package com.example.mytama;
 
 public class SantaButtonB {
   public static void handle() {
-    Sounds.validate();
-    MainActivity.vibrator.vibrate(50);
+    //Sounds.validate();
+    //MainActivity.vibrator.vibrate(50);
     if (MainActivity.state.equals("idle")) {
       IdleButtonB.handle();
     } else if (MainActivity.state.equals("food choice")) {
@@ -93,7 +93,7 @@ public class SantaButtonB {
       MenuButtonB.handle();
     } else if (MainActivity.state.equals("dead2"))
       Tama.reset();
-    else if (MainActivity.state.equals("clock")) {
+    else if (MainActivity.state.equals("clock") && !Tama.paused) {
       MainActivity.state = "idle";
       MainActivity.debugCounter = 0;
     } else if (MainActivity.state.equals("advent calendar")) {

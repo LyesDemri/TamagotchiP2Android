@@ -31,8 +31,14 @@ class Screen extends SurfaceView implements SurfaceHolder.Callback {
     getHolder().addCallback(this);
     this.setOnTouchListener(new View.OnTouchListener(){
       @Override public boolean onTouch(View v, MotionEvent motionEvent) {
-        if (motionEvent.getActionMasked()==MotionEvent.ACTION_DOWN) {
-          handleTouch(motionEvent.getX(),motionEvent.getY());
+        if (motionEvent.getActionMasked() == MotionEvent.ACTION_DOWN) {
+          handleTouch(motionEvent.getX(), motionEvent.getY());
+        } else if (motionEvent.getActionMasked() == MotionEvent.ACTION_UP) {
+          handleRelease(motionEvent.getX(), motionEvent.getY());
+        } else if (motionEvent.getActionMasked() == MotionEvent.ACTION_POINTER_DOWN) {
+          handleTouch(motionEvent.getX(1), motionEvent.getY(1));
+        } else if (motionEvent.getActionMasked() == MotionEvent.ACTION_POINTER_UP) {
+          handleRelease(motionEvent.getX(1), motionEvent.getY(1));
         }
         return true;
       };
@@ -67,6 +73,21 @@ class Screen extends SurfaceView implements SurfaceHolder.Callback {
           ButtonB.handle();
         else if (x > 400 && x < 600) 
           ButtonC.handle();
+      }
+    }
+  }
+  
+  public void handleRelease(float x, float y) {
+    if (!MainActivity.state.equals("reset_screen") &&
+        !MainActivity.state.equals("tama_select_screen") &&
+        !MainActivity.state.equals("version_select_screen")) {
+      if (y > 700 && y < 800) {
+        if (x > 200 && x < 300)
+          ButtonA.handleRelease();
+        else if (x > 300 && x < 400) 
+          ButtonB.handleRelease();
+        else if (x > 400 && x < 600) 
+          ButtonC.handleRelease();
       }
     }
   }

@@ -53,7 +53,7 @@ public class SantaPainter extends Painter {
           BagPainter.drawTransformation();
         } else if (MainActivity.state.equals("super kuchipatchi")) {
           SuperKuchipatchiPainter.draw();
-        } else if (MainActivity.state.equals("leaving")) {
+        } else if (MainActivity.state.equals("leaving") && !MainActivity.catchingUp) {
           SuperKuchipatchiPainter.drawLeaving();          
         } else if (MainActivity.state.equals("advent calendar")) {
           int phase = SantaTama.adventVisits[Tama.age-100] == 0 ? 1 : 4;

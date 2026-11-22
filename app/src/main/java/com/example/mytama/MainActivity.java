@@ -74,7 +74,7 @@ public class MainActivity extends Activity {
       tv.setBackgroundResource(R.color.white);
       tv.setTextColor(R.color.black);
       //Elements du menu
-      menu_list = new String[]{"", "Reset", "Create new tama","Switch tama","Display Variables","Skip 1 minute", "Skip 5 minutes","Skip 1 hour"};
+      menu_list = new String[]{"", "Reset", "Create new tama","Switch tama","Display Variables","Skip 1 minute", "Skip 5 minutes","Skip 1 hour", "Resync tama"};
       MyRunnable.initialize();
       
       Screen.initScreen(context);
@@ -113,6 +113,7 @@ public class MainActivity extends Activity {
   public void onClickC(View v) {ButtonC.handle();}
   
   @Override public void onResume() {
+    debugMode = 0;
     try {
       Log.d(null, "starting MainActivity.onResume()");
       super.onResume();

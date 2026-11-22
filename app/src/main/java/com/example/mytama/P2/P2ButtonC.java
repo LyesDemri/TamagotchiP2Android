@@ -2,15 +2,17 @@ package com.example.mytama;
 
 public class P2ButtonC {
   public static void handle() {
-    Sounds.beep();
-    MainActivity.vibrator.vibrate(50);
+    //Sounds.beep();
+    //MainActivity.vibrator.vibrate(50);
     if (MainActivity.state.equals("idle")) {
       if (MainActivity.icon_number != 0) {
         MainActivity.icon_number = 0;
       } else {
+        ButtonC.pressed = false;
+        ButtonC.previouslyPressed = false;
         MainActivity.state = "tama_select_screen";
       }
-      MainActivity.tv.setText(MainActivity.icon_list[MainActivity.icon_number]);
+      if (!ButtonA.pressed) MainActivity.tv.setText(MainActivity.icon_list[MainActivity.icon_number]);
     }
     else if (MainActivity.state.equals("food choice")) {
       MainActivity.state = "idle";
@@ -63,11 +65,17 @@ public class P2ButtonC {
       MainActivity.state = "idle";
       Animations.animation_counter=0;
     } else if (MainActivity.state.equals("clock")) {
-      MainActivity.debugCounter++;
-      if (MainActivity.debugCounter == 10) {
+      if (Tama.paused && !ButtonA.pressed && !ButtonC.previouslyPressed){
+        DataSaverLoader.saveData();
         MainActivity.debugCounter = 0;
-        MainActivity.debugMode = 1 - MainActivity.debugMode;
-        Printer.log("Debug mode = " + MainActivity.debugMode);
+        MainActivity.state = "tama_select_screen";
+      } else {
+        MainActivity.debugCounter++;
+        if (MainActivity.debugCounter == 10) {
+          MainActivity.debugCounter = 0;
+          MainActivity.debugMode = 1 - MainActivity.debugMode;
+          Printer.log("Debug mode = " + MainActivity.debugMode);
+        }
       }
     }
   }

@@ -18,7 +18,6 @@ public class TamaSelectScreen {
         MainActivity.menu_index = 0;
         MainActivity.fillIconList();
         Sounds.loadSounds(MainActivity.context);
-        //Printer.print(Tama.name);
         } else {
         MainActivity.state = "version_select_screen";
       }

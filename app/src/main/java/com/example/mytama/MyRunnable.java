@@ -52,7 +52,7 @@ public class MyRunnable extends Thread {
                     //The app increasingly lags behind as it's being used
                     //this fixes it but it would be better to find the cause of the lag
                     long delta = TimeWizard.getTime() - TimeWizard.getTamagotchiLongTime();
-                    if (delta > 1000)
+                    if (delta > 1000 && Tama.synced)
                       Updater.update();   
                   } catch (Exception e) {
                     Printer.log("Error updating game: " + e.getMessage());

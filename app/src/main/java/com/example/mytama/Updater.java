@@ -4,6 +4,7 @@ public class Updater  {
   public static boolean allSleeping = false;
   public static int timeToWake;
   public static void update() {
+    if (Tama.paused) return;
     if (MainActivity.version.equals("P2")) {
       P2Updater.update();
     } else if (MainActivity.version.equals("Santa")) {
@@ -18,12 +19,15 @@ public class Updater  {
   
   public static void skipDuration(int dur) {
     MainActivity.catchingUp = true;
+    MainActivity.isOpen = false;
     for (int i = 0; i < dur; i++) {
       Updater.update();
     }
     MainActivity.catchingUp = false;
+    MainActivity.isOpen = true;
     Printer.print("t =" + Tama.t, false);
     Printer.append("Tama time: " + TimeWizard.getTamagotchiTime(), false);
+    Tama.synced = false;
   }
   
   public static void updateAllTamas() {

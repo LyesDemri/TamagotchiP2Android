@@ -40,9 +40,11 @@ public class SantaHungryUpdater extends HungryUpdater {
     int amount = (int)(Math.floor(Math.random()*max));
     if (amount > 0) {
       MainActivity.food_index = 0;
-      MainActivity.oldState = MainActivity.state; // not too sure about this
-      Animations.animation_counter = 7;
-      MainActivity.state = "eating";
+      if (MainActivity.isOpen) {
+        MainActivity.oldState = MainActivity.state; // not too sure about this
+        Animations.animation_counter = 7;
+        MainActivity.state = "eating";
+      }
       SantaTama.ttlhungryh = 3600; //find a better value and whether to keep this
       Utils.notifyUser(Tama.name + " is eating", "");
     }
